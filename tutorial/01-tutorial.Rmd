@@ -1,0 +1,175 @@
+---
+title: "Análisis de datos estadísticos en R"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe"))
+```
+
+class: center middle main-title section-title-2 top-logo
+
+.small[
+# Instalación de softwares
+]
+
+.class-info[
+<br>
+**Tutorial N° 1**<br>
+`r format(Sys.Date(), '%d %B %Y')`<br>
+**Análisis de datos estadísticos en R**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Ayudantes** Dafne Jaime y Nicolás Godoy
+]
+]
+
+]
+
+---
+class: title title-inv-2 top-logo
+
+# Puntos
+
+--
+
+.box-2.medium.sp-after-half[Punto 1]
+
+--
+
+.box-8.medium.sp-after-half[Punto 2]
+
+--
+
+.box-1.medium.sp-after-half[Punto tres]
+
+---
+
+llass: center middle section-title section-title-2 animated fadeIn top-logo
+
+# Data science and<br>public service
+
+---
+
+class: title title-2 top-logo
+
+# Un titulo
+
+![](img/logo.png)
+- [Un video](https://www.youtube.com/watch?v=UOoMzaWOQJA)
+
+---
+class: title title-1 top-logo
+
+---
+class: top-logo
+
+# Otro punto
+
+
+.box-inv-1.medium[Collecting and analyzing data from a representative sample in order to make inferences about a whole population]
+
+---
+class: top-logo
+
+# Un mismo punto
+
+.box-inv-1.medium.sp-after[Turning raw data into<br>understanding, insight,<br>and knowledge]
+
+--
+
+.pull-left-3[
+.box-1.medium[&emsp;Collect&emsp;]
+]
+
+.pull-middle-3[
+.box-1.medium[&emsp;Analyze&emsp;]
+]
+
+.pull-right-3[
+.box-1.medium[Communicate]
+]
+
+
+---
+class: title title-2 top-logo
+
+# Hola → como estan
+
+
+---
+class: middle top-logo
+
+# Un título
+
+## Subtítulo
+
+Hola
+
+---
+
+.center[
+Recordar canal de youtube y linkear]
+
+---
+
+class: title title-2 top-logo
+
+# Adiós
+
+```{r chunk, echo=T, fig.width=9, fig.height=4.5, out.width="100%"}
+# codigo R
+```
+---
+class: center middle main-title section-title-2 top-logo
+
+.small[
+# Instalación de softwares
+]
+
+.class-info[
+<br>
+**Tutorial N° 1**<br>
+`r format(Sys.Date(), '%d %B %Y')`<br>
+**Análisis de datos estadísticos en R**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Ayudantes** Dafne Jaime y Nicolás Godoy
+]
+]
+
+]
+
