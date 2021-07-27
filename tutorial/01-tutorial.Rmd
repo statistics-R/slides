@@ -60,116 +60,404 @@ class: center middle main-title section-title-2 top-logo
 ---
 class: title title-inv-2 top-logo
 
-# Puntos
+# ¿Qué instalaremos?
 
 --
 
-.box-2.medium.sp-after-half[Punto 1]
+.box-2.medium.sp-after-half[R]
 
 --
 
-.box-8.medium.sp-after-half[Punto 2]
+.box-8.medium.sp-after-half[RStudio<br> + <br> RStudio Cloud]
 
 --
 
-.box-1.medium.sp-after-half[Punto tres]
+.box-1.medium.sp-after-half[Slack]
+---
+class: top-logo middle
+
+# ¿Qué es R?
+
+
+.box-inv-1.medium[Es un lenguaje de programación empleado, principalmente, para análisis estadístico, con el cual se trabajará en el curso.]
 
 ---
 
-llass: center middle section-title section-title-2 animated fadeIn top-logo
+class: center middle section-title section-title-2 animated fadeIn top-logo
 
-# Data science and<br>public service
-
----
-
-class: title title-2 top-logo
-
-# Un titulo
-
-![](img/logo.png)
-- [Un video](https://www.youtube.com/watch?v=UOoMzaWOQJA)
+# ¿Cómo instalar R?
 
 ---
-class: title title-1 top-logo
+
+class: title title-2 top-logo  
+
+#Instalación de R 
+
+Dirigirse [aquí](https://www.r-project.org). Clickear en CRAN
+![](img/r-page.jpg)
 
 ---
-class: top-logo
+class: title title-2 bottom-logo  
 
-# Otro punto
+#Instalación de R 
 
+Escoger el mirror de Chile
+![](img/r-mirror-chile.jpg)
+---
+class: title title-2 bottom-logo  
 
-.box-inv-1.medium[Collecting and analyzing data from a representative sample in order to make inferences about a whole population]
+#Instalación de R 
+
+.small[Escoger la versión que necesitemos descargar, según nuestro sistema operativo. R está disponible para Windows, macOS y Linux.]
+![](img/r-versions-os.png)
+---
+class: title title-2 top-logo   
+
+#Instalación de R (Windows)
+
+.small[En el caso de Windows, debemos clickear en base, y luego, en Download R 4.1.0 for Windows]
+![](img/r-windows1.jpg)
+![](img/r-windows2.png)
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+
+- Luego, se descargará un archivo llamado R-4.1.0-win.exe. Debemos ejecutarlo, haciendo doble click para iniciar la instalación.
+- Seleccionamos el idioma de instalación (recomendado: Español)
 
 ---
-class: top-logo
+class: title title-2 top-logo  
 
-# Un mismo punto
-
-.box-inv-1.medium.sp-after[Turning raw data into<br>understanding, insight,<br>and knowledge]
-
---
-
-.pull-left-3[
-.box-1.medium[&emsp;Collect&emsp;]
+#Instalación de R (Windows)
+.small[Aceptamos las condiciones de uso.]
+.center.middle[
+![](img/r-windows3.png)
 ]
-
-.pull-middle-3[
-.box-1.medium[&emsp;Analyze&emsp;]
-]
-
-.pull-right-3[
-.box-1.medium[Communicate]
-]
-
-
 ---
-class: title title-2 top-logo
+class: title title-2 top-logo  
 
-# Hola → como estan
-
-
----
-class: middle top-logo
-
-# Un título
-
-## Subtítulo
-
-Hola
-
----
-
+#Instalación de R (Windows)
+.small[Seleccionamos la ruta de instalación, lugar donde se localizará el software, con todos los archivos necesarios para su funcionamiento, como los paquetes. Lo recomendado es dejar la ruta predeterminada]
 .center[
-Recordar canal de youtube y linkear]
+![](img/r-windows4.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Al momento de instalación de componentes, seleccionar Instalación de usuario (predeterminado)]
+.center.middle[
+![](img/r-windows5.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Al ser consultado/a sobre las opciones de configuración, seleccionar No y luego Siguiente.]
+.center.middle[
+![](img/r-windows6.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.tiny[Al preguntar sobre la carpeta del menú de inicio, dejar la configuración predeterminada y seleccionar Siguiente. También, si lo desean, pueden optar por no crear una carpeta en el menú Inicio, marcando la casilla correspondiente. Según se desee, marcar o desmarcar las casillas de creación de accesos directos. Marcar las casillas de registro de entradas: Guarde el número de versión en el registro, y Asociar archivos .RData con R. Luego, finalizar la instalación.] .center.middle[
+![](img/r-windows7.png)
+]
 
 ---
+class: top-logo
 
-class: title title-2 top-logo
+# Para macOS
 
-# Adiós
 
-```{r chunk, echo=T, fig.width=9, fig.height=4.5, out.width="100%"}
-# codigo R
-```
+.box-inv-1.medium[En este caso, el proceso de instalación es el mismo. Tal como cuando se instala cualquier otra aplicación en macOS, hay que ejecutar el archivo descargado, luego arrastrar el ícono a la carpeta de aplicaciones y, por último, seguir los pasos de instalación anteriormente señalados.]
 ---
-class: center middle main-title section-title-2 top-logo
+class: title title-2 top-logo  
 
-.small[
-# Instalación de softwares
+#Instalación de R (macOS)
+.small[En este caso, seleccionamos Download for macOS y, luego, descargamos el archivo R-4.1.0.pkg]
+.center.middle[
+![](img/r-mac1.png)
 ]
 
-.class-info[
-<br>
-**Tutorial N° 1**<br>
-`r format(Sys.Date(), '%d %B %Y')`<br>
-**Análisis de datos estadísticos en R**
-<br>
+---
+class: title title-2 top-logo  
 
-.pull-right.small[
-**Profesora** Valentina Andrade de la Horra <br>
-**Ayudantes** Dafne Jaime y Nicolás Godoy
+#Instalación de R (macOS)
+.small[Posteriormente, debemos instalar XQuartz, para poder visualizar los elementos en RStudio. Para ello, nos dirigimos a [esta página](https://www.xquartz.org), y descargamos XQuartz-2.8.1.dmg. Seguimos los mismos pasos de instalación que con R.]
+.center.middle[
+![](img/xquartz.png)
 ]
+---
+class: title title-2 top-logo center 
+
+#Instalación de R (Linux/Ubuntu)
+En este caso, presentaremos cómo instalar R en Ubuntu. La versión 4.1.0. está disponible en gran parte de las versiones de este sistema operativo. Para poder utilizarla, deben abrir el terminal, y luego correr los siguientes códigos
+
+---
+class: title title-2 top-logo  
+background-image: url(img/r-ubuntu.png)
+background-size: contain
+
+#Instalación de R (Linux/Ubuntu)
+
+
+---
+class: top-logo middle
+
+# ¿Qué es RStudio?
+
+
+.box-inv-1.medium[Es un software de visualización, que permite trabajar con R (y otros lenguajes de programación) de forma más práctica.]
+---
+
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+# ¿Cómo instalar RStudio?
+---
+class: title title-2 top-logo  
+
+#Instalación de RStudio 
+.small[Dirigirse a [esta página](https://www.rstudio.com/products/rstudio/download/), y seleccionar Download en RStudio Desktop.]
+
+.center.middle[
+![](img/rstudio-desktop.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de RStudio 
+- .small[Luego, en la sección All Installers, descargar la versión de RStudio correspondiente a nuestro sistema operativo.] <br>
+- .small[Posteriormente, proseguir con la instalación, siguiendo los mismos pasos que con R:]<br>
+- .small[Ejecutar el archivo.]<br>
+- .small[Definir el destino de instalación (se recomienda mantener la ruta predeterminada)]<br>
+- .small[Seleccionar la Carpeta del Menú de Inicio donde se desea crear accesos directos, o clickear la casilla correspondiente en caso de no querer crear accesos directos.]<br>
+- .small[Finalizar el proceso de instalación.]
+---
+class: title title-2 top-logo  
+background-image: url(img/rstudio-installers.png)
+background-size: contain
+
+#Instalación de RStudio 
+---
+class: top-logo middle
+
+# ¿Qué es RStudio Cloud?
+
+
+.box-inv-1.medium[Es una versión en línea de RStudio, que se recomienda en caso de no tener un computador que cumpla con los requerimientos para trabajar con RStudio de forma local.]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Dirigirse a [GitHub](https://github.com), y clickear en Sign Up.]
+
+.center.middle[
+![](img/github-signup1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+-.small[Ingresar la dirección de corre electrónico que se usa recurrentemente, y crear una cuenta.] <br>
+-.small[Llegará a su correo electrónico un mail con un código de validación. Deben ingresarlo en la página y completar la creación de su cuenta GitHub.]
+
+.center.middle[
+![](img/github-signup2.png)
 ]
 
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Dirigirse a [RStudio Cloud](https://rstudio.cloud), y clickear en Sign Up with GitHub.]
+.center.middle[
+![](img/cloud-signup1.png)
 ]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.center.middle[
+![](img/cloud-signup2.png)
+]
+---
+class: title title-2 top-logo  
+background-image: url(img/cloud-signup3.png)
+background-size: 300px 400px
+#RStudio Cloud 
+.small[Una vez allí, hacer click en Sign Up with GitHub, para ingresar a RStudio.cloud con el usuario que acaban de crear.]
+
+---
+class: title title-2 top-logo left
+background-image: url(img/cloud-signup4.png)
+background-size: 300px 400px
+#RStudio Cloud 
+.small[Serán redirigidas/os a la página de GitHub, para que ingresen sus datos.]
+
+---
+class: title title-2 top-logo 
+
+#RStudio Cloud 
+.small[Luego, ingresarán a RStudio Cloud]
+.center.middle[
+![](img/cloud1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Para empezar a trabajar, deben crear un nuevo espacio de trabajo, y asignarle un nombre reconocible.]
+.center.middle[
+![](img/cloud2.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Una vez creado el nuevo espacio de trabajo, deben crear un nuevo proyecto.]
+.center.middle[
+![](img/cloud3.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Una vez creado el nuevo proyecto, es importante que lo renombren. Luego, podrán acceder a todas las prestaciones de RStudio de forma remota.]
+.center.middle[
+![](img/cloud4.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Para cargar archivos (como bases de datos, o scripts), deben hacer click en Upload, y luego explorar el/los archivo(s) con que deseen trabajar.]
+.center.middle[
+![](img/cloud5.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Asimismo, para exportar el trabajo que hayan realizado, deben clickear en el engranaje, y luego en Export... Posteriormente, definir el directorio donde descargarán el proyecto.]
+.center.middle[
+![](img/cloud6.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Si hacen click en el engranaje - situado en la sección superior derecha -, podrán acceder a la información del proyecto. Allí, pueden agregar una descripción breve sobre este.]
+.center.middle[
+![](img/cloud7.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Allí mismo, en la sección Access, pueden compartir el proyecto con todas/os quienes se encuentren en el espacio de trabajo.]
+.center.middle[
+![](img/cloud8.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Luego, es posible compartir el proyecto. Para eso, deben hacer click en los tres puntos y, posteriormente, seleccionar Share Project Link]
+.center.middle[
+![](img/cloud9.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Por último, agregan todos los correos electrónicos a quienes quieren compartir su proyecto, agregar un breve mensaje, y hacer click en Send para enviar la invitación.]
+.center.middle[
+![](img/cloud10.png)
+]
+---
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+#Instalación de Slack 
+---
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+# ¿Qué es Slack?
+
+
+.box-inv-1.medium[Será el canal oficial de comunicación para el curso. Por este medio se resolverán las dudas de forma colectiva, con participación tanto del equipo docente, como de las y los estudiantes.]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+- Dirigirse al [instalador de Windows](https://slack.com/intl/es-cl/downloads/windows), el [instalador de macOS](https://slack.com/intl/es-cl/downloads/mac), o el [instalador de Linux](https://slack.com/intl/es-cl/downloads/linux), según corresponda.
+- Descargar el archivo de la página web correspondiente.
+- Ejecutar el archivo descargado.
+- Proceder con la instalación. Se recomienda dejar todo en predeterminado; sin embargo, si lo desean, pueden cambiar la ruta de instalación, entre otros elementos.
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack1.jpg)]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+- Posteriormente, dirigirse [aquí](https://slack.com/get-started#/create), y crear una cuenta en Slack. Se recomienda usar la dirección de correo que usen de forma cotidiana, a modo de estar al tanto de la actividad en el canal de Slack.
+- Deben confirmar su correo electrónico.
+- Luego, deben hacer click en el link Unirse a slack de curso, presente en el apartado Syllabus de la página web. Ello redireccionará a la aplicación, abriendo allí el espacio de trabajo del curso. 
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack2.png)]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack3.png)]
+---
+class: title title-2 top-logo  
+background-image: url(img/slack4.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack5.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack6.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack7.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack8.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack9.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack10.png)
+background-size: 600px 450px
+#Instalación de Slack
+
+---
+class: top-logo center middle
+
+# ¡Estamos listas/os para trabajar!
+
+.box-inv-1.medium.sp-after[¡Eso ha sido todo el tutorial de instalación! <br> Muchísimas gracias por su atención. <br> ¡Les esperamos con gran entusiasmo!]
 
