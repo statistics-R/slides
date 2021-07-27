@@ -242,6 +242,35 @@ background-size: contain
 
 #Instalación de RStudio 
 ---
+class: title title-2 top-logo  
+
+#RStudio
+- .small[Un problema usual con RStudio (sobrtodo en macOS) es la desconfiguración de la codificación, que puede causar complicaciones al momento de compartir los scripts.]
+- .small[Para solucionarlo, hay que dirigirse a la pestaña Tools en el panel superior de RStudio, y luego seleccionar Global Options...]
+
+---
+class: title title-2 top-logo  
+
+#RStudio
+.center.middle[
+![](img/rstudio1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio
+- .small[Luego, nos dirigimos a la pestaña Code, seleccionamos Saving, y en Default text encoding seleccionamos UTF-8. Por último, seleccionamos Apply para guardar los cambios.]
+
+.center.middle[
+![](img/rstudio2.png)
+]
+---
+class: title title-2 top-logo  
+background-image: url(img/rstudio2.png)
+background-size: contain
+#RStudio
+
+---
 class: top-logo middle
 
 # ¿Qué es RStudio Cloud?
