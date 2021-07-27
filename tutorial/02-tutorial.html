@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análisis de datos estadísticos en R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Valentina Andrade" />
+    <meta name="date" content="2021-07-27" />
+    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link rel="stylesheet" href="css/ath-slides.css" type="text/css" />
+    <link rel="stylesheet" href="css/ath-inferno-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+class: center middle main-title section-title-2 top-logo
+
+.small[
+# Github y Github Classroom
+]
+
+.class-info[
+&lt;br&gt;
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+**Tutorial N° 1**&lt;br&gt;
+=======
+**Tutorial N° 2**&lt;br&gt;
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+27 julio 2021&lt;br&gt;
+**Análisis de datos estadísticos en R**
+&lt;br&gt;
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra &lt;br&gt;
+**Ayudantes** Dafne Jaime y Nicolás Godoy
+]
+]
+
+]
+
+---
+class: title title-inv-2 top-logo
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+# ¿Qué instalaremos?
+
+--
+
+.box-2.medium.sp-after-half[R]
+
+--
+
+.box-8.medium.sp-after-half[RStudio&lt;br&gt; + &lt;br&gt; RStudio Cloud]
+
+--
+
+.box-1.medium.sp-after-half[Slack]
+---
+class: top-logo middle
+
+# ¿Qué es R?
+
+
+.box-inv-1.medium[Es un lenguaje de programación empleado, principalmente, para análisis estadístico, con el cual se trabajará en el curso.]
+=======
+# Contenido
+
+???
+Los programas necesarios para el curso serán 
+
+--
+
+.box-2.medium.sp-after-half[Github]
+
+--
+.box-8.medium.sp-after-half[Github Classroom]
+
+--
+
+.box-1.medium.sp-after-half[Github Desktop]
+
+--
+
+.box-3.medium.sp-after-half[Learn-R-UAH]
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+---
+
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+# ¿Cómo instalar R?
+=======
+# Github
+
+.box-inv-2.medium[Sistema de control de versiones en línea]
+
+???
+
+Este rastrea los cambios de códigos, facilita la colaboración y el acceso abierto. En este curso será un programa esencial para el desarrollo tanto de clases como prácticos, por lo que en este tutorial vamos a aprender a utilizarlo repasando aspectos básicos. Esto además será profundizado y detallado en clases.
+
+--
+
+### Ventajas:
+
+???
+
+Las principales ventajas son que:
+--
+
+- Facilita el flujo del trabajo y la colaboración entre usuarios 
+--
+
+- Es de acceso abierto y permite hacer seguimiento a los errores
+--
+
+- Tiene variedades de funciones y plataformas
+
+.pull.bottom.center[![](img/logogithub.png)]
+
+???
+Pero la plataforma central en el curso será
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+---
+
+class: title title-2 top-logo  
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+#Instalación de R 
+
+Dirigirse [aquí](https://www.r-project.org). Clickear en CRAN
+![](img/r-page.jpg)
+
+---
+class: title title-2 bottom-logo  
+
+#Instalación de R 
+
+Escoger el mirror de Chile
+![](img/r-mirror-chile.jpg)
+---
+class: title title-2 bottom-logo  
+
+#Instalación de R 
+
+.small[Escoger la versión que necesitemos descargar, según nuestro sistema operativo. R está disponible para Windows, macOS y Linux.]
+![](img/r-versions-os.png)
+---
+class: title title-2 top-logo   
+
+#Instalación de R (Windows)
+
+.small[En el caso de Windows, debemos clickear en base, y luego, en Download R 4.1.0 for Windows]
+![](img/r-windows1.jpg)
+![](img/r-windows2.png)
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+
+- Luego, se descargará un archivo llamado R-4.1.0-win.exe. Debemos ejecutarlo, haciendo doble click para iniciar la instalación.
+- Seleccionamos el idioma de instalación (recomendado: Español)
+
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Aceptamos las condiciones de uso.]
+.center.middle[
+![](img/r-windows3.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Seleccionamos la ruta de instalación, lugar donde se localizará el software, con todos los archivos necesarios para su funcionamiento, como los paquetes. Lo recomendado es dejar la ruta predeterminada]
+.center[
+![](img/r-windows4.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Al momento de instalación de componentes, seleccionar Instalación de usuario (predeterminado)]
+.center.middle[
+![](img/r-windows5.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+.small[Al ser consultado/a sobre las opciones de configuración, seleccionar No y luego Siguiente.]
+.center.middle[
+![](img/r-windows6.png)
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de R (Windows)
+Al preguntar sobre la carpeta del menú de inicio, dejar la configuración predeterminada y seleccionar Siguiente. También, si lo desean, pueden optar por no crear una carpeta en el menú Inicio, marcando la casilla correspondiente. Según se desee, marcar o desmarcar las casillas de creación de accesos directos. Marcar las casillas de registro de entradas: Guarde el número de versión en el registro, y Asociar archivos .RData con R. Luego, finalizar la instalación.
+---
+class: title title-2 top-logo  
+background-image: url(img/r-windows7.png)
+background-size: contain
+=======
+# [Github Classroom](https://n9.cl/954ne)
+
+.box-inv-8.medium[Es una plataforma de Github que facilita la interacción y aprendizaje entre estudiantes y profesores]
+
+.pull-left[
+&lt;img src="img/logo.png" width="250px" height="250px" style="display: block; margin: auto auto auto 0;" /&gt;
+]
+
+.pull-right[
+&lt;img src="img/gitcl.png" width="300px" height="300px" style="display: block; margin: auto 0 auto auto;" /&gt;
+]
+
+
+
+???
+- Esta plataforma la usaremos a lo largo del curso, principalmente porque permite estudiantes trabajen individual y colectivamente usando los repositorios de github. En esta plataforma entregarán sus trabajos, recibirán comentarios y retroalimentaciones pudiendo trabajar colaborativamente.
+
+- Pasos para ingresar a Github classroom
+1. Crear cuenta: 
+1. Dirigirse a https://n9.cl/954ne 
+1. Clickear en “Crea una cuenta”
+1. Introduce tu correo electrónico
+1. Crea una contraseña
+1. Introduce el nombre de usuario (similar a su nombre)
+1. Clickear en Crear una cuenta
+1. Ve al correo electrónico que pusiste anteriormente 
+1. Copia el código e introdúcelo en la página
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+#Instalación de R (Windows)
+---
+llass: center middle section-title section-title-2 animated fadeIn top-logo
+
+# [Github Desktop](https://desktop.github.com/)
+
+???
+- Esta aplicación es una versión de Github que puede ser instalada tanto en windows como en mac. Facilitando el uso de Github a través de la coordinación de los cambios locales y la plataforma.
+
+- Instalar Github Desktop
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+# Para macOS
+
+=======
+- Dirigirse a link 
+
+1. Para Windows
+
+- Clickear en Download for Windows (64bit)
+
+- Ejecutar el archivo descargado
+
+- Introduce tu usuario y contraseña
+
+2. Para Mac
+
+- Crea una carpeta para los contenidos del curso
+
+- Vincula la dirección de la carpeta
+
+3. Botones principales:
+
+- **Clone repository**: Copia un repositorio a tu computador
+
+- **Create new repository**: crea un nuevo repositorio
+
+- **Add existing repository**: incorpora un repositorio existente
+
+- **Open the repository in Rstudio**: Abre todo el proyecto en Rstudio
+
+- **View the files of your repository in explorer**: Muestra los archivos en la carpeta que se encuentra
+
+- **Open the repository on Github**: abre el repositorio en la página
+
+- **Commit to master**: forma de guardar los cambios
+
+- **push origin**: manda los cambios al repositorio en línea
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+.box-inv-1.medium[En este caso, el proceso de instalación es el mismo. Tal como cuando se instala cualquier otra aplicación en macOS, hay que ejecutar el archivo descargado, luego arrastrar el ícono a la carpeta de aplicaciones y, por último, seguir los pasos de instalación anteriormente señalados.]
+---
+class: title title-2 top-logo  
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+#Instalación de R (macOS)
+.small[En este caso, seleccionamos Download for macOS y, luego, descargamos el archivo R-4.1.0.pkg]
+.center.middle[
+![](img/r-mac1.png)
+]
+
+---
+class: title title-2 top-logo  
+
+#Instalación de R (macOS)
+.small[Posteriormente, debemos instalar XQuartz, para poder visualizar los elementos en RStudio. Para ello, nos dirigimos a [esta página](https://www.xquartz.org), y descargamos XQuartz-2.8.1.dmg. Seguimos los mismos pasos de instalación que con R.]
+.center.middle[
+![](img/xquartz.png)
+=======
+.pull-left[
+&lt;img src="img/githubdesk.png" width="300px" height="300px" style="display: block; margin: auto auto auto 0;" /&gt;
+
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+]
+---
+class: title title-2 top-logo center 
+
+#Instalación de R (Linux/Ubuntu)
+En este caso, presentaremos cómo instalar R en Ubuntu. La versión 4.1.0. está disponible en gran parte de las versiones de este sistema operativo. Para poder utilizarla, deben abrir el terminal, y luego correr los siguientes códigos
+
+---
+class: title title-2 top-logo  
+background-image: url(img/r-ubuntu.png)
+background-size: contain
+
+#Instalación de R (Linux/Ubuntu)
+
+
+---
+class: top-logo middle
+
+# ¿Qué es RStudio?
+
+
+.box-inv-1.medium[Es un software de visualización, que permite trabajar con R (y otros lenguajes de programación) de forma más práctica.]
+---
+
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+# ¿Cómo instalar RStudio?
+---
+class: title title-2 top-logo  
+
+#Instalación de RStudio 
+.small[Dirigirse a [esta página](https://www.rstudio.com/products/rstudio/download/), y seleccionar Download en RStudio Desktop.]
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+.center.middle[
+![](img/rstudio-desktop.png)
+=======
+.pull-right[
+&lt;img src="img/ejem.png" width="500px" height="400px" style="display: block; margin: auto 0 auto auto;" /&gt;
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+]
+---
+class: title title-2 top-logo  
+
+#Instalación de RStudio 
+- .small[Luego, en la sección All Installers, descargar la versión de RStudio correspondiente a nuestro sistema operativo.] &lt;br&gt;
+- .small[Posteriormente, proseguir con la instalación, siguiendo los mismos pasos que con R:]&lt;br&gt;
+- .small[Ejecutar el archivo.]&lt;br&gt;
+- .small[Definir el destino de instalación (se recomienda mantener la ruta predeterminada)]&lt;br&gt;
+- .small[Seleccionar la Carpeta del Menú de Inicio donde se desea crear accesos directos, o clickear la casilla correspondiente en caso de no querer crear accesos directos.]&lt;br&gt;
+- .small[Finalizar el proceso de instalación.]
+---
+class: title title-2 top-logo  
+background-image: url(img/rstudio-installers.png)
+background-size: contain
+
+#Instalación de RStudio 
+---
+class: title title-2 top-logo  
+
+#RStudio
+- .small[Un problema usual con RStudio (sobrtodo en macOS) es la desconfiguración de la codificación, que puede causar complicaciones al momento de compartir los scripts.]
+- .small[Para solucionarlo, hay que dirigirse a la pestaña Tools en el panel superior de RStudio, y luego seleccionar Global Options...]
+
+---
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+class: title title-2 top-logo  
+
+#RStudio
+.center.middle[
+![](img/rstudio1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio
+- .small[Luego, nos dirigimos a la pestaña Code, seleccionamos Saving, y en Default text encoding seleccionamos UTF-8. Por último, seleccionamos Apply para guardar los cambios.]
+=======
+class: title title-2 top-logo
+#Learn-R-UAH
+
+###Pasos para las dinámicas del curso
+.pull-left[
+1. Recibir una tarea 
+1. Ingresa el [link](https://classroom.github.com/classrooms/86887318-learn-r-uah-2021)
+1. Resolver una tarea
+1. Subir una tarea
+1. Recibir comentarios] 
+
+.pull-right[
+
+&lt;img src="img/logo.png" width="350px" height="350px" style="display: block; margin: auto 0 auto auto;" /&gt;
+
+]
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+.center.middle[
+![](img/rstudio2.png)
+]
+---
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+class: title title-2 top-logo  
+background-image: url(img/rstudio2.png)
+background-size: contain
+#RStudio
+
+---
+class: top-logo middle
+
+# ¿Qué es RStudio Cloud?
+
+
+.box-inv-1.medium[Es una versión en línea de RStudio, que se recomienda en caso de no tener un computador que cumpla con los requerimientos para trabajar con RStudio de forma local.]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Dirigirse a [GitHub](https://github.com), y clickear en Sign Up.]
+=======
+class: top-logo
+
+# Conceptos claves de Github
+
+.pull-center[
+&lt;img src="img/concepclav.png" width="600px" height="400px" style="display: block; margin: auto;" /&gt;
+]
+
+???
+
+- **Repositorios**: Es donde se alberga el trabajo, como una carpeta que contiene todos los archivos y el historial de cambios realizados. Estos se almacenan en la nube
+
+- **Cloning**: Los repositorios pueden clonarse creando copias locales que extraen toda la información y antiguas versiones del repositorio. Después se puede ir subiendo los cambios para sincronizar la copia local y la copia de github.
+
+- **Commit**: Es la forma de guardar el estado de tu proyecto, como una captura en la que se deja un mensaje informativo
+
+- **Push**: Esta es la forma en la que se puede agregar los cambios locales al repositorio de Github.
+
+- **README**: Se utiliza a modo de presentación o introducción de los repositorios.
+
+- **Pull requests**: es una forma de solicitar que sean incorporados los cambios que has hecho de un repositorio al repositorio original.
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+.center.middle[
+![](img/github-signup1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+-.small[Ingresar la dirección de corre electrónico que se usa recurrentemente, y crear una cuenta.] &lt;br&gt;
+-.small[Llegará a su correo electrónico un mail con un código de validación. Deben ingresarlo en la página y completar la creación de su cuenta GitHub.]
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+.center.middle[
+![](img/github-signup2.png)
+]
+
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Dirigirse a [RStudio Cloud](https://rstudio.cloud), y clickear en Sign Up with GitHub.]
+.center.middle[
+![](img/cloud-signup1.png)
+]
+=======
+# Learn R Youtube
+
+.center[ Recuerden que este video y muchos más pueden encontrarlos en el [canal de youtube del curso](https://www.youtube.com/channel/UCqBUeqBttVjS6h8fawK8sWg)
+]
+
+.pull-center.bottom[
+&lt;img src="img/yout.png" width="200px" height="100px" style="display: block; margin: auto;" /&gt;
+]
+
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+---
+class: title title-2 top-logo  
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+#RStudio Cloud 
+.center.middle[
+![](img/cloud-signup2.png)
+=======
+.small[
+# Github y Github Classroom
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+]
+---
+class: title title-2 top-logo  
+background-image: url(img/cloud-signup3.png)
+background-size: 300px 400px
+#RStudio Cloud 
+.small[Una vez allí, hacer click en Sign Up with GitHub, para ingresar a RStudio.cloud con el usuario que acaban de crear.]
+
+<<<<<<< Updated upstream:tutorial/01-tutorial.html
+---
+class: title title-2 top-logo left
+background-image: url(img/cloud-signup4.png)
+background-size: 300px 400px
+#RStudio Cloud 
+.small[Serán redirigidas/os a la página de GitHub, para que ingresen sus datos.]
+=======
+.class-info[
+&lt;br&gt;
+**Tutorial N° 2**&lt;br&gt;
+27 julio 2021&lt;br&gt;
+**Análisis de datos estadísticos en R**
+&lt;br&gt;
+>>>>>>> Stashed changes:tutorial/02-tutorial.html
+
+---
+class: title title-2 top-logo 
+
+#RStudio Cloud 
+.small[Luego, ingresarán a RStudio Cloud]
+.center.middle[
+![](img/cloud1.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Para empezar a trabajar, deben crear un nuevo espacio de trabajo, y asignarle un nombre reconocible.]
+.center.middle[
+![](img/cloud2.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Una vez creado el nuevo espacio de trabajo, deben crear un nuevo proyecto.]
+.center.middle[
+![](img/cloud3.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Una vez creado el nuevo proyecto, es importante que lo renombren. Luego, podrán acceder a todas las prestaciones de RStudio de forma remota.]
+.center.middle[
+![](img/cloud4.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Para cargar archivos (como bases de datos, o scripts), deben hacer click en Upload, y luego explorar el/los archivo(s) con que deseen trabajar.]
+.center.middle[
+![](img/cloud5.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Asimismo, para exportar el trabajo que hayan realizado, deben clickear en el engranaje, y luego en Export... Posteriormente, definir el directorio donde descargarán el proyecto.]
+.center.middle[
+![](img/cloud6.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Si hacen click en el engranaje - situado en la sección superior derecha -, podrán acceder a la información del proyecto. Allí, pueden agregar una descripción breve sobre este.]
+.center.middle[
+![](img/cloud7.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Allí mismo, en la sección Access, pueden compartir el proyecto con todas/os quienes se encuentren en el espacio de trabajo.]
+.center.middle[
+![](img/cloud8.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Luego, es posible compartir el proyecto. Para eso, deben hacer click en los tres puntos y, posteriormente, seleccionar Share Project Link]
+.center.middle[
+![](img/cloud9.png)
+]
+---
+class: title title-2 top-logo  
+
+#RStudio Cloud 
+.small[Por último, agregan todos los correos electrónicos a quienes quieren compartir su proyecto, agregar un breve mensaje, y hacer click en Send para enviar la invitación.]
+.center.middle[
+![](img/cloud10.png)
+]
+---
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+#Instalación de Slack 
+---
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+# ¿Qué es Slack?
+
+
+.box-inv-1.medium[Será el canal oficial de comunicación para el curso. Por este medio se resolverán las dudas de forma colectiva, con participación tanto del equipo docente, como de las y los estudiantes.]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+- Dirigirse al [instalador de Windows](https://slack.com/intl/es-cl/downloads/windows), el [instalador de macOS](https://slack.com/intl/es-cl/downloads/mac), o el [instalador de Linux](https://slack.com/intl/es-cl/downloads/linux), según corresponda.
+- Descargar el archivo de la página web correspondiente.
+- Ejecutar el archivo descargado.
+- Proceder con la instalación. Se recomienda dejar todo en predeterminado; sin embargo, si lo desean, pueden cambiar la ruta de instalación, entre otros elementos.
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack1.jpg)]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+- Posteriormente, dirigirse [aquí](https://slack.com/get-started#/create), y crear una cuenta en Slack. Se recomienda usar la dirección de correo que usen de forma cotidiana, a modo de estar al tanto de la actividad en el canal de Slack.
+- Deben confirmar su correo electrónico.
+- Luego, deben hacer click en el link Unirse a slack de curso, presente en el apartado Syllabus de la página web. Ello redireccionará a la aplicación, abriendo allí el espacio de trabajo del curso. 
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack2.png)]
+---
+class: title title-2 top-logo  
+
+#Instalación de Slack
+.center.middle[![](img/slack3.png)]
+---
+class: title title-2 top-logo  
+background-image: url(img/slack4.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack5.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack6.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack7.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack8.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack9.png)
+background-size: 600px 550px
+#Instalación de Slack
+---
+class: title title-2 top-logo  
+background-image: url(img/slack10.png)
+background-size: 600px 450px
+#Instalación de Slack
+
+---
+class: top-logo center middle
+
+# ¡Estamos listas/os para trabajar!
+
+.box-inv-1.medium.sp-after[¡Eso ha sido todo el tutorial de instalación! &lt;br&gt; Muchísimas gracias por su atención. &lt;br&gt; ¡Les esperamos con gran entusiasmo!]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
