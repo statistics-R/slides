@@ -3,9 +3,9 @@
   <head>
     <title>Análisis de datos estadísticos en R</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Valentina Andrade" />
+    <meta name="author" content="Nicolás Godoy" />
     <meta name="date" content="2021-07-27" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view-0.2.6/tile-view.js"></script>
@@ -18,7 +18,7 @@
     <script src="libs/fabric-4.3.1/fabric.min.js"></script>
     <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30}) })</script>
     <link rel="stylesheet" href="css/ath-slides.css" type="text/css" />
     <link rel="stylesheet" href="css/ath-inferno-fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
@@ -82,13 +82,13 @@ class: top-logo middle
 
 class: center middle section-title section-title-2 animated fadeIn top-logo
 
-# ¿Cómo instalar R?
+# 1. ¿Cómo instalar R?
 
 ---
 
 class: title title-2 top-logo  
 
-#Instalación de R 
+#1. Instalación de R 
 
 Dirigirse [aquí](https://www.r-project.org). Clickear en CRAN
 ![](img/r-page.jpg)
@@ -96,35 +96,40 @@ Dirigirse [aquí](https://www.r-project.org). Clickear en CRAN
 ---
 class: title title-2 bottom-logo  
 
-#Instalación de R 
+# 1. Instalación de R 
 
 Escoger el mirror de Chile
 ![](img/r-mirror-chile.jpg)
 ---
 class: title title-2 bottom-logo  
 
-#Instalación de R 
+# 1. Instalación de R 
 
 .small[Escoger la versión que necesitemos descargar, según nuestro sistema operativo. R está disponible para Windows, macOS y Linux.]
 ![](img/r-versions-os.png)
 ---
-class: title title-2 top-logo   
+class: center middle section-title section-title-3 animated fadeIn top-logo
 
-#Instalación de R (Windows)
+# 2. Instalación de R en Windows
+
+---
+class: title title-3 top-logo   
+
+# Instalación de R (Windows)
 
 .small[En el caso de Windows, debemos clickear en base, y luego, en Download R 4.1.0 for Windows]
 ![](img/r-windows1.jpg)
 ![](img/r-windows2.png)
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 
-#Instalación de R (Windows)
+# Instalación de R (Windows)
 
 - Luego, se descargará un archivo llamado R-4.1.0-win.exe. Debemos ejecutarlo, haciendo doble click para iniciar la instalación.
 - Seleccionamos el idioma de instalación (recomendado: Español)
 
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 
 #Instalación de R (Windows)
 .small[Aceptamos las condiciones de uso.]
@@ -132,10 +137,12 @@ class: title title-2 top-logo
 ![](img/r-windows3.png)
 ]
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 
 #Instalación de R (Windows)
-.small[Seleccionamos la ruta de instalación, lugar donde se localizará el software, con todos los archivos necesarios para su funcionamiento, como los paquetes. Lo recomendado es dejar la ruta predeterminada]
+.small[- Seleccionamos la **ruta de instalación**, *lugar donde se localizará el software*, con todos los archivos necesarios para su funcionamiento, como los paquetes.
+- Lo recomendado es dejar la ruta predeterminada]
+
 .center[
 ![](img/r-windows4.png)
 ]
@@ -143,12 +150,12 @@ class: title title-2 top-logo
 class: title title-2 top-logo  
 
 #Instalación de R (Windows)
-.small[Al momento de instalación de componentes, seleccionar Instalación de usuario (predeterminado)]
+.small[Al momento de instalación de componentes, seleccionar *"Instalación de usuario (predeterminado)"*]
 .center.middle[
 ![](img/r-windows5.png)
 ]
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 
 #Instalación de R (Windows)
 .small[Al ser consultado/a sobre las opciones de configuración, seleccionar No y luego Siguiente.]
@@ -156,25 +163,42 @@ class: title title-2 top-logo
 ![](img/r-windows6.png)
 ]
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 
 #Instalación de R (Windows)
-Al preguntar sobre la carpeta del menú de inicio, dejar la configuración predeterminada y seleccionar Siguiente. También, si lo desean, pueden optar por no crear una carpeta en el menú Inicio, marcando la casilla correspondiente. Según se desee, marcar o desmarcar las casillas de creación de accesos directos. Marcar las casillas de registro de entradas: Guarde el número de versión en el registro, y Asociar archivos .RData con R. Luego, finalizar la instalación.
+- En el siguiente paso hará consulta sobre una serie de configuraciones
+
+- Les recomendamos seleccionar solo las siguientes (*por defecto*)
+
 ---
-class: title title-2 top-logo  
+class: title title-3 top-logo  
 background-image: url(img/r-windows7.png)
 background-size: contain
 
 #Instalación de R (Windows)
 ---
-class: top-logo
+class: center middle section-title section-title-4 animated fadeIn top-logo
+
+# 3. Instalación de R (macOs)
+
+---
+class: title title-4 top-logo
 
 # Para macOS
 
 
-.box-inv-1.medium[En este caso, el proceso de instalación es el mismo. Tal como cuando se instala cualquier otra aplicación en macOS, hay que ejecutar el archivo descargado, luego arrastrar el ícono a la carpeta de aplicaciones y, por último, seguir los pasos de instalación anteriormente señalados.]
+.box-inv-1.medium[En este caso, el proceso de instalación es el mismo]
+
+--
+
+.box-inv-4.small.pull-left[Tal como cuando se instala cualquier otra aplicación en macOS, hay que ejecutar el archivo descargado]
+
+--
+
+.box-inv-4.small.pull-right[Hay que ejecutar el archivo descargado, luego arrastrar el ícono a la carpeta de aplicaciones y, por último, seguir los pasos de instalación anteriormente señalados]
+
 ---
-class: title title-2 top-logo  
+class: title title-4 top-logo  
 
 #Instalación de R (macOS)
 .small[En este caso, seleccionamos Download for macOS y, luego, descargamos el archivo R-4.1.0.pkg]
@@ -183,9 +207,12 @@ class: title title-2 top-logo
 ]
 
 ---
-class: title title-2 top-logo  
+class: title title-4 top-logo  
 
 #Instalación de R (macOS)
+
+.box-7[XQUARTZ]
+
 .small[Posteriormente, debemos instalar XQuartz, para poder visualizar los elementos en RStudio. Para ello, nos dirigimos a [esta página](https://www.xquartz.org), y descargamos XQuartz-2.8.1.dmg. Seguimos los mismos pasos de instalación que con R.]
 .center.middle[
 ![](img/xquartz.png)
@@ -197,12 +224,17 @@ class: title title-2 top-logo center
 En este caso, presentaremos cómo instalar R en Ubuntu. La versión 4.1.0. está disponible en gran parte de las versiones de este sistema operativo. Para poder utilizarla, deben abrir el terminal, y luego correr los siguientes códigos
 
 ---
-class: title title-2 top-logo  
+class: title title-8 top-logo  
 background-image: url(img/r-ubuntu.png)
 background-size: contain
 
 #Instalación de R (Linux/Ubuntu)
 
+
+---
+class: center middle section-title section-title-1 animated fadeIn top-logo
+
+# ¿Qué es RStudio?
 
 ---
 class: top-logo middle
@@ -229,12 +261,15 @@ class: title title-2 top-logo
 class: title title-2 top-logo  
 
 #Instalación de RStudio 
-- .small[Luego, en la sección All Installers, descargar la versión de RStudio correspondiente a nuestro sistema operativo.] &lt;br&gt;
-- .small[Posteriormente, proseguir con la instalación, siguiendo los mismos pasos que con R:]&lt;br&gt;
-- .small[Ejecutar el archivo.]&lt;br&gt;
-- .small[Definir el destino de instalación (se recomienda mantener la ruta predeterminada)]&lt;br&gt;
-- .small[Seleccionar la Carpeta del Menú de Inicio donde se desea crear accesos directos, o clickear la casilla correspondiente en caso de no querer crear accesos directos.]&lt;br&gt;
-- .small[Finalizar el proceso de instalación.]
+.small[
+
+- Luego, en la sección *All Installers*, descargar la versión de RStudio correspondiente a nuestro sistema operativo. &lt;br&gt;
+
+- Posteriormente, proseguir con la instalación, siguiendo los mismos pasos que con R:&lt;br&gt;
+- Ejecutar el archivo.&lt;br&gt;
+- Definir el destino de instalación (se recomienda mantener la ruta predeterminada)&lt;br&gt;
+- Seleccionar la Carpeta del Menú de Inicio donde se desea crear accesos directos, o clickear la casilla correspondiente en caso de no querer crear accesos directos.&lt;br&gt;
+- Finalizar el proceso de instalación.]
 ---
 class: title title-2 top-logo  
 background-image: url(img/rstudio-installers.png)

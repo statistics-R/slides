@@ -1,6 +1,6 @@
 ---
 title: "Análisis de datos estadísticos en R"
-author: "Valentina Andrade"
+author: "Dafne Jaime"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -34,7 +34,7 @@ library(tidyverse)
 ```
 
 ```{r xaringanExtra, echo=FALSE}
-devtools::install_github("gadenbuie/xaringanExtra")
+#devtools::install_github("gadenbuie/xaringanExtra")
 
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe"))
 ```
