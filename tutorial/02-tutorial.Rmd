@@ -1,6 +1,6 @@
 ---
 title: "Análisis de datos estadísticos en R"
-author: "Dafne Jaime"
+author: "Dafne Jaime Vargas"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -34,8 +34,6 @@ library(tidyverse)
 ```
 
 ```{r xaringanExtra, echo=FALSE}
-#devtools::install_github("gadenbuie/xaringanExtra")
-
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe"))
 ```
 
@@ -77,7 +75,7 @@ Los programas necesarios para el curso serán
 
 --
 
-.box-1.medium.sp-after-half[Github Desktop]
+.box-4.medium.sp-after-half[Github Desktop]
 
 --
 
@@ -85,7 +83,12 @@ Los programas necesarios para el curso serán
 
 ---
 
-llass: center middle section-title section-title-2 animated fadeIn top-logo
+class: center middle section-title section-title-2 animated fadeIn top-logo
+
+# 1. Github
+
+---
+class: title title-2 top-logo 
 
 # Github
 
@@ -104,13 +107,13 @@ Este rastrea los cambios de códigos, facilita la colaboración y el acceso abie
 Las principales ventajas son que:
 --
 
+.small[
 - Facilita el flujo del trabajo y la colaboración entre usuarios 
---
 
-- Es de acceso abierto y permite hacer seguimiento a los errores
---
+- Es de **acceso abierto** y permite hacer seguimiento a los errores
 
 - Tiene variedades de funciones y plataformas
+]
 
 .pull.bottom.center[![](img/logogithub.png)]
 
@@ -118,10 +121,14 @@ Las principales ventajas son que:
 Pero la plataforma central en el curso será
 
 ---
+class: center middle section-title section-title-8 animated fadeIn top-logo
 
-class: title title-2 top-logo
+# 2. Github Classroom
 
-# [Github Classroom](https://n9.cl/954ne)
+---
+class: title title-8 top-logo
+
+# Github Classroom
 
 .box-inv-8.medium[Es una plataforma de Github que facilita la interacción y aprendizaje entre estudiantes y profesores]
 
@@ -137,6 +144,29 @@ knitr::include_graphics("img/gitcl.png")
 ```
 ]
 
+---
+class: title title-8 top-logo
+
+# Paso a Paso
+
+.pull-left.small[
+1. Crear cuenta: 
+1. Dirigirse [acá](https://n9.cl/954ne) 
+1. Clickear en *"Crea una cuenta”*
+1. Introduce tu correo electrónico
+1. Crea una contraseña
+1. Introduce el nombre de usuario
+1. Verificación
+1. Clickear en Crear una cuenta
+1. Ve al correo electrónico  
+1. Copia el código e introdúcelo en la página
+]
+
+.pull-right[
+```{r echo=FALSE, out.width = "400px", out.height="500px", fig.align='right'}
+knitr::include_graphics("img/create.png")
+```
+]
 
 
 ???
@@ -144,7 +174,7 @@ knitr::include_graphics("img/gitcl.png")
 
 - Pasos para ingresar a Github classroom
 1. Crear cuenta: 
-1. Dirigirse a https://n9.cl/954ne 
+1. Dirigirse [acá](https://n9.cl/954ne) 
 1. Clickear en “Crea una cuenta”
 1. Introduce tu correo electrónico
 1. Crea una contraseña
@@ -154,30 +184,32 @@ knitr::include_graphics("img/gitcl.png")
 1. Copia el código e introdúcelo en la página
 
 ---
-llass: center middle section-title section-title-2 animated fadeIn top-logo
+class: center middle section-title section-title-4 animated fadeIn top-logo
 
-# [Github Desktop](https://desktop.github.com/)
+# 3. Github Desktop
+---
+class: title title-4 top-logo 
+
+# Github Desktop
+
+.pull-left[
+### Instalar Github Desktop
+
+1. Dirigirse a [link](https://desktop.github.com/)
+1. Clickear en Download for **Windows (64bit)**/**macOS**
+1. Ejecutar el archivo descargado
+1. Introduce tu usuario y contraseña
+]
+
+.pull-right[
+```{r echo=FALSE, out.width = "500px", out.height="400px", fig.align='right'}
+knitr::include_graphics("img/deskdown.png")
+```
+]
 
 ???
 - Esta aplicación es una versión de Github que puede ser instalada tanto en windows como en mac. Facilitando el uso de Github a través de la coordinación de los cambios locales y la plataforma.
 
-- Instalar Github Desktop
-
-- Dirigirse a link 
-
-1. Para Windows
-
-- Clickear en Download for Windows (64bit)
-
-- Ejecutar el archivo descargado
-
-- Introduce tu usuario y contraseña
-
-2. Para Mac
-
-- Crea una carpeta para los contenidos del curso
-
-- Vincula la dirección de la carpeta
 
 3. Botones principales:
 
@@ -199,26 +231,22 @@ llass: center middle section-title section-title-2 animated fadeIn top-logo
 
 --
 
-.pull-left[
-```{r echo=FALSE, out.width = "300px", out.height="300px", fig.align='left'}
-knitr::include_graphics("img/githubdesk.png")
-```
 
-]
-
-.pull-right[
-```{r echo=FALSE, out.width = "500px", out.height="400px", fig.align='right'}
-knitr::include_graphics("img/ejem.png")
-```
-]
 
 
 ---
-class: title title-2 top-logo
+class: center middle section-title section-title-1 animated fadeIn top-logo
+
+# 4. Learn-R-UAH
+
+---
+
+class: title title-1 top-logo
 #Learn-R-UAH
 
 ###Pasos para las dinámicas del curso
 .pull-left[
+
 1. Recibir una tarea 
 1. Ingresa el [link](https://classroom.github.com/classrooms/86887318-learn-r-uah-2021)
 1. Resolver una tarea
@@ -234,12 +262,12 @@ knitr::include_graphics("img/logo.png")
 ]
 
 ---
-class: top-logo
+class: title title-8 top-logo
 
 # Conceptos claves de Github
 
 .pull-center[
-```{r echo=FALSE, out.width = "600px", out.height="400px", fig.align='center'}
+```{r echo=FALSE, out.width = "700px", out.height="500px", fig.align='center'}
 knitr::include_graphics("img/concepclav.png")
 ```
 ]
@@ -260,16 +288,23 @@ knitr::include_graphics("img/concepclav.png")
 
 ---
 
-class: title title-2 top-logo
+class: title title-5 top-logo
 
 # Learn R Youtube
 
 .center[ Recuerden que este video y muchos más pueden encontrarlos en el [canal de youtube del curso](https://www.youtube.com/channel/UCqBUeqBttVjS6h8fawK8sWg)
 ]
 
-.pull-center.bottom[
-```{r echo=FALSE, out.width = "200px", out.height="100px", fig.align='center'}
+.pull-left[
+```{r echo=FALSE, out.width = "150px", out.height="100px", fig.align='center'}
 knitr::include_graphics("img/yout.png")
+```
+]
+
+
+.pull-left[
+```{r echo=FALSE, out.width = "500px", out.height="300px", fig.align='center'}
+knitr::include_graphics("img/ryout.png")
 ```
 ]
 
