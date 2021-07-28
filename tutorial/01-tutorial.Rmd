@@ -35,7 +35,11 @@ library(tidyverse)
 ```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe"))
 ```
+class: center middle
+background-image: url(img/banner.png)
+background-size: contain
 
+---
 class: center middle main-title section-title-2 top-logo
 
 .small[
@@ -74,10 +78,14 @@ class: title title-inv-2 top-logo
 
 .box-1.medium.sp-after-half[Slack]
 ---
+class: top-logo middle title-2
+background-image: url(img/r-logo.png)
+background-size: contain
+
+---
 class: top-logo middle
 
 # ¿Qué es R?
-
 
 .box-inv-1.medium[Es un lenguaje de programación empleado, principalmente, para análisis estadístico, con el cual se trabajará en el curso.]
 
@@ -235,8 +243,10 @@ background-size: contain
 
 ---
 class: center middle section-title section-title-1 animated fadeIn top-logo
+class: top-logo middle
+background-image: url(img/rstudio-logo.png)
+background-size: contain
 
-# 5. ¿Qué es RStudio?
 
 ---
 class: top-logo middle
@@ -443,8 +453,9 @@ class: title title-1 top-logo
 ]
 ---
 class: center middle section-title section-title-6 animated fadeIn top-logo
+background-image: url(img/slack-logo.png)
+background-size: contain
 
-# 7. Instalación de Slack 
 ---
 class: center middle section-title section-title-6 animated fadeIn top-logo
 
