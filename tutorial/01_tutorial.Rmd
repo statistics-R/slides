@@ -64,6 +64,7 @@ Se aceptan las condiciones de uso
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/r-windows3.png")
 ```
+
 Se define la carpeta de instalación. Pueden escoger donde deseen realizar la instalación clickeando en *examinar*; no obstante, se recomienda mantener la ruta predeterminada, en *Archivos de programa*
 
 ```{r, echo=FALSE, out.width="60%"}
@@ -81,12 +82,12 @@ Asimismo, también es recomendable no especificar las opciones de configuración
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/r-windows6.png")
 ```
+
 Si se desea, se pueden crear *accesos directos*. Lo que sí es importante, es *guardar el número de versión en el registro*, y *asociar archivos .RData con R* (lo análogo a asociar archivos .sav con SPSS, o archivos .dta con STATA)
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/r-windows7.png")
 ```
-
 
 Particularmente para el caso de *macOS*, es indispensable la instalación de **XQuartz**, pues este software nos permitirá visualizar, por ejemplo, los gráficos que elaboremos en R. Para ello, debemos dirigirnos al siguiente [enlace](https://www.xquartz.org), descargar la última versión disponible del software, y seguir el proceso de instalación. Tal como en el caso de R, lo recomendado es mantener la configuración predeterminada.
 
@@ -99,7 +100,6 @@ Para el caso de *Ubuntu*, la versión 4.1 de R (que es la actual) viene incluida
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/r-ubuntu.png")
 ```
-
 
 Siguiendo los pasos anteriores, la instalación de R está *finalizada*.
 
@@ -140,11 +140,13 @@ Volvemos a hacer click en **Sign Up**
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/cloud-signup2.png")
 ```
+
 Luego, hacemos click en **Sign Up with GitHub**
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/cloud-signup3.png")
 ```
+
 Se nos redirigirá a la página de **GitHub**, donde debemos ingresar los datos del usuario de GitHub que creamos en pasos anteriores. 
 
 ```{r, echo=FALSE, out.width="60%"}
@@ -186,6 +188,7 @@ En la sección superior derecha, encontraremos un *engranaje*. En la pestaña *I
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/cloud7.png")
 ```
+
 A la derecha de *Info*, encontraremos la pestaña *Access*. Allí, podremos cambiar quiénes pueden ver el proyecto. Por defecto, solamente quien creó el proyecto puede verlo; sin embargo, podemos permitir que cualquiera (Everyone) pueda hacerlo.
 
 ```{r, echo=FALSE, out.width="60%"}
@@ -227,26 +230,31 @@ Posteriormente, deben confirmar su correo electrónico y, por último, han de ha
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack3.png")
 ```
+
 Una vez realizado aquello, debemos permitir que la página web abra la aplicación de Slack, y se nos redirigirá al **espacio de trabajo** del curso. 
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack4.png")
 ```
+
 A la izquierda, encontraremos los diversos *canales* asignados para distintas actividades. Aquellos que tengan a la izquierda un **#**, son canales abiertos a todas y todos quienes integren el espacio de trabajo; mientras que aquellos que tengan un **candado** a su izquierda son canales privados. Haciendo click en **añadir canales**, podemos crear *nuevos canales* (lo cual pueden hacer cuando, en el futuro, utilicen Slack para sus trabajos personales).
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack5.png")
 ```
+
 Bajo los canales encontraremos la sección de **mensajes directos**, donde podremos enviar mensajes privados a cualquier persona que integre el espacio de trabajo. No olviden que pueden comunicarnos todas sus dudas, inquietudes y sugerencias respecto del curso. 
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack6.png")
 ```
+
 En la sección superior derecha encontraremos nuestro usuario.
 
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack7.png")
 ```
+
 Si hacemos click, se abrirá una pestaña emergente, donde podremos acceder a diversas configuraciones.
 
 ```{r, echo=FALSE, out.width="60%"}
@@ -258,6 +266,7 @@ En **Modificar tu perfil**, podemos cambiar nuestro nombre, describir a qué nos
 ```{r, echo=FALSE, out.width="60%"}
     include_graphics("img/slack9.png")
 ```
+
 En la sección de **Preferencias**, podremos establecer diferentes configuraciones referentes, por ejemplo, a las *notificaciones*, la *barra lateral*, o seleccionar distintos *temas*, para personalizar la apariencia de nuestro espacio de trabajo. 
 
 ```{r, echo=FALSE, out.width="60%"}

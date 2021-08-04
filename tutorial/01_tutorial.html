@@ -7,23 +7,15 @@
 <li><a href="#r">1. R</a>
 <ul>
 <li><a href="#ventajas">Ventajas:</a></li>
-<li><a href="#se-aceptan-las-condiciones-de-uso">Se aceptan las condiciones de uso</a></li>
-<li><a href="#se-recomienda-seleccionar-la-instalación-de-usuario">Se recomienda seleccionar la <em>Instalación de usuario</em></a></li>
-<li><a href="#asimismo-también-es-recomendable-no-especificar-las-opciones-de-configuración">Asimismo, también es recomendable no especificar las opciones de configuración</a></li>
 </ul></li>
 <li><a href="#rstudio">2. RStudio</a></li>
 <li><a href="#rstudio-cloud">2.1. RStudio Cloud</a></li>
-<li><a href="#github-desktop">3. Github Desktop</a>
+<li><a href="#slack">3. Slack</a>
 <ul>
-<li><a href="#botones-principales-en-github-desktop">Botones principales en GitHub Desktop:</a></li>
+<li><a href="#una-vez-realizado-todo-lo-anterior-ya-estamos-listas-y-listos-para-empezar-a-trabajar-en-el-curso">Una vez realizado todo lo anterior ¡Ya estamos listas y listos para empezar a trabajar en el curso!</a></li>
 </ul></li>
-<li><a href="#conceptos-claves-de-github">4. Conceptos claves de Github</a></li>
-<li><a href="#learn-r-uah">5. Learn-R-UAH</a>
-<ul>
-<li><a href="#pasos-para-las-dinámicas-del-curso">Pasos para las dinámicas del curso</a></li>
-</ul></li>
-<li><a href="#learn-r-youtube">6. Learn R Youtube</a></li>
-<li><a href="#reporte-de-progreso">7. Reporte de progreso</a></li>
+<li><a href="#learn-r-youtube">4. Learn R Youtube</a></li>
+<li><a href="#reporte-de-progreso">5. Reporte de progreso</a></li>
 </ul></li>
 </ul>
 </div>
@@ -47,21 +39,15 @@
 <p>Para descargar <strong>R</strong>, deben dirigirse al siguiente <a href="https://cran.dcc.uchile.cl">link</a>, y seguir los pasos de instalación según su sistema operativo. Para el caso de <em>Windows</em> y <em>macOS</em>, se debe descargar el instalador de R, ejecutarlo, y proseguir con la instalación. Lo recomendado es instalarlo en español, y mantener las opciones de instalación que vienen por defecto.</p>
 <p><img src="img/r-versions-os.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>A continuación, se presentan imágenes del proceso de instalación de R en <em>Windows</em></p>
-</div>
-<div id="se-aceptan-las-condiciones-de-uso" class="section level3">
-<h3>Se aceptan las condiciones de uso</h3>
+<p>Se aceptan las condiciones de uso</p>
 <p><img src="img/r-windows3.png" width="60%" style="display: block; margin: auto;" />
-### Se define la carpeta de instalación. Pueden escoger donde deseen realizar la instalación clickeando en <em>examinar</em>; no obstante, se recomienda mantener la ruta predeterminada, en <em>Archivos de programa</em></p>
+Se define la carpeta de instalación. Pueden escoger donde deseen realizar la instalación clickeando en <em>examinar</em>; no obstante, se recomienda mantener la ruta predeterminada, en <em>Archivos de programa</em></p>
 <p><img src="img/r-windows4.png" width="60%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="se-recomienda-seleccionar-la-instalación-de-usuario" class="section level3">
-<h3>Se recomienda seleccionar la <em>Instalación de usuario</em></h3>
+<p>Se recomienda seleccionar la <em>Instalación de usuario</em></p>
 <p><img src="img/r-windows5.png" width="60%" style="display: block; margin: auto;" /></p>
-</div>
-<div id="asimismo-también-es-recomendable-no-especificar-las-opciones-de-configuración" class="section level3">
-<h3>Asimismo, también es recomendable no especificar las opciones de configuración</h3>
+<p>Asimismo, también es recomendable no especificar las opciones de configuración</p>
 <p><img src="img/r-windows6.png" width="60%" style="display: block; margin: auto;" />
-### Si se desea, se pueden crear <em>accesos directos</em>. Lo que sí es importante, es <em>guardar el número de versión en el registro</em>, y <em>asociar archivos .RData con R</em> (lo análogo a asociar archivos .sav con SPSS, o archivos .dta con STATA)</p>
+Si se desea, se pueden crear <em>accesos directos</em>. Lo que sí es importante, es <em>guardar el número de versión en el registro</em>, y <em>asociar archivos .RData con R</em> (lo análogo a asociar archivos .sav con SPSS, o archivos .dta con STATA)</p>
 <p><img src="img/r-windows7.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>Particularmente para el caso de <em>macOS</em>, es indispensable la instalación de <strong>XQuartz</strong>, pues este software nos permitirá visualizar, por ejemplo, los gráficos que elaboremos en R. Para ello, debemos dirigirnos al siguiente <a href="https://www.xquartz.org">enlace</a>, descargar la última versión disponible del software, y seguir el proceso de instalación. Tal como en el caso de R, lo recomendado es mantener la configuración predeterminada.</p>
 <p><img src="img/xquartz.png" width="60%" style="display: block; margin: auto;" /></p>
@@ -80,130 +66,74 @@
 </div>
 <div id="rstudio-cloud" class="section level2">
 <h2>2.1. RStudio Cloud</h2>
-<p>Sin embargo, también está la opción de trabajar en <strong>RStudio Cloud</strong>, en caso que sus computadores no presenten los <em>requerimientos mínimimos</em> para trabajar con RStudio de manera local.</p>
-<p><img src="img/capt.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol style="list-style-type: decimal">
-<li>Ve al correo electrónico que pusiste anteriormente</li>
-<li>Copia el código e introdúcelo en la página</li>
-</ol>
+<p>Sin embargo, también está la opción de trabajar en <strong>RStudio Cloud</strong>, en caso que sus computadores no presenten los <em>requerimientos mínimimos</em> para trabajar con RStudio de manera local. Para poder trabajar en RStudio Cloud, debemos <em>crear un usuario</em>. Sin embargo, primero crearemos un <strong>usuario en GitHub</strong>, para luego conectarse a RStudio Cloud desde allí.</p>
+<p>Entonces, debemos dirigirnos a la página de <a href="https://github.com">GitHub</a>. Allí, debemos hacer click en <strong>Sign up</strong>.</p>
+<p><img src="img/github-signup1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Una vez allí, debemos ingresar nuestro correo electrónico, y luego seguir los pasos que se encuentran en el correo de confirmación. Es recomendable que creen la cuenta con la dirección de correo electrónico <strong>que usen cotidianamente</strong>.</p>
+<p>Posteriormente, nos dirigimos a la página de <a href="https://rstudio.cloud">RStudio Cloud</a>, y hacemos click en <strong>Sign Up</strong>.</p>
+<p><img src="img/cloud-signup1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Volvemos a hacer click en <strong>Sign Up</strong></p>
+<p><img src="img/cloud-signup2.png" width="60%" style="display: block; margin: auto;" />
+Luego, hacemos click en <strong>Sign Up with GitHub</strong></p>
+<p><img src="img/cloud-signup3.png" width="60%" style="display: block; margin: auto;" />
+Se nos redirigirá a la página de <strong>GitHub</strong>, donde debemos ingresar los datos del usuario de GitHub que creamos en pasos anteriores.</p>
+<p><img src="img/cloud-signup4.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Una vez realizado todo lo anterior, ingresaremos a <strong>RStudio Cloud</strong>. Allí, encontraremos nuestro espacio de trabajo (<em>Your Workspace</em>), donde podremos encontrar nuestros <strong>proyectos</strong>.</p>
+<p><img src="img/cloud1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Haciendo click en la pestaña <em>Projects</em>, situada en la pestaña superior, aparecerá el botón <strong>New Project</strong>. Al pulsarlo, podremos crear un nuevo proyecto.</p>
+<p><img src="img/cloud2.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Luego, se generará el nuevo proyecto. Es importante que <strong>renombremos el nuevo proyecto</strong>, haciendo click en el recuadro que se encuentra en la sección superior (en este caso, el proyecto se nombró como <em>Proyecto 1</em>).</p>
+<p><img src="img/cloud4.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Para cargar archivos (como bases de datos, o archivos .R), debemos hacer click en el botón <strong>Upload</strong>, situado en la sección <em>Files</em> situada en la esquina inferior derecha. Aparecerá una ventana emergente, y debemos hacer click en <strong>Seleccionar archivo</strong>, para explorar en nuestra computadora los archivos que necesitemos para trabajar.</p>
+<p><img src="img/cloud5.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>También podemos exportar el proyecto (con todos sus archivos asociados), haciendo click en el botón <strong>More</strong> (al lado del <em>engranaje</em>). Es importante que hagamos click en las casillas situadas a la izquierda de todos los archivos que deseemos descargar.</p>
+<p><img src="img/cloud6.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>En la sección superior derecha, encontraremos un <em>engranaje</em>. En la pestaña <em>Info</em> encontraremos la información general del proyecto; además, podremos agregar una descripción general de este.</p>
+<p><img src="img/cloud7.png" width="60%" style="display: block; margin: auto;" />
+A la derecha de <em>Info</em>, encontraremos la pestaña <em>Access</em>. Allí, podremos cambiar quiénes pueden ver el proyecto. Por defecto, solamente quien creó el proyecto puede verlo; sin embargo, podemos permitir que cualquiera (Everyone) pueda hacerlo.</p>
+<p><img src="img/cloud8.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Para poder compartir nuestros proyectos, debemos hacer click en los <em>tres puntos</em> situados a la derecha del engranaje, y luego hacer click en <strong>Share Project Link</strong>. Aparecerá una ventana emergente, donde podemos agregar las direcciones de correo electrónico de todas las personas que queramos invitar al proyecto. También podemos agregar un mensaje a la invitación.</p>
+<p><img src="img/cloud9.png" width="60%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="github-desktop" class="section level2">
-<h2>3. Github Desktop</h2>
-<p>Esta aplicación es una versión de Github que puede ser instalada tanto en windows como en mac. Facilitando el uso de Github a través de la coordinación de los cambios locales y la plataforma.</p>
-<ol style="list-style-type: lower-alpha">
-<li><p>Instalar Github Desktop</p></li>
-<li><p>Dirigirse a <a href="https://desktop.github.com/">Link</a></p></li>
-</ol>
-<p><img src="img/deskdown.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li><p>Crea una carpeta para los contenidos del curso</p></li>
-<li><p>Vincula la dirección de la carpeta</p></li>
-</ol>
-<div id="para-windows" class="section level4">
-<h4>Para Windows</h4>
+<div id="slack" class="section level2">
+<h2>3. Slack</h2>
+<p>Este software será el principal medio de comunicación en el marco del curso. Allí, las y los estudiantes podrán plantear todas sus dudas, para que estas puedan ser respondidas de forma colectiva, tanto por parte del equipo docente, como de otras y otros estudiantes.</p>
+<p>Primero, debemos descargar el instalador de <strong>Slack</strong>, dependiendo de nuestro sistema operativo:</p>
 <ul>
-<li><p>Clickear en Download for Windows (64bit)</p></li>
-<li><p>Ejecutar el archivo descargado</p></li>
-<li><p>Introduce tu usuario y contraseña</p></li>
+<li><a href="https://slack.com/intl/es-cl/downloads/windows">Windows</a></li>
+<li><a href="https://slack.com/intl/es-cl/downloads/mac">macOS</a></li>
+<li><a href="https://slack.com/intl/es-cl/downloads/linux">Linux</a></li>
 </ul>
-</div>
-<div id="para-mac" class="section level4">
-<h4>Para Mac</h4>
-<ul>
-<li><p>Clickear en Download for macOS</p></li>
-<li><p>Ejecutar el archivo descargado</p></li>
-<li><p>Introduce tu usuario y contraseña</p></li>
-</ul>
-</div>
-<div id="botones-principales-en-github-desktop" class="section level3">
-<h3>Botones principales en GitHub Desktop:</h3>
-<ul>
-<li><p><strong>Clone repository</strong>: Copia un repositorio a tu computador</p></li>
-<li><p><strong>Create new repository</strong>: crea un nuevo repositorio</p></li>
-<li><p><strong>Add existing repository</strong>: incorpora un repositorio existente</p></li>
-</ul>
-<p><img src="img/con1desk.png" width="60%" style="display: block; margin: auto;" /></p>
-<ul>
-<li><p><strong>Open the repository in Rstudio</strong>: Abre todo el proyecto en Rstudio</p></li>
-<li><p><strong>View the files of your repository in explorer</strong>: Muestra los archivos en la carpeta que se encuentra</p></li>
-<li><p><strong>Open the repository on Github</strong>: abre el repositorio en la página</p></li>
-<li><p><strong>Commit to master</strong>: forma de guardar los cambios</p></li>
-<li><p><strong>Push origin</strong>: manda los cambios al repositorio en línea</p></li>
-</ul>
-<p><img src="img/con2desk.jpg" width="60%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="conceptos-claves-de-github" class="section level2">
-<h2>4. Conceptos claves de Github</h2>
-<ul>
-<li><p><strong>Repositorios</strong>: Es donde se alberga el trabajo, como una carpeta que contiene todos los archivos y el historial de cambios realizados. Estos se almacenan en la nube</p></li>
-<li><p><strong>Cloning</strong>: Los repositorios pueden clonarse creando copias locales que extraen toda la información y antiguas versiones del repositorio. Después se puede ir subiendo los cambios para sincronizar la copia local y la copia de github.</p></li>
-<li><p><strong>Commit</strong>: Es la forma de guardar el estado de tu proyecto, como una captura en la que se deja un mensaje informativo</p></li>
-<li><p><strong>Push</strong>: Esta es la forma en la que se puede agregar ( <em>subir</em> ) los cambios locales al repositorio de Github.</p></li>
-<li><p><strong>README</strong>: Se utiliza a modo de presentación o introducción de los repositorios.</p></li>
-<li><p><strong>Pull</strong>: Esta es la forma en la que se puede agregar ( <em>bajar</em> ) los cambios del repositorio de Github al repositorio local.</p></li>
-</ul>
-<div id="flujo-de-trabajo-colectivo-y-de-acceso-abierto" class="section level4">
-<h4>Flujo de trabajo colectivo y de acceso abierto</h4>
-<ul>
-<li><p><strong>Forks</strong>: Es otra forma de copiar un repositorio, permitiendo hacer cambios sin afectar al proyecto original.</p></li>
-<li><p><strong>Pull requests</strong>: Es una forma de solicitar que sean incorporados los cambios que has hecho desde un repositorio local, al repositorio original.</p></li>
-</ul>
-<p><img src="img/concepclav.png" width="60%" style="display: block; margin: auto;" /></p>
-</div>
-</div>
-<div id="learn-r-uah" class="section level2">
-<h2>5. Learn-R-UAH</h2>
-<div id="pasos-para-las-dinámicas-del-curso" class="section level3">
-<h3>Pasos para las dinámicas del curso</h3>
-<ol style="list-style-type: decimal">
-<li><p>Recibir una tarea</p></li>
-<li><p>Ingresa el <a href="https://classroom.github.com/classrooms/86887318-learn-r-uah-2021">link</a></p></li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>El link contiene la tarea, ustedes deben aceptar la tarea la cual creará un <em><strong>repositorio</strong></em> que contendrá la <em>información</em> y las <em>instrucciones</em> de la tarea.</li>
-</ol>
-<p><img src="img/ingrestarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Para eso deben ir a <em><strong>GitHub Desktop</strong></em>, <em><strong>clonar</strong> el respositiorio desde internet</em>.</li>
-</ol>
-<p><img src="img/paso2tarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Luego deben escoger el repositorio de la tarea, escoger la carpeta en la que se encontrará y clonarlo</li>
-</ol>
-<p><img src="img/paso3tarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: lower-alpha">
-<li>Después deben abrir el repositorio creado a través de <em><strong>RStudio</strong></em>, ahí verán el mismo contenido pero en un archivo <em><strong>.md</strong></em></li>
-</ol>
-<p><img src="img/paso4tarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Resolver una tarea</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li><p>La tarea se encuentra en un archivo llamado <em>README</em> con información de los conceptos básicos y el flujo de GitHub, deben leerlo detalladamente.</p></li>
-<li><p>Una vez leido deberán ir a Tarea 0 y responder las preguntas correspondientes</p></li>
-</ol>
-<p><img src="img/paso5tarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Subir una tarea</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Una vez listo, deberán <em><strong>subir</strong></em> la tarea al repositorio remoto a través de GitHub Desktop</li>
-</ol>
-<p><img src="img/paso6tarea.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="5" style="list-style-type: decimal">
-<li>Recibir comentarios</li>
-</ol>
-<ol style="list-style-type: lower-alpha">
-<li>Les llegará un correo con los comentarios y retroalimentación de su tarea</li>
-</ol>
+<p>En la siguiente imagen, está el ejemplo de <em>Windows</em> (64 bits)</p>
+<p><img src="img/slack1.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Una vez descargado el archivo, debemos ejecutarlo, y seguir el proceso de instalación. Tal como en el resto de los software instalados, recomendamos mantener todas las opciones de instalación <em>por defecto</em>.</p>
+<p>Luego, debemos crear una <em>cuenta de Slack</em>, dirigiéndose a la <a href="https://slack.com/get-started#/create">siguiente página web</a>. Se recomienda usar la <em>dirección de correo que usen de forma cotidiana</em>, a modo de estar al tanto de la actividad en el canal de Slack.</p>
+<p><img src="img/slack2.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>Posteriormente, deben confirmar su correo electrónico y, por último, han de hacer click en el link <strong>Unirse a slack de curso</strong>, presente en el apartado <em>Syllabus</em> de la página web. Ello redireccionará a la aplicación, abriendo allí el espacio de trabajo del curso.</p>
+<p><img src="img/slack3.png" width="60%" style="display: block; margin: auto;" />
+Una vez realizado aquello, debemos permitir que la página web abra la aplicación de Slack, y se nos redirigirá al <strong>espacio de trabajo</strong> del curso.</p>
+<p><img src="img/slack4.png" width="60%" style="display: block; margin: auto;" />
+A la izquierda, encontraremos los diversos <em>canales</em> asignados para distintas actividades. Aquellos que tengan a la izquierda un <strong>#</strong>, son canales abiertos a todas y todos quienes integren el espacio de trabajo; mientras que aquellos que tengan un <strong>candado</strong> a su izquierda son canales privados. Haciendo click en <strong>añadir canales</strong>, podemos crear <em>nuevos canales</em> (lo cual pueden hacer cuando, en el futuro, utilicen Slack para sus trabajos personales).</p>
+<p><img src="img/slack5.png" width="60%" style="display: block; margin: auto;" />
+Bajo los canales encontraremos la sección de <strong>mensajes directos</strong>, donde podremos enviar mensajes privados a cualquier persona que integre el espacio de trabajo. No olviden que pueden comunicarnos todas sus dudas, inquietudes y sugerencias respecto del curso.</p>
+<p><img src="img/slack6.png" width="60%" style="display: block; margin: auto;" />
+En la sección superior derecha encontraremos nuestro usuario.</p>
+<p><img src="img/slack7.png" width="60%" style="display: block; margin: auto;" />
+Si hacemos click, se abrirá una pestaña emergente, donde podremos acceder a diversas configuraciones.</p>
+<p><img src="img/slack8.png" width="60%" style="display: block; margin: auto;" /></p>
+<p>En <strong>Modificar tu perfil</strong>, podemos cambiar nuestro nombre, describir a qué nos dedicamos, definir nuestros pronombres, entre otros elementos. También, podemos seleccionar una foto de perfil, para que el resto de las personas que integren el espacio de trabajo puedan (re)conocernos.</p>
+<p><img src="img/slack9.png" width="60%" style="display: block; margin: auto;" />
+En la sección de <strong>Preferencias</strong>, podremos establecer diferentes configuraciones referentes, por ejemplo, a las <em>notificaciones</em>, la <em>barra lateral</em>, o seleccionar distintos <em>temas</em>, para personalizar la apariencia de nuestro espacio de trabajo.</p>
+<p><img src="img/slack10.png" width="60%" style="display: block; margin: auto;" /></p>
+<div id="una-vez-realizado-todo-lo-anterior-ya-estamos-listas-y-listos-para-empezar-a-trabajar-en-el-curso" class="section level3">
+<h3>Una vez realizado todo lo anterior ¡Ya estamos listas y listos para empezar a trabajar en el curso!</h3>
 </div>
 </div>
 <div id="learn-r-youtube" class="section level2">
-<h2>6. Learn R Youtube</h2>
-<p>Recuerden que el <a href="https://www.youtube.com/watch?v=Zj8yL-nx9vM">video de asociado a este práctico</a> y muchos más podrán encontrarlos en el <a href="https://www.youtube.com/channel/UCqBUeqBttVjS6h8fawK8sWg">canal de youtube del curso</a></p>
+<h2>4. Learn R Youtube</h2>
+<p>Recuerden que el <a href="https://www.youtube.com/watch?v=9YD-F6-ktes">video de asociado a este práctico</a> y muchos más podrán encontrarlos en el <a href="https://www.youtube.com/channel/UCqBUeqBttVjS6h8fawK8sWg">canal de youtube del curso</a></p>
 </div>
 <div id="reporte-de-progreso" class="section level2">
-<h2>7. Reporte de progreso</h2>
+<h2>5. Reporte de progreso</h2>
 </div>
 </div>
