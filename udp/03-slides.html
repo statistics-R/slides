@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análisis de datos estadísticos en R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Valentina Andrade" />
+    <meta name="date" content="2021-08-19" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ea40640a1d2347d3ac47dfd8bb371904","expires":14}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30}) })</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\">Copiar código<\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!<\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/ath-slides.css" type="text/css" />
+    <link rel="stylesheet" href="css/ath-inferno-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+class: center middle main-title section-title-1 top-logo
+
+.small[
+# Transformar y seleccionar variables
+]
+
+.class-info[
+&lt;br&gt;
+**Bloque N° 3**&lt;br&gt;
+19 agosto 2021&lt;br&gt;
+**Análisis de datos estadísticos en R**
+&lt;br&gt;
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra &lt;br&gt;
+**Ayudantes** Dafne Jaime y Nicolás Godoy
+.tiny[Universidad Diego Portales&lt;br&gt;
+]
+]
+
+]
+
+---
+class: title title-inv-1
+
+# Contenidos Bloque 3
+
+--
+
+.box-2.medium.sp-after-half[**Básicos en manipulación**]
+.small.box-2[Operadores y tipos de datos]
+
+--
+
+.box-3.medium.sp-after-half[**Seleccionar variables**]
+
+--
+
+.box-4.medium.sp-after-half[**Filtrar**]
+
+--
+
+.box-5.medium.sp-after-half[**Crear variables**]
+
+???
+
+- basics
+- select
+- filter
+- create
+
+---
+class: center middle main-title section-title-1 top-logo
+name: basics
+
+# 1: Flujo del Rproject
+
+---
+class: title title-inv-1
+
+# Etapas del flujo
+
+.center[
+![:scale 70%](https://github.com/learn-R/slides/raw/main/img/01/flow-rproject.png)]
+
+--
+
+- *Hoy* nosotras/os finalizaremos la parte de **procesamiento**.
+
+---
+class: title title-inv-1
+
+# Orden de un script de procesamiento
+
+
+.center[
+![:scale 80%](https://github.com/learn-R/slides/raw/main/img/02/orden-sintaxis.png)]
+
+---
+.center[
+![](https://media2.giphy.com/media/ule4vhcY1xEKQ/giphy.gif)]
+
+Figura 1: Estudiantes de Análisis de datos en R haciendo el **paso 1 y 2.**
+---
+class: center middle main-title section-title-1 top-logo
+
+# Paso 1: Cargar paquetes
+
+---
+layout: true
+class: title title-1
+---
+# Paso 1: Cargar paquetes
+
+
+```r
+*pacman::p_load(tidyverse,
+               magrittr,
+               car,
+               sjmisc)
+```
+
+---
+layout: false
+class: center middle section-title section-title-1 animated fadeIn
+
+# Paso 2: Importar datos
+
+---
+# Consideraciones antes de importar datos 
+
+Para **importar** los datos en R debemos tener en consideración tres cosas:
+
+.can-edit.key-likes[
+1.
+2.
+3.
+]
+
+---
+# Consideraciones antes de importar datos 
+
+Para **importar** los datos en R debemos tener en consideración tres cosas:
+
+1. Cómo se llaman los datos (en nuestro caso Casen en Pandemia 2020 STATA)
+
+2. El formato de nuestros datos (en nuestro caso .sav)
+
+3. El lugar de donde están alojados nuestros datos. 
+
+---
+# Paso 2: Importar datos
+
+
+```r
+datos &lt;- read_dta("../Rproject/input/Casen en Pandemia 2020 STATA.dta") 
+```
+
+---
+class: center middle main-title section-title-1 top-logo
+
+# Como resultado
+
+.box-inv-1[Nuevo objeto en el Enviroment]
+
+--
+
+.box-inv-8[20 observaciones (o filas), y 5 variables (columnas)]
+
+---
+class: center middle section-title section-title-2 animated fadeIn
+
+# Paso 3: Procesar datos
+
+---
+class: center title title-3
+
+# Procesar datos
+
+Es un proceso **iterativo**
+
+.box-inv-1[explorar⏩ transformar ]
+
+--
+
+.box-inv-8[transformar ⏩explorar]
+
+
+--
+
+Por ello, si bien para manipular datos estaremos utilizando constantemente paquetes de `tidyverse`, también utilizaremos el paquete `base` y `sjmisc` para explorar nuestros datos
+---
+# Explorar datos para procesar
+
+
+```r
+# De paquete base
+dim(datos) # nos entrega las dimensiones, es decir el numero de observaciones y el número de variables
+View(datos) # se usa para visualizar la base de datos
+names(datos) # entrega los nombres de las variables que componen el dataset
+head(datos) # muestra las primeras filas presentes en el marco de datos
+
+# De sjmisc
+
+find_var(datos, "concepto") # se utiliza para encontrar variables
+```
+
+
+
+
+---
+class: center middle main-title section-title-3 top-logo
+
+# ¡Vamos a este segundo paso en el script: Cargar datos!
+
+---
+
+# ¿Dónde?
+
+.box-inv-1[[Descargar el zip del bloque 2 el sitio del curso](https://learn-r-udp.netlify.app/content/02-content/)]
+
+---
+class: title title-4
+
+# 1. Recursos de la práctica
+
+- Datos: *Encuesta de Caracterización Socioeconómica (CASEN)* (2020).
+
+- Para ello, deben dirigirse al [siguiente enlace](https://drive.google.com/drive/folders/1Orgb3Qb9LcjTfjYMdIdy7SWd3xDMrTbG?usp=sharing) y descargar los zip.
+
+
+- [**Libro de códigos**](http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2020/Libro_de_codigos_Base_de_Datos_Casen_en_Pandemia_2020.pdf) antes de trabajar una base de datos.
+
+---
+layout: false
+class: center section-title section-title-5 animated fadeIn
+
+# En síntesis
+
+
+.box-2.medium.sp-after-half[**Importar y exportar datos**]
+
+--
+
+.box-3.medium.sp-after-half[**Validación y limpieza datos**]
+
+--
+
+.box-4.medium.sp-after-half[**Selección de variables**]
+
+
+---
+class: center middle main-title section-title-4 top-logo
+
+# ¡Y a no olvidar el flujo para el análisis!
+
+--
+
+## Nos permite hacernos amigas/os más rápido del programa
+---
+
+.center[
+![:scale 80%](img/01/flow-rproject.png)]
+
+---
+layout: false
+
+.box-1[¿Y eso era?]
+
+--
+
+.box-inv-1[¡Ahora si que si! Nos vemos el próximo viernes **bloque 1!**]
+
+.center[
+![](img/01/monster-inc-2.gif)]
+---
+layout: false
+class: center middle main-title section-title-1 top-logo
+
+.small[
+# Herramientas para el uso de R
+]
+
+.class-info[
+&lt;br&gt;
+**Bloque N° 1**&lt;br&gt;
+19 agosto 2021&lt;br&gt;
+**Análisis de datos estadísticos en R**
+&lt;br&gt;
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra &lt;br&gt;
+**Ayudantes** Dafne Jaime y Nicolás Godoy
+.tiny[Universidad Diego Portales&lt;br&gt;
+]
+]
+
+]
+
+???
+https://c.tenor.com/7mxJp29REVkAAAAC/scaryfeet-monstersinc.gif
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="libs/macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
