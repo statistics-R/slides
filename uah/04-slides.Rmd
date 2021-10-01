@@ -26,7 +26,7 @@ editor_options:
 
 
 ```{r packages-data, include=FALSE}
-pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2, tidyr, srvyr, dplyr)
+pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2)
 theme_set(theme_sjplot2())
 
 ```
@@ -131,13 +131,13 @@ class: title title-inv-1
 
 
 .center[
-![:scale 80%](https://github.com/learn-R/slides/raw/main/img/02/orden-sintaxis.png)]
+![:scale 80%](https://raw.githubusercontent.com/learn-R/slides/main/img/04/orden-sintaxis.png)]
 
 ---
 .center[
 ![](https://media2.giphy.com/media/ule4vhcY1xEKQ/giphy.gif)]
 
-Figura 1: Estudiantes de Análisis de datos en R haciendo el **paso 1 y 2.**
+Figura 1: Estudiantes de Análisis de datos en R haciendo los **pasos 4 y 5.**
 ---
 class: center middle main-title section-title-1 top-logo
 
@@ -150,10 +150,11 @@ class: title title-1
 # Paso 1: Cargar paquetes
 
 ```{r}
-pacman::p_load(tidyverse, #<<
-               magrittr,
-               car,
-               sjmisc)
+pacman::p_load(tidyverse, #Universo de paquetes
+               sjmisc, #Para explorar datos
+               srvyr, #Para trabajar con muestras complejas
+               dplyr, #Para manipular datos
+               tidyr) #Para transformar la estructura de los datos
 ```
 
 ---
