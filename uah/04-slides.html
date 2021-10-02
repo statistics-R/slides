@@ -1,60 +1,51 @@
----
-title: "Análisis de datos estadísticos en R"
-author: "Valentina Andrade y Nicolás Godoy"
-date: "`r Sys.Date()`"
-output:
-  xaringan::moon_reader:
-    self_contained: true
-    lib_dir: "libs"
-    chakra: "libs/remark-latest.min.js"
-    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
-    seal: false
-    includes:
-      after_body: "html/insert-logo.html"
-    anchor_sections: false
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      ratio: "16:9"
-      beforeInit: "libs/macros.js"
-      navigation:
-        scroll: false
-editor_options: 
-  chunk_output_type: console
----
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análisis de datos estadísticos en R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Valentina Andrade y Nicolás Godoy" />
+    <meta name="date" content="2021-10-02" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1717ab890fa485e889b1157681ad5ae","expires":14}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon-1.4.1/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\">Copiar código<\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!<\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/ath-slides.css" type="text/css" />
+    <link rel="stylesheet" href="css/ath-inferno-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
 
 
-```{r packages-data, include=FALSE}
-pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2)
-theme_set(theme_sjplot2())
-
-```
-```{r xaringanExtra, echo=FALSE}
-xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
-
-xaringanExtra::use_extra_styles(
-  hover_code_line = TRUE,         #<<
-  mute_unhighlighted_code = TRUE  #<<
-)
-```
 
 
-```{r xaringanExtra-clipboard, echo=FALSE}
-htmltools::tagList(
-  xaringanExtra::use_clipboard(
-    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
-    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
-    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
-  ),
-  rmarkdown::html_dependency_font_awesome()
-)
-```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = F, 
-                      fig.retina = 3, fig.align = "center")
-```
+
+
+
+
+
 
 class: center middle main-title section-title-1 top-logo
 
@@ -63,16 +54,16 @@ class: center middle main-title section-title-1 top-logo
 ]
 
 .class-info[
-<br>
-**Sesión N° 4**<br>
-`r format(Sys.Date(), '%d %B %Y')`<br>
+&lt;br&gt;
+**Sesión N° 4**&lt;br&gt;
+02 octubre 2021&lt;br&gt;
 **Análisis de datos estadísticos en R**
-<br>
+&lt;br&gt;
 
 .pull-right.small[
-**Profesora** Valentina Andrade de la Horra <br>
+**Profesora** Valentina Andrade de la Horra &lt;br&gt;
 **Ayudantes** Dafne Jaime y Nicolás Godoy
-.tiny[Universidad Alberto Hurtado<br>
+.tiny[Universidad Alberto Hurtado&lt;br&gt;
 ]
 ]
 
@@ -146,7 +137,8 @@ class: title title-8
 ---
 # Paso 1: Cargar paquetes
 
-```{r}
+
+```r
 pacman::p_load(tidyverse, #Universo de paquetes
                sjmisc, #Para explorar datos
                srvyr, #Para trabajar con muestras complejas
@@ -185,8 +177,9 @@ Para **importar** los datos en R debemos tener en consideración tres cosas:
 ---
 # Paso 2: Importar datos
 
-```{r eval=FALSE, include=TRUE}
-data <- readRDS(url("https://github.com/learn-R/07-class/blob/main/input/data/casen_proc.rds?raw=true"))
+
+```r
+data &lt;- readRDS(url("https://github.com/learn-R/07-class/blob/main/input/data/casen_proc.rds?raw=true"))
 ```
 
 ---
@@ -221,20 +214,19 @@ En la tarea de explorar los datos, la librería `sjmisc` será nuestra mejor ali
 ---
 # Explorar datos para procesar
 
-```{r eval=FALSE, include=TRUE}
 
+```r
 ## Variables categóricas
 
 frq(data$region) #Examinamos la columna región
 frq(data$pobreza) #Examinamos la columna pobreza
 frq(data$sexo) #Examinamos la columna sexo
-
 ```
 ---
 # Explorar datos para procesar
 
-```{r eval=FALSE, include=TRUE}
 
+```r
 ## Variables continuas
 
 descr(data$exp) #Ponderador regional
@@ -242,7 +234,6 @@ sum(data$exp) #Total de la población
 descr(data$varstrat) #Estrato de varianza
 descr(data$varunit) #Conglomerado de varianza
 descr(data$ing_tot_hog) #Ingreso total del hogar
-
 ```
 ---
 layout: false
@@ -277,8 +268,9 @@ class: center title title-8
 
 # Creando el objeto encuesta
 
-```{r}
-obj_encuesta <- data %>% #Creamos un nuevo objeto encuesta con la información de nuestros datos
+
+```r
+obj_encuesta &lt;- data %&gt;% #Creamos un nuevo objeto encuesta con la información de nuestros datos
   as_survey_design(ids = varunit, #Aplicamos diseño muestral, especificando los ids a partir del conglomerado de varianza,
                    strata = varstrat,#strat con los estratos de varianza,
                    fpc = stratn, #especificando que la estimación está corregida con una población finita (cuando se pueda),
@@ -378,11 +370,11 @@ Se usan para hacer comparaciones. Cuando en la *Tabla 1* nos referimos a `un val
 
 | Símbolo  | Función |
 |---------:|:--------|
-| `<`      |  Un valor es menor que otro |
-| `>`      |  Un valor es mayor que otro |
+| `&lt;`      |  Un valor es menor que otro |
+| `&gt;`      |  Un valor es mayor que otro |
 | `==`     |  Un valor es igual que otro [^1] |
-| `<=`     |  Un valor es menor o igual que otro |
-| `>=`     |  Un valor es mayor o igual que otro |
+| `&lt;=`     |  Un valor es menor o igual que otro |
+| `&gt;=`     |  Un valor es mayor o igual que otro |
 | `!=`     |  Un valor es distinto o diferente que otro|
 | `%in%`   |  Un valor pertenece al conjunto designado [^2] |
 | `is.na()`|  El valor es perdido o `NA` |
@@ -391,7 +383,7 @@ Se usan para hacer comparaciones. Cuando en la *Tabla 1* nos referimos a `un val
 ---
 # Tips
 
-- ¡Atención! Fíjate bien que `==` y `=` son distintos. En R `==` es indicar *"igual a"*, mientras que  `=` es *asignar* (sinónimo de `<-`)
+- ¡Atención! Fíjate bien que `==` y `=` son distintos. En R `==` es indicar *"igual a"*, mientras que  `=` es *asignar* (sinónimo de `&lt;-`)
 
 - El operador `%in%` es **muy utilizado**, sirve para indicar que algo está dentro de una cadena de valores. 
 
@@ -414,7 +406,7 @@ Realizan operaciones, como la suma, resta, división, entre otros.
 
 Hay dos formas de asignar:
 
-- `objetoA <- objetoB`
+- `objetoA &lt;- objetoB`
 - `objetoA = objetoB`.
 
 Ambas implican que lo que se este realizando en el *objetoB* implica que eso va a producir o generar al *objetoA*.
@@ -429,7 +421,7 @@ Describen relaciones **lógicas** o **condicionales**
 
 | Símbolo  | Función |
 |---------:|:--------|
-| `&`      |  Indica un *y* lógico |
+| `&amp;`      |  Indica un *y* lógico |
 | `"|"`      |  Indica un *o* lógico |
 | `xor()`  |  Excluye la condición  |
 | `!`      |  Distinto de ... |
@@ -456,9 +448,9 @@ layout: true
 class: title title-2
 
 ---
-# Operador pipeline %>% 
+# Operador pipeline %&gt;% 
 
-- `%>%` (llamado `pipe`) no es un operador que esté contenido en las funciones base del lenguaje R (origen `magrittr` de `tidyverse`)
+- `%&gt;%` (llamado `pipe`) no es un operador que esté contenido en las funciones base del lenguaje R (origen `magrittr` de `tidyverse`)
 
 - Es de los operadores **más útiles y utilizados** en R.
 
@@ -471,7 +463,7 @@ class: title title-2
 
 
 ---
-# Operador pipeline %>% 
+# Operador pipeline %&gt;% 
 
 - Función: **concatenar** múltiples funciones y procesos.
 
@@ -513,14 +505,16 @@ class: title title-2
 --
 
 Si queremos incluir las variables `variable1`, `variable2` y `variable3`
-```{r, eval = F}
+
+```r
 select(datos, variable1, variable2, variable3)
 ```
 
 --
 Si queremos excluir anteponemos un menos `-variable1`
 
-```{r, eval = F}
+
+```r
 select(datos, -variable1)
 ```
 
@@ -529,15 +523,16 @@ select(datos, -variable1)
 
 1. Por indexación
 
-```{r}
+
+```r
 select(datos, 1,2) # la primera y la segunda columna
 select(datos, 1:4) # la primera hasta la cuarta columna
-
 ```
 
 2. por nombre de columna
 
-```{r}
+
+```r
 select(datos, edad, sexo, o1)
 ```
 
@@ -546,7 +541,8 @@ select(datos, edad, sexo, o1)
 
 1. Renombrar en el mismo proceso de selección indicando `nuevo_nombre = nombre_original` en el proceso de selección
 
-```{r}
+
+```r
 select(datos, edad, sexo, ocupacion = o1)
 ```
 
@@ -554,7 +550,8 @@ select(datos, edad, sexo, ocupacion = o1)
 
 - `everything()` nos indica que ponga "todo el resto".
 
-```{r}
+
+```r
 select(datos, id_persona, sexo, edad, everything())
 ```
 
@@ -574,12 +571,13 @@ select(datos, id_persona, sexo, edad, everything())
 ---
 # Formas de hacer `select()`
 
-```{r}
+
+```r
 select(datos, starts_with("a"), ends_with("preg"))
 
 # También se pueden combinar con operadores logicos
 
-select(datos, starts_with("y1")&ends_with("preg")) 
+select(datos, starts_with("y1")&amp;ends_with("preg")) 
 select(datos, contains("pobre")|contains("vivienda"))
 select(datos, matches("pobreza_|vivienda"))
 ```
@@ -593,7 +591,8 @@ select(datos, matches("pobreza_|vivienda"))
 
 - Por ejemplo, queremos seleccionar todas las variables que son carácteres (`is.character`):
 
-```{r}
+
+```r
 select(datos, where(is.character))
 ```
 
@@ -613,8 +612,9 @@ layout: false
 
 ¡Apliquémos conocimientos!
 
-```{r}
-select(datos, edad, sexo, prev =592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&matches("total|hog"))
+
+```r
+select(datos, edad, sexo, prev =592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&amp;matches("total|hog"))
 ```
 
 ---
@@ -625,8 +625,9 @@ class: title title-4
 
 - Buena práctica trabajar solo con las columnas que utilizaremos para el análisis, principalmente pues disminuye el *uso de memoria*
 
-```{r}
-datos_proc <- select(datos, edad, sexo, prev = 592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&matches("total|hog"))
+
+```r
+datos_proc &lt;- select(datos, edad, sexo, prev = 592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&amp;matches("total|hog"))
 ```
 
 ---
@@ -660,14 +661,16 @@ datos_proc <- select(datos, edad, sexo, prev = 592, ocupacion = o1, tot_per, yto
 
 --
 
-```{r, eval = F}
+
+```r
 filter(datos, condicion_para filtrar)
 ```
 
 Imaginemos que queremos filtrar valores mayores o iguales 3 **respecto a la variable1**
 
-```{r, eval = F}
-filter(datos, variable1 >= 3)
+
+```r
+filter(datos, variable1 &gt;= 3)
 ```
 
 ---
@@ -676,16 +679,18 @@ filter(datos, variable1 >= 3)
 1. Con números
 
 Imaginémos que queremos una base con las personas mayores de 15 años. 
-```{r}
-filter(datos_proc, edad >= 15)
-filter(datos_proc, edad >= 15 & tot_per <7)
+
+```r
+filter(datos_proc, edad &gt;= 15)
+filter(datos_proc, edad &gt;= 15 &amp; tot_per &lt;7)
 ```
 
 --
 
 Pero también que pertenezcan a hogares con menos de 7 personas. 
-```{r}
-filter(datos_proc, edad >= 15 & tot_per <7)
+
+```r
+filter(datos_proc, edad &gt;= 15 &amp; tot_per &lt;7)
 ```
 
 ---
@@ -709,11 +714,13 @@ filter(datos_proc, edad >= 15 & tot_per <7)
 ---
 # Formas de `filter()`
 
-```{r}
-datos_proc$sexo <- as_factor(datos_proc$sexo)
+
+```r
+datos_proc$sexo &lt;- as_factor(datos_proc$sexo)
 ```
 
-```{r}
+
+```r
 filter(datos_proc, sexo == "Mujer")
 filter(datos_proc, sexo != "Hombre")
 ```
@@ -723,8 +730,9 @@ filter(datos_proc, sexo != "Hombre")
 
 - ¿Cómo se seleccionan dos condiciones en carácter? Con el operador `%in%`
 
-```{r}
-datos_proc$prev <- as_factor(datos_proc$prev)
+
+```r
+datos_proc$prev &lt;- as_factor(datos_proc$prev)
 
 filter(datos_proc, prev %in% c("Sistema Público FONASA", "ISAPRE"))
 ```
@@ -751,7 +759,8 @@ class: center middle section-title-4 top-logo
 
 - `mutate()` permite hacer operaciones para crear nuevas variables o transformar las ya existentes. 
 
-```{r, eval = F}
+
+```r
 mutate(datos, nueva_variable = cálculo o condición)
 ```
 
@@ -760,7 +769,8 @@ mutate(datos, nueva_variable = cálculo o condición)
 
 1. En base a cálculo
 
-```{r echo=TRUE}
+
+```r
 mutate(datos_proc, nueva_variable = 3+2)
 mutate(datos_proc, nueva_variable = 3+2,
        ingreso_percapita = ytoth/tot_per)
@@ -773,31 +783,32 @@ class: center middle section-title-4 top-logo
 
 --
 
-# Viene la aplicación de  %>%
+# Viene la aplicación de  %&gt;%
 
 .box-inv-4[¿Qué pasa si queremos, luego de calcular nuestras nuevas variables, filtrar un ingreso per cápita menor o igual a $1.000.000]
 
 ---
-# `%>%`
+# `%&gt;%`
 
-```{r}
-datos %>% 
-  mutate(., nueva_variable = calculo ) %>% 
-  filter(., nueva_variable <= valor)
 
+```r
+datos %&gt;% 
+  mutate(., nueva_variable = calculo ) %&gt;% 
+  filter(., nueva_variable &lt;= valor)
 ```
 
 --
 
-- Básicamente, el ` %>% ` permite "ingresar" nuestra base de datos como argumento para cada función e ir operándola en proceso
+- Básicamente, el ` %&gt;% ` permite "ingresar" nuestra base de datos como argumento para cada función e ir operándola en proceso
 
 ---
-# `%>%` 
+# `%&gt;%` 
 
-```{r}
-datos_proc %>%
-  mutate(ingreso_percapita = ytoth/tot_per) %>% 
-  filter(ingreso_percapita <= 1000000)
+
+```r
+datos_proc %&gt;%
+  mutate(ingreso_percapita = ytoth/tot_per) %&gt;% 
+  filter(ingreso_percapita &lt;= 1000000)
 ```
 --
  
@@ -827,8 +838,9 @@ class: title title-5
 
 - Con `dplyr::recode()`: recodificamos las categorías de respuesta de Mujer a Femenino y de Hombre a Masculino
 
-```{r}
-datos_proc %>% 
+
+```r
+datos_proc %&gt;% 
   mutate(sexo = dplyr::recode(sexo, "Mujer" = "Femenino", "Hombre" = "Masculino"))
 ```
 
@@ -839,25 +851,28 @@ datos_proc %>%
 
 - **No olviden** los `::` por los posibles conflictos
 
-```{r}
+
+```r
 car::recode(datos$variable, c('valor_orig1=nuevo_valor1;valor_org2=nuevo_valor2'))
 ```
 
 ---
 # Mi elección: `car::recode()`
 
-```{r}
+
+```r
 datos_proc %$% 
-  car::recode(.$y26d_hog, c('9=NA')) %>% head(.)
+  car::recode(.$y26d_hog, c('9=NA')) %&gt;% head(.)
 ```
 
 Aquí una versión de si la recodificación es hacia carácteres (mismo ejemplo que con `recode()` de `dplyr`)
 
-```{r}
+
+```r
 datos_proc %$% 
   car::recode(.$sexo,
               c('"Mujer"="Femenino";"Hombre"= "Masculino"'),
-              as.factor = T) %>% head(.)
+              as.factor = T) %&gt;% head(.)
 ```
 
 ---
@@ -867,9 +882,9 @@ datos_proc %$%
 
 La función `if_else()` permite construir variables en base a condiciones lógicas. Su estructura es la siguiente
 
-```{r}
-if_else(condición,TRUE,FALSE)
 
+```r
+if_else(condición,TRUE,FALSE)
 ```
 
 
@@ -879,8 +894,9 @@ if_else(condición,TRUE,FALSE)
 ]
 Crearemos una variable que *dummy* que indica si el respondente es *FONASA* o no lo es. 
 
-```{r eval=FALSE, include=TRUE}
-datos_proc %>% 
+
+```r
+datos_proc %&gt;% 
  		 mutate(fonasa = if_else(prev == "Sistema Público FONASA", 1, 0))
 ```
 
@@ -890,8 +906,9 @@ datos_proc %>%
 ]
 - Uno/a puede ser *ingenioso* y ocuparla como **validador**
 
-```{r echo=TRUE}
-datos_proc %>% 
+
+```r
+datos_proc %&gt;% 
   mutate(validador_ingreso = if_else(is.na(ytoth), FALSE, TRUE))
 ```
 
@@ -903,7 +920,8 @@ datos_proc %>%
 ]
 - Para *colapsar* categorías o construir categorías en base a varias condiciones es `case_when()` por lo lógico y *fácil* que es de entender
 
-```{r}
+
+```r
 case_when(variable == condicion ~ valor1,
           variable == condicion ~ valor2,
           TRUE ~ NA_real)
@@ -917,46 +935,49 @@ case_when(variable == condicion ~ valor1,
 ]
 Un ejemplo claro es cuando queremos construir *categorías de edad*
 
-```{r}
-datos_proc %>% 
-  mutate(edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
-                                TRUE ~ NA_character_)) %>% 
+
+```r
+datos_proc %&gt;% 
+  mutate(edad_tramo = case_when(edad &lt;=39 ~  "Joven",
+                                edad &gt; 39 &amp; edad &lt;=59 ~ "Adulto",
+                                edad &gt; 59 ~ "Adulto mayor",
+                                TRUE ~ NA_character_)) %&gt;% 
   select(edad, edad_tramo)
 ```
 
-- ¡Utilizamos operadores lógicos (`&`)!
+- ¡Utilizamos operadores lógicos (`&amp;`)!
 
 
 ---
 # ¡Resumen!
-```{r}
-datos_proc %>% 
- filter(edad >= 15 & tot_per <7) %>%
+
+```r
+datos_proc %&gt;% 
+ filter(edad &gt;= 15 &amp; tot_per &lt;7) %&gt;%
     mutate(ingreso_percapita = ytoth/tot_per,
-           edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
+           edad_tramo = case_when(edad &lt;=39 ~  "Joven",
+                                edad &gt; 39 &amp; edad &lt;=59 ~ "Adulto",
+                                edad &gt; 59 ~ "Adulto mayor",
                                 TRUE ~ NA_character_),
            fonasa = if_else(prev == "Sistema Público FONASA", 1, 0),
-           ocupacion = as_factor(ocupacion)) %>%
+           ocupacion = as_factor(ocupacion)) %&gt;%
   select(sexo, edad_tramo, ocupacion, ingreso_percapita, ife = y26d_hog)
 ```
 
 ---
 # ¡Resumen!
 ¡Ahora que estamos seguras/os sobre-escribimos la base!
-```{r}
-datos_proc <- datos_proc %>% 
- filter(edad >= 15 & tot_per <7) %>%
+
+```r
+datos_proc &lt;- datos_proc %&gt;% 
+ filter(edad &gt;= 15 &amp; tot_per &lt;7) %&gt;%
     mutate(ingreso_percapita = ytoth/tot_per,
-           edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
+           edad_tramo = case_when(edad &lt;=39 ~  "Joven",
+                                edad &gt; 39 &amp; edad &lt;=59 ~ "Adulto",
+                                edad &gt; 59 ~ "Adulto mayor",
                                 TRUE ~ NA_character_),
            fonasa = if_else(prev == "Sistema Público FONASA", 1, 0),
-           ocupacion = as_factor(ocupacion)) %>%
+           ocupacion = as_factor(ocupacion)) %&gt;%
   select(sexo, edad_tramo, ocupacion, ingreso_percapita, ife = y26d_hog)
 ```
 
@@ -964,7 +985,8 @@ datos_proc <- datos_proc %>%
 # Antes de guardar
 
 Podemos visualizar la base resultante a partir de `view_df()` de `sjPlot`
-```{r, message= F, error= F, cache.comments= F}
+
+```r
 sjPlot::view_df(datos_proc)
 ```
 
@@ -973,7 +995,8 @@ sjPlot::view_df(datos_proc)
 
 Para guardar la base de datos procesada, debes dirigir la ruta hacia tu Rproject
 
-```{r eval=FALSE, include=TRUE}
+
+```r
 saveRDS(datos_proc, file = "../nombre_project/output/datos_proc.rds")
 ```
 
@@ -1033,16 +1056,16 @@ class: center middle main-title section-title-1 top-logo
 ]
 
 .class-info[
-<br>
-**Sesión N° 4**<br>
-`r format(Sys.Date(), '%d %B %Y')`<br>
+&lt;br&gt;
+**Sesión N° 4**&lt;br&gt;
+02 octubre 2021&lt;br&gt;
 **Análisis de datos estadísticos en R**
-<br>
+&lt;br&gt;
 
 .pull-right.small[
-**Profesora** Valentina Andrade de la Horra <br>
+**Profesora** Valentina Andrade de la Horra &lt;br&gt;
 **Ayudantes** Dafne Jaime y Nicolás Godoy
-.tiny[Universidad Alberto Hurtado<br>
+.tiny[Universidad Alberto Hurtado&lt;br&gt;
 ]
 ]
 
@@ -1050,3 +1073,158 @@ class: center middle main-title section-title-1 top-logo
 
 ???
 https://c.tenor.com/7mxJp29REVkAAAAC/scaryfeet-monstersinc.gif
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script src="libs/macros.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9",
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url("../img/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
