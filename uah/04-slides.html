@@ -10,7 +10,7 @@
     <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view-0.2.6/tile-view.js"></script>
     <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x1717ab890fa485e889b1157681ad5ae","expires":14}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xef64425a036415da3529d302d6a1a6e","expires":14}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -271,10 +271,10 @@ class: center title title-8
 
 ```r
 obj_encuesta &lt;- data %&gt;% #Creamos un nuevo objeto encuesta con la información de nuestros datos
-  as_survey_design(ids = varunit, #Aplicamos diseño muestral, especificando los ids a partir del conglomerado de varianza,
-                   strata = varstrat,#strat con los estratos de varianza,
-                   fpc = stratn, #especificando que la estimación está corregida con una población finita (cuando se pueda),
-                   weights = exp) #y los ponderadores con weights
+  as_survey_design(ids = conglomerado, #Aplicamos diseño muestral, especificando los ids a partir del conglomerado de varianza,
+                   strata = estrato,#strat con los estratos de varianza,
+                   fpc = nestrato, #especificando que la estimación está corregida con una población finita (cuando se pueda),
+                   weights = ponderador) #y los ponderadores con weights
 ```
 
 ---
@@ -294,7 +294,240 @@ class:center title title-8
 
 --
 
-![:scale 25%](https://www.pngitem.com/pimgs/m/137-1373377_transparent-cool-png-images-kirby-with-sunglasses-png.png)
+![:scale 25%](https://github.com/learn-R/slides/blob/main/img/04/kirby-cool.png?raw=true)
+
+---
+class: center title title-8
+
+# Creando el objeto encuesta
+
+En CASEN 2020 no viene incluida la variable fpc, por lo que debemos crearla
+
+
+```r
+data &lt;- data %&gt;% 
+  group_by(varstrat) %&gt;% #Agrupando por varstrat
+  mutate(stratn = sum(exp)) %&gt;% #Calculamos el total de personas por estrato
+  ungroup() #¡No olvidemos desagrupar!
+```
+
+---
+class: center title title-8
+
+# Creando el objeto encuesta (¡por fin!)
+
+En CASEN 2020 no viene incluida la variable fpc, por lo que debemos crearla
+
+
+```r
+casen_regional &lt;- data %&gt;% #Creamos un nuevo objeto llamado casen_regional con la información de data
+  as_survey_design(ids = varunit, #Aplicamos diseño muestral, especificando los ids a partir de varunit,
+                   strata = varstrat,#los estratos a partir de varstrat,
+                   fpc = stratn, #especificando que la estimación es con una población finita
+                   weights = exp) #y los ponderadores con exp
+```
+
+---
+class: center title title-8
+
+# Las ventajas de `srvyr`
+
+.box-inv-5[Existen otras librerías que nos permiten crear objetos encuesta]
+
+--
+
+.box-inv-6[Sin embargo, nos quedamos con `srvyr`]
+
+--
+
+.box-inv-7[Dado que nos permite dialogar con librerías conocidas, como `dplyr`]
+
+--
+
+.box-inv-2[¡Sin considerar la simpleza de los cálculos!]
+---
+layout: false
+class: center main-title section-title-8 top-logo
+
+# ¡A calcular!
+
+---
+class: title title-8
+# ¿Qué calcularemos?
+
+- `srvyr` provee de muchas funciones para cálculos de diferentes estadísticos
+- No obstante, aquí calcularemos **medias**, **proporciones** y **totales**
+
+--
+
+.box-inv-1[Son los estadísticos más usuales de reportar]
+
+--
+
+.box-inv-2[además de ser **insesgados**]
+
+---
+# Cálculo de medias `survey_mean()`
+
+
+```r
+## Cálculo simple
+casen_regional %&gt;% #Con casen_regional
+  summarize(ing_medio = srvyr::survey_mean(ing_tot_hog, na.rm=T)) #Calculamos el ingreso medio poblacional
+```
+
+---
+# Comparamos con el cálculo a nivel muestral
+
+
+```r
+data %&gt;% #Con data
+  summarise(ing_medio = mean(ing_tot_hog, na.rm=T)) #Calculamos el ingreso medio muestral
+```
+
+---
+
+# Incorporamos Intervalos de Confianza al 95%
+
+
+```r
+casen_regional %&gt;%#Con casen_regional
+  summarise(ing_medio = survey_mean(ing_tot_hog, vartype = "ci", na.rm=T)) #Calculamos el 
+                                                                           #ingreso medio poblacional, 
+                                                                           #y sus intervalos de confianza
+```
+
+--- 
+
+# ¿Y si queremos otro nivel de confianza?
+
+
+```r
+casen_regional %&gt;% #Con casen_regional
+  summarise(ing_medio95 = survey_mean(ing_tot_hog, vartype = "ci", level = .95, na.rm=T), #Al 95%
+            ing_medio99 = survey_mean(ing_tot_hog, vartype = "ci", level = .99, na.rm=T)) #Al 99%
+```
+
+---
+# Agrupamos por sexo (¡como con dplyr!)
+
+
+```r
+casen_regional %&gt;% #Con casen_regional
+  group_by(sexo) %&gt;% #Agrupamos por sexo
+  summarise(ing_medio = survey_mean(ing_tot_hog, vartype = "ci", na.rm=T)) #Calculamos el ingreso medio 
+                                                                           #poblacional, y sus intervalos de 
+                                                                           #confianza
+```
+
+---
+# ¡Transformemos en wide con `tidyr`!
+
+
+```r
+ing_region &lt;- casen_regional %&gt;% 
+  group_by(sexo) %&gt;% #Agrupamos por region
+  summarise(ing_medio = survey_mean(ing_tot_hog, vartype = "ci", na.rm=T)) %&gt;% #Calculamos el ingreso medio poblacional, y sus intervalos de confianza
+  select(sexo, ing_medio) %&gt;% #Seleccionamos region e ing_medio
+  pivot_wider(names_from = "sexo", #Pivoteamos, extrayendo los nombres de las columnas desde region
+              values_from = "ing_medio") #Y los valores desde ing_medio
+```
+
+---
+
+# Cálculo de proporciones con `survey_prop()`
+
+.box-inv-2[Una diferencia con `survey_mean()`: ¡Debemos agrupar por la(s) variable(s) categórica(s) de interés!]
+
+
+```r
+## Cálculo simple
+casen_regional %&gt;% #Con casen_regional
+  group_by(pobreza) %&gt;% #Agrupamos por pobreza
+  summarise(prop = survey_prop(na.rm = T)) #Y calculamos las proporciones
+```
+
+---
+# Transformando a porcentaje (%) con `mutate()`
+
+
+```r
+## Transformando a porcentaje
+casen_regional %&gt;% #Con casen_regional
+  group_by(pobreza) %&gt;% #Agrupamos por pobreza
+  summarise(prop = survey_prop(na.rm = T))%&gt;% #Calculamos las proporciones
+  mutate(per = prop*100) #Creamos una nueva columna multiplicando las proporciones *100 para obtener porcentajes
+```
+
+---
+# Incorporamos los totales con `survey_total()`
+
+
+```r
+## Incorporamos cálculo de frecuencias
+casen_regional %&gt;% #Con casen_regional
+  group_by(pobreza) %&gt;% #Agrupamos por pobreza
+  summarise(prop = survey_prop(na.rm = T), #Calculamos las proporciones
+            total = survey_total(na.rm=T))%&gt;% #Y el total por categorías
+  mutate(per = prop*100) #Creamos una nueva columna multiplicando las proporciones *100 para obtener porcentajes
+```
+
+---
+# Y los Intervalos de Confianza al 95%
+
+
+```r
+## Con Intervalos de confianza al 95%
+casen_regional %&gt;% #Con casen_regional
+  group_by(pobreza) %&gt;% #Agrupamos por pobreza
+  summarise(prop = survey_prop(vartype = "ci", na.rm = T)) #Incorporamos intervalos de confianza
+```
+
+---
+# ¡También podemos transformarlos en porcentajes!
+
+
+```r
+## Transformamos el estimador puntual y los límites del intervalo a porcentajes
+## Incorporamos el total
+casen_regional %&gt;% #Con casen_regional
+  group_by(pobreza) %&gt;% #Agrupamos por pobreza
+  summarise(prop = survey_prop(vartype = "ci", na.rm = T), #Calculamos las proporciones con intervalos de confianza
+            total = survey_total(vartype = "ci", na.rm=T)) %&gt;% #Así como el total por categoría
+  mutate(prop = prop*100, #Multiplicamos las proporciones *100,
+         prop_low = prop_low*100, #así como el límite inferior 
+         prop_upp = prop_upp*100) #y superior, para obtener porcentajes
+```
+
+---
+# Cruzamos variables
+
+
+```r
+## Cruzar dos variables
+casen_regional %&gt;% #Creamos un objeto llamado pobreza_reg con datos de casen_regional
+  group_by(pobreza, sexo) %&gt;% #Agrupamos por pobreza y sexo
+  summarise(prop = survey_prop(vartype = "ci", na.rm = T), #Calculamos las proporciones con intervalos de confianza
+            total = survey_total(vartype = "ci", na.rm=T)) %&gt;% #Así como el total por categoría
+  mutate(prop = prop*100)
+```
+
+---
+# ¡Transformemos en wide con `tidyr`!
+
+
+```r
+## Crear objeto wide
+pobreza_reg &lt;- casen_regional %&gt;% #Creamos un objeto llamado pobreza_reg con datos de casen_regional
+  group_by(region, pobreza) %&gt;% #Agrupamos por region y pobreza
+  summarise(prop = survey_prop(vartype = "ci", na.rm = T), #Calculamos las proporciones con intervalos de confianza
+            total = survey_total(vartype = "ci", na.rm=T)) %&gt;% #Así como el total por categoría
+  mutate(per = prop*100) %&gt;% #Multiplicamos las proporciones *100 para obtener porcentajes
+  select(region, pobreza, per, total) %&gt;% #Seleccionamos region, pobreza, per y total
+  pivot_wider(names_from = "pobreza", #Pivoteamos a lo ancho, extrayendo los nombres de las columnas desde pobreza
+              values_from = c("per", "total")) #y los valores desde per y total
+```
+
 ---
 class: title title-2
 
