@@ -56,7 +56,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = F,
                       fig.retina = 3, fig.align = "center")
 ```
 
-class: center middle main-title section-title-1 top-logo
+class: center middle main-title section-title-8 top-logo
 
 .small[
 # Muestras complejas y precisión de inferencia estadística
@@ -185,7 +185,7 @@ class: title title-8
 .medium.box-inv-2[Estratificado]
 
 - Se establece un criterio para definir estratos (en este caso, comuna/zona), y se escogen aleatoriamente unidades más pequeñas (conglomerados), a partir de las cuales se levanta el muestreo.
-- En el caso de CASEN, los conglomerados los constituyen las **manzanas**, *unidades primarias de muestreo* (UPM).
+- En el caso de CASEN, los conglomerados están constituidos por las **manzanas**, *unidades primarias de muestreo* (UPM).
 
 ---
 class: title title-8
@@ -197,7 +197,7 @@ class: title title-8
 - La estratificación se realiza en distintos niveles
   + Primero, se seleccionan aleatoriamente manzanas de cada estrato comuna/zona
   + Luego, se escogen al azar un número de viviendas de cada manzana
-  + De cada vivienda, se escoge al azar un un hogar
+  + De cada vivienda, se escoge al azar un hogar
   + De cada hogar, responde (idealmente) el o la jefa de hogar, u otro adulto/a presente
 
 ---
@@ -218,7 +218,7 @@ class: title title-8
 #Recursos de la práctica
 
 - Este práctico fue trabajado con datos de [CASEN 2020](http://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-en-pandemia-2020).
-- Los datos ya fueron procesados anteriormente, para centrar el trabajo en el cálculo de parámetros
+- Los datos ya fueron procesados anteriormente, para centrar el trabajo en el cálculo de parámetros.
 - Al trabajar con muestras complejas, es **fundamental** asegurarnos de:
   + Recodificar correctamente los valores de cada variable
   + Eliminar los valores nulos de los datos
@@ -229,7 +229,7 @@ class: title title-8
 class: center middle main-title section-title-8 top-logo
 name: basics
 
-# 1: Flujo del Rproject
+# 1: Flujo del RProject
 
 ---
 class: title title-inv-8
@@ -298,9 +298,9 @@ Para **importar** los datos en R debemos tener en consideración tres cosas:
 
 Para **importar** los datos en R debemos tener en consideración tres cosas:
 
-1. Cómo se llaman los datos (en nuestro caso casen_proc)
+1. Cómo se llaman los datos (en nuestro caso casen_proc);
 
-2. El formato de nuestros datos (en nuestro caso .rds)
+2. El formato de nuestros datos (en nuestro caso .rds); y
 
 3. El lugar de donde están alojados nuestros datos (en este caso, desde GitHub). 
 
@@ -406,7 +406,12 @@ obj_encuesta <- data %>% #Creamos un nuevo objeto encuesta con la información d
                    fpc = nestrato, #especificando que la estimación está corregida con una población finita (cuando se pueda),
                    weights = ponderador) #y los ponderadores con weights
 ```
+---
+class: center title title-8
 
+# Objeto encuesta
+
+![:scale 70%](https://github.com/learn-R/slides/blob/main/img/04/img-list.png?raw=true)
 ---
 class:center title title-8
 
@@ -464,11 +469,11 @@ class: center title title-8
 
 --
 
-.box-inv-6[Sin embargo, nos quedamos con `srvyr`]
+.box-inv-6[Sin embargo, nos quedamos con `srvyr` ¿por qué?]
 
 --
 
-.box-inv-7[Dado que nos permite dialogar con librerías conocidas, como `dplyr`]
+.box-inv-7[Nos permite dialogar con librerías conocidas, como `dplyr`]
 
 --
 
@@ -493,6 +498,10 @@ class: title title-8
 --
 
 .box-inv-2[además de ser **insesgados**]
+
+--
+
+- Entonces, emplearemos `survey_mean()`, `survey_prop()` y `survey_total()`
 
 ---
 # Cálculo de medias `survey_mean()`
@@ -644,701 +653,20 @@ pobreza_reg <- casen_regional %>% #Creamos un objeto llamado pobreza_reg con dat
 ```
 
 ---
-class: title title-2
 
-# 1. Recursos de la práctica
-
-- Datos: *Encuesta de Caracterización Socioeconómica (CASEN)* (2020).
-
-- Para ello, deben dirigirse al [siguiente enlace](https://drive.google.com/drive/folders/1Orgb3Qb9LcjTfjYMdIdy7SWd3xDMrTbG?usp=sharing) y descargar los zip.
-
-
-- [**Libro de códigos**](http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2020/Libro_de_codigos_Base_de_Datos_Casen_en_Pandemia_2020.pdf) antes de trabajar una base de datos.
-
----
 layout: false
-class: center middle section-title-2 top-logo
-
-# Al explorar nuestros datos
-
---
-
-# Pudimos notar cierta información sobre las columnas que de a poco debemos asimilar
-
----
-layout: true
-class: title title-2
----
-
-# Tipos de datos
-
---
-
-- Las que principalmente nos interesarán son los "vectores"
-
---
-
-- En nuestro "idioma", son las **variables**.
---
-
-- En general, una combinación de vectores da origen a una matriz (o **data frame** o "base de datos" [^1])
-
-[^1]: *Un error omitido por muchas/os* 
-
----
-# Tipos de datos: columnas
-
-Relación entre clase y nivel de medición de la variable
-
-- `numeric`
-
-- `character`
-
-- `factor`
-
-- hay varios más...
-
----
-# Operadores
-
-- Símbolos que no son de uso exclusivo en R ¡probablemente los conoces desde tus cursos de matemática! (*la suma, la resta*)
-
-- Ahora bien, no todos tienen el mismo significado que en otros softwares.
-
-- Tendrán distintos objetivos: relacionar, condicionar, excluir, repetir etc. Lo importante: buscan darle un **sentido** a la "orden" que le estamos dando a R.
-
-- Los utilizaremos cuando **filtremos** nuestros datos para personas de ciertas categorías, cuando **calculemos variables** nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos "concatenados".
-
----
-class: title title-2
-
-# Operadores relacionales 
-
-Se usan para hacer comparaciones. Cuando en la *Tabla 1* nos referimos a `un valor`, esto refiere tambien a `variables`
-
-| Símbolo  | Función |
-|---------:|:--------|
-| `<`      |  Un valor es menor que otro |
-| `>`      |  Un valor es mayor que otro |
-| `==`     |  Un valor es igual que otro [^1] |
-| `<=`     |  Un valor es menor o igual que otro |
-| `>=`     |  Un valor es mayor o igual que otro |
-| `!=`     |  Un valor es distinto o diferente que otro|
-| `%in%`   |  Un valor pertenece al conjunto designado [^2] |
-| `is.na()`|  El valor es perdido o `NA` |
-| `!is.na()`| El valor es distinto de  `NA` |
-
----
-# Tips
-
-- ¡Atención! Fíjate bien que `==` y `=` son distintos. En R `==` es indicar *"igual a"*, mientras que  `=` es *asignar* (sinónimo de `<-`)
-
-- El operador `%in%` es **muy utilizado**, sirve para indicar que algo está dentro de una cadena de valores. 
-
----
-# Operadores aritméticos
-
-Realizan operaciones, como la suma, resta, división, entre otros.
-
-| Símbolo  | Función |
-|---------:|:--------|
-| `+`      |  Suma |
-| `-`      |  Resta|
-| `*`     |  Multiplicación |
-| `/`     |  División |
-| `^`     |  Elevado |
-
----
-
-# Operadores de asignación
-
-Hay dos formas de asignar:
-
-- `objetoA <- objetoB`
-- `objetoA = objetoB`.
-
-Ambas implican que lo que se este realizando en el *objetoB* implica que eso va a producir o generar al *objetoA*.
-
-La diferencia está en que la segunda opción es más utilizada dentro de las funciones pues su significado más bien es *"es"*
-
----
-
-# Operadores booleanos
-
-Describen relaciones **lógicas** o **condicionales**
-
-| Símbolo  | Función |
-|---------:|:--------|
-| `&`      |  Indica un *y* lógico |
-| `"|"`      |  Indica un *o* lógico |
-| `xor()`  |  Excluye la condición  |
-| `!`      |  Distinto de ... |
-| `any`    |  Ninguna de las condiciones serán utilizadas |
-| `all`    |  Todas las condiciones serán ocupadas |
-
-
----
-
-# Resumen
-
-![](https://github.com/learn-R/slides/raw/main/img/02/01operad.png)
-
-Figura 1: Resumen de operadores
-
----
-layout: false
-class: center middle section-title-2 top-logo
-
-# Redoble de tambores, el más importante de la fiesta 🥁
-
----
-layout: true
-class: title title-2
-
----
-# Operador pipeline %>% 
-
-- `%>%` (llamado `pipe`) no es un operador que esté contenido en las funciones base del lenguaje R (origen `magrittr` de `tidyverse`)
-
-- Es de los operadores **más útiles y utilizados** en R.
-
---
-
-**En el teclado**
-
-- `Ctrl + shift + M` Para Windows
-- `⌘ + shift + M` Para Mac
-
-
----
-# Operador pipeline %>% 
-
-- Función: **concatenar** múltiples funciones y procesos.
-
---
-
-- ¿Cómo es eso? 🤨
-
---
-- ¡Tranquila/o! Ya lo veremos 🧘🏽‍♂️
-
----
-
-# ¡Ya queremos ir a practicar! 🏃🏽‍♀️🏃🏽
-
----
-
-# Transformación y selección de variables con `dplyr()`
-
---
-
-1.  `select()` para seleccionar variables
-
---
-
-2.  `filter()` para filtrar observaciones
-
---
-
-3. `mutate()` crear nuevas variables
-  
-  -  `recode()`, `if_else()`, `case_when()`
-
----
-
-# `select()` para manipular variables
-
-- Para **seleccionar variables** ocuparemos `select()`.
-
---
-
-Si queremos incluir las variables `variable1`, `variable2` y `variable3`
-```{r, eval = F}
-select(datos, variable1, variable2, variable3)
-```
-
---
-Si queremos excluir anteponemos un menos `-variable1`
-
-```{r, eval = F}
-select(datos, -variable1)
-```
-
----
-# Formas de hacer `select()`
-
-1. Por indexación
-
-```{r}
-select(datos, 1,2) # la primera y la segunda columna
-select(datos, 1:4) # la primera hasta la cuarta columna
-
-```
-
-2. por nombre de columna
-
-```{r}
-select(datos, edad, sexo, o1)
-```
-
----
-# Trucos de `select()`
-
-1. Renombrar en el mismo proceso de selección indicando `nuevo_nombre = nombre_original` en el proceso de selección
-
-```{r}
-select(datos, edad, sexo, ocupacion = o1)
-```
-
-2. Reordenar variables
-
-- `everything()` nos indica que ponga "todo el resto".
-
-```{r}
-select(datos, id_persona, sexo, edad, everything())
-```
-
----
-
-# Formas de hacer `select()`
-
-3. Con patrones de texto: prefijos, sufijos o partes de *cómo están nombradas las variables*.
-
-- Poner textos y expresiones regulares entre **comillas**.
-
-- `starts_with()`: prefijo 
-- `ends_with() `:  sufijo
-- `contains()` : contiene una cadena de texto literal
-- `matches()` : coincide con una expresión regular
-
----
-# Formas de hacer `select()`
-
-```{r}
-select(datos, starts_with("a"), ends_with("preg"))
-
-# También se pueden combinar con operadores logicos
-
-select(datos, starts_with("y1")&ends_with("preg")) 
-select(datos, contains("pobre")|contains("vivienda"))
-select(datos, matches("pobreza_|vivienda"))
-```
-
----
-# Formas de hacer `select()`
-
-4. Con condiciones lógicas
-
-- `select()` + `where()`:  *"seleciona donde"*, ese *donde* responde a una condición que cumple cierta variable.
-
-- Por ejemplo, queremos seleccionar todas las variables que son carácteres (`is.character`):
-
-```{r}
-select(datos, where(is.character))
-```
-
----
-layout: false
-
-- Luego de la exploración de datos mediante a funciones como `find_var()` de `sjmisc` decidimos trabajar con las siguientes variables.
-
-- `edad`
-- `sexo`
-- `s13`: previsión de salud
-- `tot_per`: número de personas en el hogar
-- `ytoth`: ingresos totales del hogar
-- `o1`: ocupación
-- `y26d_total`: Monto del IFE
-- `y26d_hog`: ¿Alguien recibió el IFE?
-
-¡Apliquémos conocimientos!
-
-```{r}
-select(datos, edad, sexo, prev =592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&matches("total|hog"))
-```
-
----
-layout: true
-class: title title-4
----
-# Nuevo data set
-
-- Buena práctica trabajar solo con las columnas que utilizaremos para el análisis, principalmente pues disminuye el *uso de memoria*
-
-```{r}
-datos_proc <- select(datos, edad, sexo, prev = 592, ocupacion = o1, tot_per, ytoth, starts_with("y26d_")&matches("total|hog"))
-```
-
----
-
-# ¡Ejercicio en grupos!
-
---
-
-- Seleccionen una variable de nivel educacional, region, sexo, la variable 700 y todas las que refieran a ingresos.
-
-- Indiquen cómo hicieron ese procedimiento
-
-- Con estos cambios, creen un nuevo objeto llamado `ejercicio`
-
----
-
-
-# ¿Qué pasa si quiero trabajar con un *subset* de casos?
-
---
-
-# La respuesta es `filter()`
-
----
-
-# `filter()` para manipular observaciones
-
-- La función `filter()` de `dplyr` escoge o extrae filas basados en sus valores, subdivide un data frame (*subset*)
-
-- Uso de los **operadores**
-
---
-
-```{r, eval = F}
-filter(datos, condicion_para filtrar)
-```
-
-Imaginemos que queremos filtrar valores mayores o iguales 3 **respecto a la variable1**
-
-```{r, eval = F}
-filter(datos, variable1 >= 3)
-```
-
----
-# Formas de `filter()`
-
-1. Con números
-
-Imaginémos que queremos una base con las personas mayores de 15 años. 
-```{r}
-filter(datos_proc, edad >= 15)
-filter(datos_proc, edad >= 15 & tot_per <7)
-```
-
---
-
-Pero también que pertenezcan a hogares con menos de 7 personas. 
-```{r}
-filter(datos_proc, edad >= 15 & tot_per <7)
-```
-
----
-# Formas de `filter()`
-
-2. Con carácteres
-
-- Importancia de explorar los datos
-  1. Fijarse bien cómo están escritos
-  2. Clase (ver si efectivamente son carácteres)
-
-- R es *sensible* a cómo está escrito el texto (*key sensitive*)
-
----
-# Truco
-
-- Cuando haya problemas aplicar `as_factor()` que permite conservar los niveles pero definiendo sus categorías de respuesta en base a la etiqueta que traen (el `lbl`)
-
-- Consejo útil sobre todo en bases que provienen de SPSS y STATA
-
----
-# Formas de `filter()`
-
-```{r}
-datos_proc$sexo <- as_factor(datos_proc$sexo)
-```
-
-```{r}
-filter(datos_proc, sexo == "Mujer")
-filter(datos_proc, sexo != "Hombre")
-```
-
----
-# Un clásico, y la solución: %in%
-
-- ¿Cómo se seleccionan dos condiciones en carácter? Con el operador `%in%`
-
-```{r}
-datos_proc$prev <- as_factor(datos_proc$prev)
-
-filter(datos_proc, prev %in% c("Sistema Público FONASA", "ISAPRE"))
-```
-
----
-# Ejercicio
-
-- Con su data frame `ejercicio` filtren
-  - Excluyan a las personas sin estudios
-  - Filtren a la persona con máximos ingresos del hogar
-  - Conserven a las personas de la RM y Valparaíso. 
-
----
-class: center middle section-title-4 top-logo
-
-# ¿Y si quiero crear variables nuevas?
-
---
-
-.box-5[`mutate()`]
----
-
-# `mutate()` para transformación de  variables
-
-- `mutate()` permite hacer operaciones para crear nuevas variables o transformar las ya existentes. 
-
-```{r, eval = F}
-mutate(datos, nueva_variable = cálculo o condición)
-```
-
----
-# Formas de hacer `mutate()`
-
-1. En base a cálculo
-
-```{r echo=TRUE}
-mutate(datos_proc, nueva_variable = 3+2)
-mutate(datos_proc, nueva_variable = 3+2,
-       ingreso_percapita = ytoth/tot_per)
-```
-
----
-class: center middle section-title-4 top-logo
-
-# Aquí mucha mucha atención...
-
---
-
-# Viene la aplicación de  %>%
-
-.box-inv-4[¿Qué pasa si queremos, luego de calcular nuestras nuevas variables, filtrar un ingreso per cápita menor o igual a $1.000.000]
-
----
-# `%>%`
-
-```{r}
-datos %>% 
-  mutate(., nueva_variable = calculo ) %>% 
-  filter(., nueva_variable <= valor)
-
-```
-
---
-
-- Básicamente, el ` %>% ` permite "ingresar" nuestra base de datos como argumento para cada función e ir operándola en proceso
-
----
-# `%>%` 
-
-```{r}
-datos_proc %>%
-  mutate(ingreso_percapita = ytoth/tot_per) %>% 
-  filter(ingreso_percapita <= 1000000)
-```
---
- 
-**En el teclado**
-
-- `Ctrl + shift + M` Para Windows
-- `⌘ + shift + M` Para Mac
-
----
-layout: false
-class: center middle section-title-5 top-logo
-
-# Crear nuevas variables utilizando *además* otras funciones
-
---
-
-## mutate(variable_nueva = alguna_funcion_genial)
-
-
----
-layout: true
-class: title title-5
-
-# Opciones para recodificar.
-
-- `dplyr::recode()` y  `car::recode()` 
-
-- Con `dplyr::recode()`: recodificamos las categorías de respuesta de Mujer a Femenino y de Hombre a Masculino
-
-```{r}
-datos_proc %>% 
-  mutate(sexo = dplyr::recode(sexo, "Mujer" = "Femenino", "Hombre" = "Masculino"))
-```
-
-- El problema de `recode()` que se utiliza dentro de `dplyr` es que si recodifico se pierde la etiqueta anterior.
-
----
-# Mi elección: `car::recode()`
-
-- **No olviden** los `::` por los posibles conflictos
-
-```{r}
-car::recode(datos$variable, c('valor_orig1=nuevo_valor1;valor_org2=nuevo_valor2'))
-```
-
----
-# Mi elección: `car::recode()`
-
-```{r}
-datos_proc %$% 
-  car::recode(.$y26d_hog, c('9=NA')) %>% head(.)
-```
-
-Aquí una versión de si la recodificación es hacia carácteres (mismo ejemplo que con `recode()` de `dplyr`)
-
-```{r}
-datos_proc %$% 
-  car::recode(.$sexo,
-              c('"Mujer"="Femenino";"Hombre"= "Masculino"'),
-              as.factor = T) %>% head(.)
-```
-
----
-.small[
-# `if_else()` variables condicionales
-]
-
-La función `if_else()` permite construir variables en base a condiciones lógicas. Su estructura es la siguiente
-
-```{r}
-if_else(condición,TRUE,FALSE)
-
-```
-
-
----
-.small[
-# `if_else()`  variables condicionales
-]
-Crearemos una variable que *dummy* que indica si el respondente es *FONASA* o no lo es. 
-
-```{r eval=FALSE, include=TRUE}
-datos_proc %>% 
- 		 mutate(fonasa = if_else(prev == "Sistema Público FONASA", 1, 0))
-```
-
----
-.small[
-# `if_else()` variables condicionales
-]
-- Uno/a puede ser *ingenioso* y ocuparla como **validador**
-
-```{r echo=TRUE}
-datos_proc %>% 
-  mutate(validador_ingreso = if_else(is.na(ytoth), FALSE, TRUE))
-```
-
-- También para *imputar valores* ¿cómo sería?
-
----
-.small[
-# `case_when()`  variables con múltiples condiciones
-]
-- Para *colapsar* categorías o construir categorías en base a varias condiciones es `case_when()` por lo lógico y *fácil* que es de entender
-
-```{r}
-case_when(variable == condicion ~ valor1,
-          variable == condicion ~ valor2,
-          TRUE ~ NA_real)
-```
-
-- Donde, TRUE indica "todo el resto", y el NA dependerá de la clase del valor de recodificación
-
----
-.small[
-# `case_when()` variables con múltiples condiciones
-]
-Un ejemplo claro es cuando queremos construir *categorías de edad*
-
-```{r}
-datos_proc %>% 
-  mutate(edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
-                                TRUE ~ NA_character_)) %>% 
-  select(edad, edad_tramo)
-```
-
-- ¡Utilizamos operadores lógicos (`&`)!
-
-
----
-# ¡Resumen!
-```{r}
-datos_proc %>% 
- filter(edad >= 15 & tot_per <7) %>%
-    mutate(ingreso_percapita = ytoth/tot_per,
-           edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
-                                TRUE ~ NA_character_),
-           fonasa = if_else(prev == "Sistema Público FONASA", 1, 0),
-           ocupacion = as_factor(ocupacion)) %>%
-  select(sexo, edad_tramo, ocupacion, ingreso_percapita, ife = y26d_hog)
-```
-
----
-# ¡Resumen!
-¡Ahora que estamos seguras/os sobre-escribimos la base!
-```{r}
-datos_proc <- datos_proc %>% 
- filter(edad >= 15 & tot_per <7) %>%
-    mutate(ingreso_percapita = ytoth/tot_per,
-           edad_tramo = case_when(edad <=39 ~  "Joven",
-                                edad > 39 & edad <=59 ~ "Adulto",
-                                edad > 59 ~ "Adulto mayor",
-                                TRUE ~ NA_character_),
-           fonasa = if_else(prev == "Sistema Público FONASA", 1, 0),
-           ocupacion = as_factor(ocupacion)) %>%
-  select(sexo, edad_tramo, ocupacion, ingreso_percapita, ife = y26d_hog)
-```
-
----
-# Antes de guardar
-
-Podemos visualizar la base resultante a partir de `view_df()` de `sjPlot`
-```{r, message= F, error= F, cache.comments= F}
-sjPlot::view_df(datos_proc)
-```
-
----
-# Paso 4: Guardar datos
-
-Para guardar la base de datos procesada, debes dirigir la ruta hacia tu Rproject
-
-```{r eval=FALSE, include=TRUE}
-saveRDS(datos_proc, file = "../nombre_project/output/datos_proc.rds")
-```
-
-- Recuerda revisar el [practico N°2](example/02-practico) si no recuerdas como expoertar datos.
-
----
-layout: false
-class: center section-title section-title-5 animated fadeIn
+class: center section-title section-title-8 animated fadeIn
 
 # En síntesis
 
-.box-2.medium.sp-after-half[**Básicos en manipulación**]
-.small.box-2[Operadores y tipos de datos]
-
 --
-
-.box-3.medium.sp-after-half[**Seleccionar variables**]
-
+.box-2.medium.sp-after-half[**Diseño muestral complejo**]
 --
-
-.box-4.medium.sp-after-half[**Filtrar**]
-
+.box-3.medium.sp-after-half[**El diseño muestral de CASEN 2020**]
 --
-
-.box-5.medium.sp-after-half[**Crear variables**]
+.box-4.medium.sp-after-half[**Creación de objetos encuesta con srvyr**]
+--
+.box-5.medium.sp-after-half[**Estimación, inferencia y tabulado**]
 
 ---
 class: center middle main-title section-title-4 top-logo
@@ -1360,13 +688,13 @@ layout: false
 
 --
 
-.box-inv-1[¡Ahora si que si! Nos vemos el próximo viernes en la última sesión]
+.box-inv-1[¡Ahora si que si! Nos vemos el próximo lunes]
 
 .center[
 ![](https://github.com/learn-R/slides/raw/main/img/01/monster-inc-2.gif)]
 ---
 layout: false
-class: center middle main-title section-title-1 top-logo
+class: center middle main-title section-title-8 top-logo
 
 .small[
 # Muestras complejas y precisión de inferencia estadística
