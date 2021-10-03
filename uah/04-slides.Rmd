@@ -84,24 +84,146 @@ class: title title-inv-8
 # Contenidos Sesión 8
 
 --
-
 .box-2.medium.sp-after-half[**Diseño muestral complejo**]
-
 --
-
 .box-3.medium.sp-after-half[**El diseño muestral de CASEN 2020**]
-
 --
-
 .box-4.medium.sp-after-half[**Creación de objetos encuesta con srvyr**]
-
 --
-
 .box-5.medium.sp-after-half[**Estimación e inferencia**]
+--
+.box-6.medium.sp-after-half[**Creación de tabulado con las estimaciones**]
+---
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# Diseño muestral complejo
+---
+class: title title-8
+
+# ¿Qué es?
+
+- Cuando trabajamos con encuestas, obtenemos información de sólo un grupo de la población objetivo: es decir, escogemos una muestra.
+- La mayoría de las veces, esperamos que la muestra pueda dar cuenta de determinadas características de la **población**.
+  + Es decir, esperamos que sea **representativa**.
+- Para ello, al diseñar la encuesta, establecemos ciertos criterios de selección de casos.
+- El ideal es que la selección de casos se realice a partir de un **muestreo aleatorio simple**, en que *cada sujeto tiene la misma posibilidad de ser elegido*.
+---
+class: title title-8
+
+# ¿Qué es?
+
+- Sin embargo, llevar a cabo un muestreo aleatorio simple suele no ser posible, dado lo costoso de su producción.
+- Por ello, se han elaborado métodos más complejos de selección de casos en que, si bien no todos los sujetos tienen la misma probabilidad de ser elegidos, es posible **conocer** su probabilidad de ser escogidos para la muestra.
+
+
+.medium.box-inv-1[Es decir, se crean muestras **probabilísticas**]
+
+---
+class: title title-8
+
+# ¿Qué es?
+
+- Estos métodos de selección de casos suelen ser más complejos que el muestreo aleatorio simple, pues van más allá de una selección aleatoria de casos entre todos los individuos que componen a la población. Hay distintos tipos
+  + Estratificado
+  + Por conglomerados
+  + Bietápico, multietápico
+  + Entre otros...
+  
+---
+class: title title-8
+
+# ¿Por qué emplear diseños muestrales?
+
+.medium.box-inv-1[Permite estimaciones a nivel poblacional]
 
 --
 
-.box-6.medium.sp-after-half[**Creación de tabulado con las estimaciones**]
+.medium.box-inv-2[Posibilita mejorar la precisión de nuestras estimaciones]
+
+--
+
+.medium.box-inv-3[Permite trabajar con un nivel de error conocido]
+
+---
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# El diseño muestral de CASEN 2020
+
+---
+class: title title-8
+
+# El diseño muestral de CASEN 2020
+
+Según el [manual metodológico de la encuesta](http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2020/Manual_del_Investigador_Casen_en_Pandemia_2020.pdf), su diseño muestral es
+
+.large.box-inv-1[Probabilístico]
+
+--
+
+.large.box-inv-2[Estratificado]
+
+--
+
+.large.box-inv-3[Multietápico]
+
+---
+class: title title-8
+
+# ¿Qué significa esto?
+
+.medium.box-inv-1[Probabilístico]
+
+- Conocemos la probabilidad de selección de cada sujeto (aunque sea !=1)
+
+---
+class: title title-8
+
+# ¿Qué significa esto?
+
+.medium.box-inv-2[Estratificado]
+
+- Se establece un criterio para definir estratos (en este caso, comuna/zona), y se escogen aleatoriamente unidades más pequeñas (conglomerados), a partir de las cuales se levanta el muestreo.
+- En el caso de CASEN, los conglomerados los constituyen las **manzanas**, *unidades primarias de muestreo* (UPM).
+
+---
+class: title title-8
+
+# ¿Qué significa esto?
+
+.medium.box-inv-3[Multietápico]
+
+- La estratificación se realiza en distintos niveles
+  + Primero, se seleccionan aleatoriamente manzanas de cada estrato comuna/zona
+  + Luego, se escogen al azar un número de viviendas de cada manzana
+  + De cada vivienda, se escoge al azar un un hogar
+  + De cada hogar, responde (idealmente) el o la jefa de hogar, u otro adulto/a presente
+
+---
+class: title title-8
+
+# ¿Qué significa esto?
+
+De este modo, CASEN 2020
+
+- Es representativa a nivel nacional
+- Presenta un error muestral de
+  + A nivel nacional, 0.4 puntos porcentuales (pp.) de error absoluto y 3.9% de error relativo
+  + A nivel regional, un error absoluto promedio de 1.6 pp. (con un máximo de 2.1 pp. para Coquimbo) y un error relativo promedio de 15.4% (con un máximo de 30.4% para Magallanes)
+- Para más información, revisar el [manual metodológico de la encuesta](http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2020/Manual_del_Investigador_Casen_en_Pandemia_2020.pdf). 
+---
+class: title title-8
+
+#Recursos de la práctica
+
+- Este práctico fue trabajado con datos de [CASEN 2020](http://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-en-pandemia-2020).
+- Los datos ya fueron procesados anteriormente, para centrar el trabajo en el cálculo de parámetros
+- Al trabajar con muestras complejas, es **fundamental** asegurarnos de:
+  + Recodificar correctamente los valores de cada variable
+  + Eliminar los valores nulos de los datos
+  + Transformar cada variable a su datatype correspondiente
+- Pueden revisar el *script de procesamiento* en la carpeta **R** 
 
 ---
 class: center middle main-title section-title-8 top-logo
