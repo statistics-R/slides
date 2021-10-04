@@ -531,6 +531,9 @@ casen_regional %>%#Con casen_regional
                                                                            #y sus intervalos de confianza
 ```
 
+???
+x
+
 --- 
 
 # ¿Y si queremos otro nivel de confianza?
@@ -540,6 +543,10 @@ casen_regional %>% #Con casen_regional
   summarise(ing_medio95 = survey_mean(ing_tot_hog, vartype = "ci", level = .95, na.rm=T), #Al 95%
             ing_medio99 = survey_mean(ing_tot_hog, vartype = "ci", level = .99, na.rm=T)) #Al 99%
 ```
+
+???
+
+x 
 
 ---
 # Agrupamos por sexo (¡como con dplyr!)
