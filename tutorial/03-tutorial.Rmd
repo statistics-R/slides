@@ -33,8 +33,8 @@ theme_set(theme_sjplot2())
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
 
 xaringanExtra::use_extra_styles(
-  hover_code_line = TRUE,         #<<
-  mute_unhighlighted_code = TRUE  #<<
+  hover_code_line = TRUE,         
+  mute_unhighlighted_code = TRUE  
 )
 ```
 
@@ -85,19 +85,69 @@ class: title title-inv-8
 # Contenidos 
 
 --
+.box-1.small.sp-after-half[**Referenciar**]
+--
 .box-2.small.sp-after-half[**Zotero**]
 --
-.box-3.small.sp-after-half[**BibTeX y Better BibTeX**]
+.box-3.small.sp-after-half[**RMarkdown y Markdown**]
 --
-.box-4.small.sp-after-half[**Instalación de Zotero**]
+.box-4.small.sp-after-half[**Zotero + RMarkdown**]
 --
-.box-5.small.sp-after-half[**Instalación de Better BibTeX**]
+.box-5.small.sp-after-half[**BibTeX y Better BibTeX**]
 --
-.box-6.small.sp-after-half[**Instalación de extensiones**]
+.box-6.small.sp-after-half[**Instalación de Zotero**]
+
+---
+
+class: title title-inv-8
+
+# Contenidos 
+
 --
-.box-7.small.sp-after-half[**RMarkdown y Markdown**]
+.box-7.small.sp-after-half[**Instalación de Better BibTeX**]
 --
-.box-8.small.sp-after-half[**Flujo de trabajo en Zotero**]
+.box-8.small.sp-after-half[**Instalación de extensiones**]
+--
+.box-4.small.sp-after-half[**Creación de cuenta**]
+--
+.box-1.small.sp-after-half[**Puente entre Rstudio y Zotero**]
+--
+.box-2.small.sp-after-half[**Flujo de trabajo en Zotero**]
+
+---
+
+class: right bottom main-title section-title-8 top-logo
+name: basics
+
+# Referenciar
+---
+
+class: title title-inv-8
+
+# Referenciar
+
+- Relevancia de referenciar adecuadamente
+
+???
+
+El proceso de reverenciar es uno de los más relevantes dentro de la vida académica, sin embargo este puede ser difícil y sujeto a muchos errores. 
+
+--
+
+- Facilitar el proceso y sistematizarlo
+
+???
+
+El sistematizar y facilitar este proceso no sólo puede ahorrar tiempo en trabajos, investigaciones, entre otros. Sino que potenciará el proceso volviéndolo más expedito.
+
+--
+
+- Zotero tiene la solución
+
+???
+
+Para ello hay varios gestores bibliográficos, uno de ellos  y el mejor para mi es **Zotero** y veremos por que
+
 ---
 
 class: right bottom main-title section-title-8 top-logo
@@ -119,6 +169,108 @@ class: title title-8
 .right[
 ![:scale 15%](https://upload.wikimedia.org/wikipedia/commons/9/95/Zotero_icon.png)]
 
+???
+
+[Zotero](www.zotero.org) es un software libre que almacena y administra las referencias bibliográficas, este no sólo es útil como aplicación sino que también tiene extensiones para navegadores como **Chrome, Mozilla Firefox, Safari y Opera**. Estos sincronizan la aplicación mientras se navega guardando los recursos a utilizar.
+
+---
+class: title title-8
+
+# Ventajas
+
+Sus ventajas son:
+
+- La automatización del almacenamiento de las referencias bibliográficas
+
+--
+
+- La colaboración y fácil sincronización de referencias
+--
+
+- Es un software de acceso abierto y gratis
+
+???
+Zotero es gratis en dos sentidos de la palabra: no necesitas pagar para usarlo y eres libre de realizar cambios en su código para que haga lo que quieras.
+--
+
+- Tiene un [foro](https://forums.zotero.org/) que facilita la solución de problemas con el software
+
+--
+
+- Mejora constantemente
+
+---
+
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# RMarkdown y Markdown
+
+???
+
+En este taller nos centraremos en el uso de Zotero más RMarkdown, pero a grandes rasgos, que es RM y M?
+
+---
+
+class: title title-8
+
+# Markdown y RMarkdown
+
+Markdown: 
+
+  - Lenguaje que brinda formato en escritura de texto simple. 
+--
+
+  - Para más información ir a la sección Recursos o al [link](https://learn-r-uah.netlify.app/resource/markdown/)
+
+
+RMarkdown: 
+
+  - Archivo que puede integrar código de R (mediante chunks) y texto en Markdown
+  
+--
+
+  - Para más información ir al práctico 2 o al [link](https://learn-r-uah.netlify.app/example/02-practico/)
+  
+---
+
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# Zotero + RMarkdown
+
+---
+
+class: title title-8
+
+# Zotero y RMarkdown
+
+??? 
+Ahora si, entonces porqué utilizaremos zotero y RMarkdown juntos? que ventajas tienen
+
+Sus ventajas son
+
+- Favorecer la creación de reportes estadísticos, tablas, referencias y análisis directamente en un archivo con escritura en texto plano
+
+--
+
+- Facilita la reproducibilidad y la colaboración académica 
+
+--
+
+- Facilita la apertura y acceso de información 
+
+--
+
+- Almacenamiento, exportación y formato
+
+???
+Entonces, RMarkdown más Zotero, significan no sólo un aumento en la reproducibilidad y la colaboración, sino que también una automatización del proceso de referenciar, volviéndolo más simple y sujeto a menos errores.
+
+Entonces, al almacenar las referencias dentro de Zotero, queda a disposición un conjunto de archivos o librería que puede exportarse, compartirse o sincronizarse directamente al documento a utilizar o presentar. 
+
+Para que este proceso de almacenamiento y exportación de referencias pueda utilizarse, el software debe transformarlo a un tipo de archivo y uno de ellos es BibTeX.
+
 
 ---
 
@@ -136,6 +288,12 @@ class: title title-8
 - BibTeX
    - un archivo con formato .bib
    - Etiquetas (Key)
+   
+???
+
+[BibteX](http://www.bibtex.org/Format/de/) es un tipo archivos con un formato .bib, los cuales funcionan en conjunto a *Latex* (es un sistema de composición de textos) para el uso de referencias bibliográficas.
+
+--
 
 ```
 @book`{"marx_1867",
@@ -144,11 +302,21 @@ class: title title-8
         author = {Marx, Karl}, 
         year = {1867}, 
         pages = {255–276}, 
-        file = {ruta}}`
+        file = {ruta}"}`
 ```
 
-.right[
+--
+.right-[
 ![:scale 15%](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/BibTeX_logo.png/799px-BibTeX_logo.png)]
+
+???
+Una entrada BibTeX inicia con una palabra después de `@` y una serie de etiquetas que definen las características de la entrada específica. Entre esas etiquetas pueden estar elementos como : autor, título, año, entre otros. Algunas etiquetas son obligatorias para ciertos tipos de entradas de BibTeX, otras son opcionales.
+
+En BibTeX las etiquetas son especificadas por su nombre seguido de un signo igual y su contenido, se debe considerar que las etiquetas no distinguen entre mayúsculas y minúsculas y que el contenido debe ir entre comillas, por ejemplo:
+
+
+Dentro del ejemplo es relevante la primera línea, ya que este nombre es el que nos permitirá traerla al texto. Si bien es útil conocer este formato de referencias, es un poco complejo al principio. Lo bueno es que Zotero administra estas referencias y las convierte automáticamente al formato .bib
+
 
 ---
 
@@ -156,13 +324,22 @@ class: title title-8
 
 # ¿Qué son?
 
+
 - BetterBibTeX
     - Funciones de BibTeX
     - Funciona desde Zotero
     - Ventaja
-    
+
+???
+[Better BibTeX](https://retorque.re/zotero-better-bibtex/) cumple las funciones de BibTeX pero la ventaja es que se puede sincronizar para una actualización automática desde los software que gestionan las referencias. Para esto presentaremos la aplicación Better(bib)tex (BBT), que funciona dentro de [Zotero](www.zotero.org). Las ventajas de esto es que ambos son de código abierto
+
+BBT genera una colección con formtao .bib en base a librerías construidas en Zotero, estas se configuran una vez y luego se mantiene sincronizada.
+
+¡Pero antes de ver como funcionan debemos asegurarnos de tener todo instalado!
+--
+   
 .right[
-![:scale 15%](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdqZyUzyi0HCReIrIKKWw83WahlKFck4UPZLfH2lIJcbqHPtff_FxudYeY4H06vwO_Cz0&usqp=CAU)]   
+![:scale 15%](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdqZyUzyi0HCReIrIKKWw83WahlKFck4UPZLfH2lIJcbqHPtff_FxudYeY4H06vwO_Cz0&usqp=CAU)]
 
 ---
 
@@ -269,24 +446,61 @@ Para instalar la extensión deben ir al [link](https://www.zotero.org/download/c
 class: center middle main-title section-title-8 top-logo
 name: basics
 
-# RMarkdown y Markdown
+# Creación de cuenta
 
 ---
 
 class: title title-8
 
-# Markdown y RMarkdown
+# Creación de cuenta
 
-Markdown: 
+Para crearse una cuenta deben ir al siguiente [link](https://www.zotero.org/user/register)
 
-  - Lenguaje que brinda formato en estcritura de texto simple.            
-  - Para más información ir a la sección Recursos o al [link](https://learn-r-uah.netlify.app/resource/markdown/)
+.center[
+![:scale 50%](https://github.com/learn-R/slides/raw/main/img/03/regits.png)]
 
 
-RMarkdown: 
+???
 
-  - Archivo que puede integrar código de R (mediante chunks) y texto en Markdown
-  - Para más información ir al práctico 2 o al [link](https://learn-r-uah.netlify.app/example/02-practico/)
+No es necesario crearse una cuenta para usar Zotero, pero si es recomendable
+
+---
+
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# Puente entre Rstudio y Zotero
+
+---
+class: title title-8
+
+# Puente entre Rstudio y Zotero
+
+Opción 1:
+
+`citr` este es un paquete que nos facilitara la conexión entre Zotero y Rstudio
+
+Se puede instalar de varias formas
+
+- con `install.packages`
+
+- Mediante `devtools::install_github("crsh/citr")`
+
+---
+class: title title-8
+
+# Puente entre Rstudio y Zotero
+
+- O descargando una antigua versión del [CRAN](https://cran.r-project.org/src/contrib/Archive/citr/) 
+
+Se reinicia R y luego podrán verlo en la sección Addins
+
+- Editor visual
+
+--
+
+??? 
+lo más probable es que citr genere problemas en su instalación, debido a que fue removido del CRAN, sin embargo la opción más factible es usar el editor visual o utilizar una versión antigua del paquete
 
 ---
 
@@ -301,10 +515,27 @@ class: title title-8
 
 # Flujo de trabajo en Zotero
 
-Es un proceso cíclico
+- Es un proceso cíclico
 
 .center[
 ![:scale 70%](https://github.com/learn-R/slides/raw/main/img/03/flujo-zotero.png)]
+
+
+???
+
+Con esto recapitaluaremos todo lo visto. Es importante entender el flujo de trabajo de Zotero + RMarkdown, porque resume todo lo visto, mientras más nos acostumbremos a este flujo de trabajo más simple se hará el proceso de referenciar a través de Zotero.
+
+Hay una etapa inicial de lectura y búsqueda de referencias, estas se almacenan y aquí entran de las ventajas de Zotero. Este software no sólo logra juntar todas las referencias utilizadas o leídas, sino que tiene muchas facilidades para incorporarla al archivo o librería que las administrará (esto lo veremos con más detalle en el taller)
+
+Luego estas referencias son exportadas, es decir, una vez estén almacenadas y con los datos correspondientes estas se descargan ya sea en un archivo .bib o nuevamente ventaja de zotero sólo se sincronizan con BBT, así que podemos obviar este paso gracias a la sincronización
+
+Nuestro cuarto paso el de incorporar las referencias, nuevamente ventaja de utilizar Zotero y RM, ya que al incorporarlas, automáticamente se crea una sección de referencias, con el formato de citación de forma automática y en orden alfabético
+
+Solo debes volver a leer y almacenar tus referencias.
+
+Este proceso lo practicaremos en el taller, pero es bueno tener una noción previa de cómo se trabajará
+
+Eso es todo por ahora, nos vemos en el taller
 
 ---
 class: center middle main-title section-title-8 top-logo
