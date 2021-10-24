@@ -1,6 +1,6 @@
 ---
 title: "Análisis de datos estadísticos en R"
-author: "Valentina Andrade y Nicolás Godoy"
+author: "Valentina Andrade"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
