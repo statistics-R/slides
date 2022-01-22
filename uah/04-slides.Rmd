@@ -64,8 +64,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 4**<br>
-`r format(Sys.Date(), '%d %B %Y')`<br>
+**Sesión N° 5**<br>
 **Análisis de datos estadísticos en R**
 <br>
 
@@ -709,8 +708,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 4**<br>
-`r format(Sys.Date(), '%d %B %Y')`<br>
+**Sesión N° 5**<br>
 **Análisis de datos estadísticos en R**
 <br>
 
