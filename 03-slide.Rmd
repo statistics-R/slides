@@ -64,7 +64,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 1**<br>
+**Sesión N° 3**<br>
 **Estadísitica II**
 <br>
 
@@ -84,13 +84,13 @@ class: title title-inv-8
 # Contenidos Sesión 
 
 --
-.box-2.medium.sp-after-half[**Método científico en ciencias sociales**]
+.box-8.medium.sp-after-half[**Método científico en ciencias sociales**]
 --
-.box-3.medium.sp-after-half[**Causalidad**]
+.box-8.medium.sp-after-half[**Causalidad y ceteris paribus**]
 
 --
 
-.box-4.medium.sp-after-half[**Detalles del curso**]
+.box-2.medium.sp-after-half[**Road map Unidad 2**]
 
 ---
 class: center middle main-title section-title-8 top-logo
@@ -220,7 +220,7 @@ class: title title-2
 ---
 class: title title-8
 
-# 2. Formalizar el modelo teórico: ejemplo del salario
+# 2. Formalizar el modelo teórico: ejemplo
 
 $$salario = f(educ, exper, training)$$
 
@@ -273,7 +273,7 @@ class: title title-8
 
 # Causalidad
 
-.box-inv-8[Uno de los objetivos más buscados es inferir efectos causales que tiene una variable sobre otra]
+.box-inv-8[Uno de los **objetivos** más buscados es **inferir efectos causales** que tiene una variable sobre otra]
 
 .box-inv-8[Encontrar asociación entre dos variables puede ser sugerente pero esto **no es sinónimo de causalidad**]
 
@@ -282,55 +282,68 @@ class: title title-8
 
 # Causalidad
 
-- Para que algo cause a otra cosa se debe cumplir que (Suart Mill, 1843; Goldthorpe; 2001)
+.small[Para que algo cause a otra cosa se debe cumplir que (Judea Pearl, 2018; Goldthorpe; 2001)
 
 **0. La causa debe estar estadísticamente asociada al efecto**
 
-- *Análisis de correlación*
+A. *Análisis de correlación*
 
-- **Análisis de regresión**
+B. **Análisis de regresión**
 
-1. La causa debe preceder temporalmente al efecto
+1. La causa debe preceder temporalmente al efecto .pull-right[![](https://raw.githubusercontent.com/statistics-R/slides/main/img/04/causality.png)]
 
-2. No debe existir una explicación alternativa
+2. **No debe existir una explicación alternativa**] 
+
+---
+class: title title-8
+# Noción de ceteris paribus
+
+.box-inv-8[Cuando se hace el análisis, el resto de los otros factores (relevantes) se mantienen constantes constantes]
+
+--
+
+.box-inv-8[Si no es así, no se puede saber a ciencia cierta si el efecto se debe a la variable indicada u otra cosa]
 
 ---
 
-# Noción de ceteris paribus
+![](https://raw.githubusercontent.com/statistics-R/slides/main/img/04/Estadistica%20II%20.gif)
 
-Un rol importante en el análisis de la causalidad juega el concepto de **ceteris paribus** que significa "que el resto de los otros factores(relevantes) se mantienen constantes constantes". 
+---
+class: center middle section-title-8
 
-Probablemente cuando tuvieron cursos de economía se acuerden que querían estudiar el efecto que tenía el cambio del precio de un bien sobre su demanda, manteniendo el resto de los factores constantes. Pues si esto no es así, no se puede saber a ciencia cierta si el efecto fue el precio u otra cosa. 
+.box-inv-8[Regresión se basa en el cálculo "ceteris paribus" o efecto parcial]
 
-Una de las gracias del análisis de regresión es que podremos construir este análisis. De manera simple, con una regresión podemos estudiar el efecto que tienen muchas X sobre Y. Pero podemos mantenernlas todas contastantes menos 1 y así podemos obtener un efecto "ceteris paribus", tal como el caso de precio y la demanda. 
-
-
-# Efecto Parcial
-
-A esto se le conoce efecto parcial. Más adelante volveremos a esta idea, pero es importante que ya te famialirces con este concepto. 
-
+---
+class: title title-8
 # Con esto ya tengo un efecto causal?
 
-- Es posible pesar que se pueden mantener todos los factores fijos en el análisis?. 
+.box-inv-8[Es posible pesar que se pueden mantener todos los factores fijos en el análisis?]
 
-En gran parte de las aplicaciones, el numero de factores que afectan a un fenómeno (como a los salarios o resultado electoral)  es inmenso. Como investigadores podemos hacer el mejor esfuerzo para definir nuestro modelo (¡y aprenderemos a hacerlo!) pero difícilmente solo con una regresión llegaremos puramente a estimar un efecto causal. Para ello necesitamos más instrumental
-
-Junto a ello existirán algunos  problemas asociados al termino (factores no observados) que no podemos definitivamente incluir en la regresión. Esto no hablaremos ya en la tercera unidad. 
-
-# Steps
-
-Primero iremos por los pasos
-
-1. Veremos cuales son las partes de una regresión
-
-2. Supuestos y condiciones de aplicación
-
-3. Potenciales para interpretación puntual
-
-4. Pontenciales para la inferencia. 
+--
 
 
+.box-inv-8[**Difícil**, por lo general los fenómenos en ciencias sociales son afectados por múltiples factores. ]
 
+--
+
+.box-inv-8[Ahora bien, las regresiones serán un punta pié enorme para el análisis relacional]
+
+---
+class: title title-2
+
+# Road Map
+
+1. Regresión lineal simple
+
+2. Regresión lineal múltiple
+
+3. Supuestos y condiciones para su aplicación
+
+4. Propiedades de sus estimadores
+
+5. **Inferencia**
+
+6. Predicción
 
 ---
 layout: false
@@ -342,7 +355,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 1**<br>
+**Sesión N° 3**<br>
 **Estadísitica II**
 <br>
 
