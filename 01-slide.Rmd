@@ -1,0 +1,146 @@
+---
+title: "Estadística II"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "libs/macros.js"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r packages-data, include=FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2)
+theme_set(theme_sjplot2())
+
+```
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = F, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Método de las ciencias sociales: modelo de regresión
+]
+
+.class-info[
+<br>
+**Sesión N° 1**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+--
+.box-2.medium.sp-after-half[**Método científico en ciencias sociales**]
+--
+.box-3.medium.sp-after-half[**¿Qué es un modelo?**]
+
+---
+class: center middle main-title section-title-8 top-logo
+name: basics
+
+# Método científico en ciencias sociales
+---
+class: title title-8
+
+# ¿Qué efecto tiene (...)?
+
+.box-2.medium.sp-after-half[**educación sobre salario**]
+--
+.box-3.small.sp-after-half[**gratuidad transporte público sobre participación en elecciones**]
+--
+.box-4.small.sp-after-half[**ciclo económico sobre el ciclo de protestas sociales**]
+--
+.box-5.medium.sp-after-half[**efecto del presupuesto de campañas políticas sobre el resultado de votaciones**]
+
+---
+class: title title-8
+
+# Pasos para el análisis empírico
+
+.box-inv-8[1.Teoría Social]
+
+.box-inv-8[2.Formalizar el modelo de la teoría]
+
+.box-inv-8[3.Consideraciones de los datos]
+
+---
+
+
+
+---
+layout: false
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Método de las ciencias sociales: modelo de regresión
+]
+
+.class-info[
+<br>
+**Sesión N° 1**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
