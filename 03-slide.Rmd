@@ -335,13 +335,23 @@ class: title title-2
 
 1. Regresión lineal simple
 
+--
+
 2. Regresión lineal múltiple
+
+--
 
 3. Supuestos y condiciones para su aplicación
 
+--
+
 4. Propiedades de sus estimadores
 
+--
+
 5. **Inferencia**
+
+--
 
 6. Predicción
 

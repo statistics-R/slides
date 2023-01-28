@@ -103,6 +103,10 @@ Primero iremos por los pasos
 
 4. Pontenciales para la inferencia. 
 
+-----
+
+Slide 4 control
+----
 
 
 
