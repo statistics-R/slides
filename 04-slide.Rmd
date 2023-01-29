@@ -1,0 +1,389 @@
+---
+title: "Estadística II"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "libs/macros.js"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r packages-data, include=FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2)
+theme_set(theme_sjplot2())
+
+```
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = F, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión lineal simple
+]
+
+.class-info[
+<br>
+**Sesión N° 4**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+--
+.box-2.medium.sp-after-half[Regresiones]
+--
+.box-8.medium.sp-after-half[Regresión **lineal** simple]
+--
+.box-8.medium.sp-after-half[**Mínimos Cuadrados Ordinarios**]
+
+
+---
+class: center middle main-title section-title-2 top-logo
+name: basics
+
+# Regresiones
+
+---
+class: title title-2
+
+# 1. ¿Qué efecto tiene (...)?
+
+.box-inv-2.medium.sp-after-half[**educación sobre salario**]
+--
+.box-inv-3.small.sp-after-half[**gratuidad transporte público sobre**
+
+**participación en elecciones**]
+--
+.box-inv-4.small.sp-after-half[**ciclo económico sobre el ciclo de protestas sociales**]
+--
+.box-inv-5.medium.sp-after-half[**efecto del presupuesto de campañas políticas sobre el resultado de votaciones**]
+
+
+---
+class: title title-2
+
+# 2. Formalizar el modelo teórico
+
+- **Regresión**: ecuaciones matemáticas que describen las relaciones. 
+
+$$y = f(x)$$
+- ¿Qué es $y$ y $x$?
+
+---
+class: title title-2
+
+# Parte esencial de la regresión
+
+.pull-left[.box-inv-2[Y]
+
+.box-2[Variable explicada] 
+
+.box-2[Variable respuesta]
+
+.box-2[Variable dependiente]
+
+.box-inv-2[Algo que buscamos explicar o predecir]
+
+.box-2[Regresando]]
+
+
+.pull-right[.box-inv-2[X]
+
+.box-2[Variable explicativa]
+
+.box-2[Variable predictores]
+
+.box-2[Variable independiente]
+
+.box-inv-2[Algo que *usamos* para explicar o predecir **Y**)]
+
+.box-2[Regresor]]
+---
+class: title title-8
+
+# Dos propósitos de las regresiones
+
+
+.pull-left[.box-inv-8[Predicción]
+
+.box-8[Predecir *"situación hipotética"*]
+
+.box-8[Focus en el Y] 
+
+.box-inv-8[Si X = 2 años de educación. ¿En promedio, cuál es mi salario?]]
+
+--
+
+.pull-right[.box-inv-8[Explicación]
+
+.box-8[Explicar el efecto de X sobre Y]
+
+.box-8[Focus está en X]
+
+.box-inv-8[En general, ¿cuál es el efecto de un año más de educación sobre el salario?]]
+---
+class: center middle main-title section-title-8 top-logo
+
+# ¿Y cómo hacemos una regresión?
+
+---
+class: title title-8
+
+# Cómo
+
+- **Regresión**: ecuaciones matemáticas que describen las relaciones. 
+
+$$y = f(x)$$
+
+
+1. Queremos hacer una **línea** que aproxime la relación entre X e y
+
+--
+
+2. Encontrar valores matemáticos para esas partes de la línea (efectos)
+
+--
+
+3. Interpretar la matemática
+
+---
+class: title title-8
+
+# Galletas y felicidad
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/01.png" alt="drawing" style="width:500px;"/>
+</center>
+
+---
+## ¿Efecto de comer galletas sobre la felicidad?
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/02.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+## 1. Ecuación: efecto de comer galletas sobre la felicidad?
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/3.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+## 1. Ecuación: ¿efecto de comer galletas sobre la felicidad?
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/04.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+## 1. Ecuación: ¿efecto de comer galletas sobre la felicidad?
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/05.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+class: title title-8
+
+# 2. Relacionando con las matemáticas
+
+
+$$y = b + mx$$
+
+| y | Un número |
+|---|---|
+| **x** | **Un número** |
+| **m** | **Pendiente** |
+| **b** | **Intercepto** |
+
+---
+class: title title-8
+
+# 2. Relacionando con las matemáticas
+
+.pull-left[$y = 2x -1$]
+
+.pull-right[$ y = -0.5x + 6$]
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# 🥁🥁
+
+---
+
+class: title title-8
+
+# ¡Regresión lineal simple!
+
+$$y = \beta_0 + \beta_1 x_1 + u$$
+
+--
+
+- $y$ = datos sobre variable dependiente
+
+- $x_1$ = datos sobre variable independiente
+
+- $\beta_1$ = pendiente, parámetro que indica la relación de $x$ e $y$
+
+- $\beta_o$ = intercepto
+
+- $u$ = error
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# Interpretación $\beta_1$
+
+--
+
+##Por cada **unidad** que cambie $x$, $y$ va a cambiar en $\beta_1$, manteniendo **el resto de los factores constantes**. 
+
+$$\triangle y = \beta_1 \triangle x  ~~~ si ~~\triangle u = 0$$
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# Interpretación $\beta_0$
+
+--
+
+## Valor esperado o medio de $y$ cuando $x = 0$ (o en ausencia de variables explicativas)
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# ¿ Error ? 😨
+
+--
+
+## ¡Sí! Contiene todos los factores **relevantes** que afectan a Y pero no son considerados en la regresión por ser **inobservables**
+
+--
+
+## Tiene un supuesto importantísimo que ya conoceremos (**media condicional cero**)
+
+---
+
+class: title title-8
+
+# Tres desafíos a tratar
+
+1. No es una relación **exacta** entre x e y (Sesión 4)
+
+--
+
+2. ¿Cómo podemos estar seguros que estamos capturando la relación **ceteris paribus**? (Sesión 6)
+
+--
+
+3. ¿Cómo sabemos que realmente la mejor forma de representar la relación es **lineal**? (Sesión 9)
+
+---
+class: title title-8
+# Regresión lineal simple
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/05.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+class: title title-8
+# Mínimos Cuadrados Ordinarios (OLS)
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/06.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+
+---
+class: title title-8
+# Distancia a recta regresión
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/07.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+layout: false
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión **lineal** simple
+]
+
+.class-info[
+<br>
+**Sesión N° 4**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
