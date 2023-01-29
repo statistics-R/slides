@@ -184,7 +184,7 @@ class: title title-8
 
 .pull-left[.box-inv-8[Y]
 
-.box-8[Variable respuesta] 
+.box-8[Variable explicada] 
 
 .box-8[Variable respuesta]
 
