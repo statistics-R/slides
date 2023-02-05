@@ -57,7 +57,7 @@ htmltools::tagList(
 ```
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = F, 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
                       fig.retina = 3, fig.align = "center")
 ```
 
@@ -210,15 +210,15 @@ class: title title-8
 
 # Salario y educación
 
-```{r, echo = F}
+
+```{r, echo=FALSE}
 wages_data
 ```
-
 
 ---
 ## ¿Efecto de educación sobre salario?
 
-```{r, echo = F}
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
 wages_base <- ggplot(wages_fitted, aes(x = educ, y = salario)) +
   geom_point(size = 3) +
   coord_cartesian(xlim = c(0, 10), ylim = c(0, 3)) +
@@ -232,7 +232,7 @@ wages_base
 ---
 ## 1. Ecuación: ¿Efecto de educación sobre salario?
 
-```{r, echo = F}
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
 wages_base +
   geom_smooth(method = lm, color = "#0074D9", formula = y ~ splines::bs(x, 7), se = FALSE)
 ```
@@ -241,7 +241,7 @@ wages_base +
 ---
 ## 1. Ecuación: ¿Efecto de educación sobre salario?
 
-```{r cookies-loess, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+```{r cookies-loess, echo=FALSE, message=FALSE,  fig.dim=c(7, 3), out.width="100%"}
 wages_base +
   geom_smooth(method = "loess", color = "#0074D9", se = FALSE)
 ```
@@ -250,7 +250,7 @@ wages_base +
 ##  1. Ecuación: ¿Efecto de educación sobre salario?
 
 
-```{r cookies-lm, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+```{r cookies-lm, echo=FALSE, message=FALSE,  fig.dim=c(7, 3), out.width="100%"}
 wages_base +
   geom_smooth(method = "lm", color = "#0074D9", se = FALSE)
 ```
@@ -273,11 +273,43 @@ $$y = b + mx$$
 class: title title-8
 
 # 2. Relacionando con las matemáticas
+.pull-left[
 
-.pull-left[$$y = 2x -1$$]
+$$
+y = 2x - 1
+$$
 
-.pull-right[$$y = -0.5x + 6$$]
+```{r simple-line-1, echo=FALSE, fig.dim=c(4.8, 3.5), out.width="100%"}
+ggplot(data = tibble(x = 0:5), aes(x = x)) +
+  stat_function(fun = function(x) 2 * x - 1, 
+                color = "#BF3984", size = 1.5) +
+  geom_vline(xintercept = 0) +
+  geom_hline(yintercept = 0) +
+  scale_x_continuous(breaks = 0:5) +
+  scale_y_continuous(breaks = -1:9)
+```
 
+]
+
+--
+
+.pull-right[
+
+$$
+y = -0.5x + 6
+$$
+
+```{r simple-line-2, echo=FALSE, fig.dim=c(4.8, 3.5), out.width="100%"}
+ggplot(data = tibble(x = 0:14), aes(x = x)) +
+  stat_function(fun = function(x) -0.5 * x + 6, 
+                color = "#BF3984", size = 1.5) +
+  geom_vline(xintercept = 0) +
+  geom_hline(yintercept = 0) +
+  scale_x_continuous(breaks = 0:14) +
+  scale_y_continuous(breaks = -1:9)
+```
+
+]
 ---
 class: center middle main-title section-title-8 top-logo
 
@@ -360,7 +392,7 @@ class: title title-8
 class: title title-8
 # Regresión lineal simple
 
-```{r, echo = F}
+```{r, echo = F, fig.dim=c(7, 3), out.width="100%"}
 wages_base +
     geom_smooth(method = "lm", color = "#0074D9", se = FALSE)
 ```
@@ -371,7 +403,7 @@ class: title title-8
 # Mínimos Cuadrados Ordinarios (OLS)
 
 
-```{r cookies-lm-residual, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+```{r cookies-lm-residual, echo=FALSE, message=FALSE, fig.dim=c(7, 3), out.width="100%"}
 wages_with_residual <- wages_base +
   geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
   geom_segment(aes(xend = educ, yend = .fitted), color = "#FF851B", size = 1)
@@ -413,7 +445,7 @@ class: title title-8
 # Distancia a recta regresión
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/07.png" alt="drawing" style="width:1000px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:800px;"/>
 </center>
 
 
