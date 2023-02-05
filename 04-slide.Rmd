@@ -223,7 +223,7 @@ wages_base <- ggplot(wages_fitted, aes(x = educ, y = salario)) +
   geom_point(size = 3) +
   coord_cartesian(xlim = c(0, 10), ylim = c(0, 3)) +
   scale_x_continuous(breaks = 0:10) +
-  labs(x = "Años educacion", y = "Nivel felicidad") 
+  labs(x = "Años educacion", y = "Salarios") 
 wages_base
 ```
 
