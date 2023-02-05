@@ -1,0 +1,298 @@
+---
+title: "Estadística II"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "libs/macros.js"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r packages-data, include=FALSE, echo =FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci,wooldrige, broom)
+theme_set(theme_sjplot2())
+
+wages <- tibble(salario = c(0.5, 2, 1, 2.5, 3, 1.5, 2, 2.5, 2, 3),
+                  educ = 1:10)
+wages_data <- wages
+wages_model <- lm(salario ~ educ, data = wages)
+wages_fitted <- augment(wages_model)
+```
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión lineal simple
+]
+
+.class-info[
+<br>
+**Sesión N° 5**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+--
+.box-2.medium.sp-after-half[Regresiones **lineal simple**]
+--
+.box-8.medium.sp-after-half[**MCO** supuestos]
+--
+.box-8.medium.sp-after-half[**MCO**: propiedades]
+
+
+---
+class: center middle main-title section-title-2 top-logo
+name: basics
+
+# Regresión **lineal** simple
+
+---
+class: title title-2
+
+# 1. Pregunta
+
+.box-inv-2.medium.sp-after-half[**educación sobre salario**]
+
+imagen
+
+---
+class: title title-2
+
+# 2. Formalizar el modelo teórico
+
+$$y = \beta_0 + \beta_1 x_1 + u$$
+
+--
+
+- $y$ = datos sobre variable dependiente
+
+- $x_1$ = datos sobre variable independiente
+
+- $\beta_1$ = pendiente, parámetro que indica la relación de $x$ e $y$
+
+- $\beta_o$ = intercepto
+
+- $u$ = error
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# Interpretación $\beta_1$
+
+--
+
+##Por cada **unidad** que cambie $x$, $y$ va a cambiar en $\beta_1$, manteniendo **el resto de los factores constantes**. 
+
+$$\triangle y = \beta_1 \triangle x  ~~~ si ~~\triangle u = 0$$
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# Interpretación $\beta_0$
+
+--
+
+## Valor esperado o medio de $y$ cuando $x = 0$ (o en ausencia de variables explicativas)
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# Error \u
+
+--
+
+## Contiene todos los factores **relevantes** que afectan a $Y$ pero no son considerados en la regresión por ser **inobservables**
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+
+# Pero, ¿cómo obtenemos los parámetros $\beta$
+
+--
+
+## Mínimos Cuadrados Ordinarios
+
+---
+
+class: title title-8
+# Mínimos Cuadrados Ordinarios (OLS)
+
+
+```{r cookies-lm-residual, echo=FALSE, message=FALSE, fig.dim=c(7, 3), out.width="100%"}
+wages_with_residual <- wages_base +
+  geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
+  geom_segment(aes(xend = educ, yend = .fitted), color = "#FF851B", size = 1)
+wages_with_residual
+```
+
+---
+
+class: title title-8
+# Mínimos Cuadrados Ordinarios (OLS)
+
+
+- Método que busca encontrar la mejor ecuación de la recta, dado un set de datos
+
+--
+
+- *Mínimos*: minimizan los residuos
+
+- *Cuadrados*: residuos al cuadrado
+
+- *Ordinarios*: es un método estándar
+
+---
+class: title title-8
+# Valor observado y valor predicho
+
+- $y_i$: valor observado
+- $\hat{y_i}$: valor predicho corresponde al valor que predecimos de $y_i$ cuando $x_{1i}$ toma un valor dado
+
+--
+
+$$\hat{y_i} = \beta_o + \beta_1 x_{1i}$$
+
+- Hay un valor predicho para cada observación en la muestra
+
+--
+
+- ¿Qué significará la diferencia entre $y_i$ e $\hat{y_i}$?
+
+
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# El residuo $\hat{u_i}$
+
+--
+
+## En particular nos interesará que sea la **suma de los residuos** al **cuadrado** sea lo más pequeño posible
+
+---
+class: title title-8
+# Distancia a recta regresión
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:800px;"/>
+</center>
+
+
+---
+class: title title-8
+# Suma de residuos al cuadrado 
+
+- Minimizamos la *suma de residuos al cuadrado* $\sum_{i=1}^{n} \hat u_i^2$
+
+- Encontramos matemáticamente $\hat{\beta_0}$ y $\hat{\beta_1}$ tal que $\sum_{i=1}^{n} \hat u_i^2$ sea lo más pequeño posible.
+
+--
+
+- Varios minutos después ⏱️📝 y ...
+
+---
+class: center middle main-title section-title-8 top-logo
+
+
+## $$\hat \beta_1 = \frac{\sum^n_{i=1} (x_i - \bar x)(y_i - \bar y)}{\sum_{i=1}^n (x_i-\bar x)^2}$$
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## $$\hat \beta_1 = \frac{\sum^n_{i=1} (x_i - \bar x)(y_i - \bar y)}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{Cov(x_1,y)}{Var(x_1)}$$
+
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## $$\hat \beta_0 = \bar y = \hat{\beta_1} \bar x$$
+
+---
+
+
+---
+
+layout: false
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión **lineal** simple
+]
+
+.class-info[
+<br>
+**Sesión N° 5**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez y Charo Astorga
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
