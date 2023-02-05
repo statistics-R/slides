@@ -25,10 +25,15 @@ editor_options:
 ---
 
 
-```{r packages-data, include=FALSE}
-pacman::p_load(tidyverse, sjPlot, ggsci, wordcloud2)
+```{r packages-data, include=FALSE, echo =FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci,wooldrige, broom)
 theme_set(theme_sjplot2())
 
+wages <- tibble(salario = c(0.5, 2, 1, 2.5, 3, 1.5, 2, 2.5, 2, 3),
+                  educ = 1:10)
+wages_data <- wages
+wages_model <- lm(salario ~ educ, data = wages)
+wages_fitted <- augment(wages_model)
 ```
 ```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
@@ -203,40 +208,52 @@ $$y = f(x)$$
 ---
 class: title title-8
 
-# Galletas y felicidad
+# Salario y educación
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/01.png" alt="drawing" style="width:500px;"/>
-</center>
+```{r, echo = F}
+wages_data
+```
 
----
-## ¿Efecto de comer galletas sobre la felicidad?
-
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/02.png" alt="drawing" style="width:1000px;"/>
-</center>
 
 ---
-## 1. Ecuación: efecto de comer galletas sobre la felicidad?
+## ¿Efecto de educación sobre salario?
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/3.png" alt="drawing" style="width:1000px;"/>
-</center>
+```{r, echo = F}
+wages_base <- ggplot(wages_fitted, aes(x = educ, y = salario)) +
+  geom_point(size = 3) +
+  coord_cartesian(xlim = c(0, 10), ylim = c(0, 3)) +
+  scale_x_continuous(breaks = 0:10) +
+  labs(x = "Años educacion", y = "Nivel felicidad") 
+wages_base
+```
+
+
 
 ---
-## 1. Ecuación: ¿efecto de comer galletas sobre la felicidad?
+## 1. Ecuación: ¿Efecto de educación sobre salario?
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/04.png" alt="drawing" style="width:1000px;"/>
-</center>
+```{r, echo = F}
+wages_base +
+  geom_smooth(method = lm, color = "#0074D9", formula = y ~ splines::bs(x, 7), se = FALSE)
+```
+
 
 ---
+## 1. Ecuación: ¿Efecto de educación sobre salario?
 
-## 1. Ecuación: ¿efecto de comer galletas sobre la felicidad?
+```{r cookies-loess, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+wages_base +
+  geom_smooth(method = "loess", color = "#0074D9", se = FALSE)
+```
+---
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/05.png" alt="drawing" style="width:1000px;"/>
-</center>
+##  1. Ecuación: ¿Efecto de educación sobre salario?
+
+
+```{r cookies-lm, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+wages_base +
+  geom_smooth(method = "lm", color = "#0074D9", se = FALSE)
+```
 
 ---
 class: title title-8
@@ -257,9 +274,9 @@ class: title title-8
 
 # 2. Relacionando con las matemáticas
 
-.pull-left[$y = 2x -1$]
+.pull-left[$$y = 2x -1$$]
 
-.pull-right[$ y = -0.5x + 6$]
+.pull-right[$$y = -0.5x + 6$$]
 
 ---
 class: center middle main-title section-title-8 top-logo
@@ -316,11 +333,11 @@ class: center middle main-title section-title-8 top-logo
 
 --
 
-## ¡Sí! Contiene todos los factores **relevantes** que afectan a Y pero no son considerados en la regresión por ser **inobservables**
+## ¡Sí! Contiene todos los factores **relevantes** que afectan a $Y$ pero no son considerados en la regresión por ser **inobservables**
 
 --
 
-## Tiene un supuesto importantísimo que ya conoceremos (**media condicional cero**)
+### Tiene un supuesto importantísimo que ya conoceremos (**media condicional cero**)
 
 ---
 
@@ -328,7 +345,7 @@ class: title title-8
 
 # Tres desafíos a tratar
 
-1. No es una relación **exacta** entre x e y (Sesión 4)
+1. No es una relación **exacta** entre $x$ e $y$ (Sesión 4)
 
 --
 
@@ -338,23 +355,58 @@ class: title title-8
 
 3. ¿Cómo sabemos que realmente la mejor forma de representar la relación es **lineal**? (Sesión 9)
 
+
 ---
 class: title title-8
 # Regresión lineal simple
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/05.png" alt="drawing" style="width:1000px;"/>
-</center>
+```{r, echo = F}
+wages_base +
+    geom_smooth(method = "lm", color = "#0074D9", se = FALSE)
+```
 
 ---
 
 class: title title-8
 # Mínimos Cuadrados Ordinarios (OLS)
 
-<center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/06.png" alt="drawing" style="width:1000px;"/>
-</center>
 
+```{r cookies-lm-residual, echo=FALSE, message=FALSE, fig.dim=c(8, 4), out.width="100%"}
+wages_with_residual <- wages_base +
+  geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
+  geom_segment(aes(xend = educ, yend = .fitted), color = "#FF851B", size = 1)
+wages_with_residual
+```
+
+
+---
+class: title title-8
+# Valor observado y valor predicho
+
+- $y_i$: valor observado
+- $\hat{y_i}$: valor predicho corresponde al valor que predecimos de $y_i$ cuando $x_{1i}$ toma un valor dado
+
+--
+
+$$\hat{y_i} = \beta_o + \beta_1 x_{1i}$$
+
+- Hay un valor predicho para cada observación en la muestra
+
+--
+
+- ¿Qué significará la diferencia entre $y_i$ e $\hat{y_i}$?
+
+
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# El residuo $\hat{u_i}$
+
+--
+
+## En particular nos interesará que sea la **suma de los residuos** al **cuadrado** sea lo más pequeño posible
 
 ---
 class: title title-8
@@ -364,7 +416,38 @@ class: title title-8
 <img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/07.png" alt="drawing" style="width:1000px;"/>
 </center>
 
+
 ---
+class: title title-8
+# Suma de residuos al cuadrado
+
+
+$$\sum_{i=1}^{n} \hat u_i^2 = \sum_{i=1}^{n}(y_i - \hat{y_i}) ^2= \sum_{i=1}^{n}(y_i - \hat{\beta_0} - \hat{\beta_1})^2$$
+- Encontramos matemáticamente $\hat{\beta_0}$ y $\hat{\beta_1}$ tal que $\sum_{i=1}^{n} \hat u_i^2$ sea lo más pequeño posible.
+
+--
+
+- Varios minutos después ⏱️📝 y ...
+
+---
+class: center middle main-title section-title-8 top-logo
+
+
+## $$\hat \beta_1 = \frac{\sum^n_{i=1} (x_i - \bar x)(y_i - \bar y)}{\sum_{i=1}^n (x_i-\bar x)^2}$$
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## $$\hat \beta_1 = \frac{\sum^n_{i=1} (x_i - \bar x)(y_i - \bar y)}{\sum_{i=1}^n (x_i-\bar x)^2} = \frac{Cov(x_1,y)}{Var(x_1)}$$
+
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## $$\hat \beta_0 = \bar y = \hat{\beta_1} \bar x$$
+
+---
+
 layout: false
 class: center middle main-title section-title-8 top-logo
 
