@@ -34,6 +34,11 @@ wages <- tibble(salario = c(0.5, 2, 1, 2.5, 3, 1.5, 2, 2.5, 2, 3),
 wages_data <- wages
 wages_model <- lm(salario ~ educ, data = wages)
 wages_fitted <- augment(wages_model)
+wages_base <- ggplot(wages_fitted, aes(x = educ, y = salario)) +
+  geom_point(size = 3) +
+  coord_cartesian(xlim = c(0, 10), ylim = c(0, 3)) +
+  scale_x_continuous(breaks = 0:10) +
+  labs(x = "Años educacion", y = "Salarios") 
 ```
 ```{r xaringanExtra, echo=FALSE}
 xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
@@ -270,6 +275,154 @@ class: center middle main-title section-title-8 top-logo
 ## $$\hat \beta_0 = \bar y = \hat{\beta_1} \bar x$$
 
 ---
+
+class: center middle main-title section-title-8 top-logo
+
+# En resumen
+
+---
+class: title title-8
+
+# Estimación
+
+.box-inv-8[Datos $\rightarrow$ Estimación $\rightarrow$ Verdad ]
+
+
+| Datos | $X, Y$ |
+|---|---|
+| **Calculos** | **$\bar{X} = \frac{\sum X}{n}$** |
+| **Estimador** | **$\bar{\beta_1}$** |
+| **Parametro verdadero** | **$\beta$** |
+
+---
+class: title title-8
+
+# Estimación: ejemplo
+
+```{r, echo = F}
+wage1<- wooldridge::wage1
+```
+
+
+```{r, echo = T}
+modelo1 <- lm(wage ~ educ, data = wage1)
+
+summary(modelo1)
+```
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# Supuestos Modelo Regresión Lineal 
+
+---
+class: title title-8
+
+# Supuesto 1 
+
+.box-8[Linealidad de parámetros]
+.box-inv-8[Linealidad refiere a que la ecuación puede ser escrita como
+
+$$y = \beta_0 + \beta_1 x + u$$]
+
+---
+class: title title-8
+
+# Supuesto 2
+
+.box-8[Independencia de observaciones]
+.box-inv-8[Se cuenta con una muestra aleatoria de tamaño $n$ que representa la población]
+
+---
+class: title title-8
+
+# Supuesto 3 
+
+.box-8[**Media condicional cero**]
+.box-inv-8[Para todo valor de variable explicativa, el valor esperado del error $u$ es cero
+
+$$E(u|x) = 0$$]
+
+--
+.box-inv-8[$u$ no está correlacionada con $x$]
+
+--
+
+.box-inv-8[Es el **supuesto más importante** del MRL]
+
+---
+# $$E(u|x) = 0$$
+
+
+---
+
+# $$E(u|x) \neq 0$$
+
+
+
+---
+class: title title-8
+
+# Supuesto 5 
+
+.box-8[**Homocedasticidad**]
+.box-inv-8[El error $u$ tiene la misma **varianza** para cualquier valor de la $X$
+
+$$Var(u|x) = \sigma ^2$$]
+
+--
+.box-inv-8[La varianza de y dado x es **constante**]
+
+--
+.box-8[Supuesto importante para la **inferencia** sobre los estimadores]
+.box-inv-8[Si le tomas raíz a esta varianza obtienes el **error estándar**]
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# Propiedades de los estimadores 
+
+---
+class: title title-8
+
+# Propiedad 1
+
+.box-8[Insesgamiento de los estimadores de MCO]
+.box-inv-8[$$E(\hat \beta_1) = \beta_1$$
+$$E(\hat \beta_0) = \beta_0$$]
+
+--
+
+- Por *supuesto 1 a 3*
+
+---
+class: title title-8
+
+# Propiedad 2
+
+.box-8[Eficiencia]
+.box-inv-8[La varianza de los estimadores $\beta$ es la menor de todas]
+
+--
+
+.box-inv-8[Esto será muy importante para hacer test de hipótesis (inferencia)]
+
+
+--
+
+- Por *supuesto 5*
+
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/01.png" alt="drawing" style="width:800px;"/>
+</center>
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/02.png" alt="drawing" style="width:800px;"/>
+</center>
 
 
 ---
