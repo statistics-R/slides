@@ -463,6 +463,11 @@ class: title title-8
 
 
 ---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/03.png" alt="drawing" style="width:800px;"/>
+</center>
+
+---
 
 layout: false
 class: center middle main-title section-title-8 top-logo
