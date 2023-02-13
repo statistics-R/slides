@@ -158,6 +158,11 @@ class: title title-8
 - Eso implica que tenemos **dos variables explicativas** *(o independientes)*
 
 ---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/14.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
 
 ```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
 wages_base
@@ -225,12 +230,16 @@ class: title title-8
 
 # Regresión múltiple: ejemplo
 
+.tiny[
 ```{r, echo = F}
 modelo3 <- lm(wage ~ educ + IQ, data = wages)
 summary(modelo3)
 ```
-
+]
 ---
+class: title title-8
+
+# Regresión múltiple: ejemplo
 
 - $\beta_1$: por cada año adicional de educación, el salario promedio semanal aumenta 42 dólares, manteniendo la experiencia constante.
 
@@ -241,24 +250,26 @@ class: title title-8
 
 # "Manteniendo constante..."
 
-- Nos permite asegurar que el efecto se debe a que un factor está cambiando mientras los otros no cambian.
+- Nos permite asegurar que el efecto se debe a que **un factor** está cambiando mientras los otros no cambian.
 
 --
 
-- En otras palabras, si una persona tiene un año más de educación que la otra recibirá semanalmente 42 dolares más, considerando que ambas tienen el mismo *nivel de inteligencia*.
+1. Si una persona tiene un año más de educación que la otra recibirá semanalmente 42 dolares más, considerando que ambas tienen el mismo *nivel de inteligencia*.
 
 --
 
-- Del mismo modo, para dos personas con igual canidad de años en educación, si una tiene un IQ un punto más alto recibirá *5 dolares* más en el empleo. 
+2. Dos personas con igual cantidad de años en educación, si una tiene un IQ un punto más alto recibirá *5 dolares* más en el empleo. 
 
---
-
-- Esto se conoce como **efecto parcial**
 
 ---
 class: center middle main-title section-title-8 top-logo
 
 # Efecto parcial
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/15.png" alt="drawing" style="width:1000px;"/>
+</center>
 
 
 ---
@@ -270,6 +281,7 @@ $$y = \beta_0 + \beta_1 educ + u$$
 
 $$y = \beta_0 + \beta_2 exper + u$$
 
+$$y = \beta_0 + \beta_1 educ+ \beta_2 exper + u$$
 ---
 ```{r, echo = F}
 modelo1 <- lm(wage ~ educ, data = wages)
@@ -280,7 +292,20 @@ tab_model(modelo1, modelo2, modelo3, show.ci = F, show.p = F, dv.labels = c("Mod
 ---
 
 
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/16.png" alt="drawing" style="width:1000px;"/>
+</center>
 
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/17.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/18.png" alt="drawing" style="width:1000px;"/>
+</center>
 ---
 class: title title-8
 
@@ -308,11 +333,64 @@ class: title title-8
 ---
 class: center middle main-title section-title-8 top-logo
 
+## Pero, ¿qué pasa si $Cov(x_1, x_2)$ es muy grande?
+
+--
+
+## Tendremos un problema de multicolinealidad
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/19.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/20.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+class: title title-8
+
+# Supuesto 4 
+
+.box-8[**Multicolinealidad imperfecta**]
+.box-inv-8[No existe una relación **lineal exacta** entre las variables independientes]
+
+--
+
+- Esto es común cuando incorporamos variables que *miden lo mismo* (en distintas unidades de medida)
+
+- Una consecuencia de la multicolinealidad será que los **estimadores** $\beta$ **serán poco precisos**
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/13.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/14_2.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# ¿Y si mejor no incorporamos las otras variables?
+
+---
+class: center middle main-title section-title-8 top-logo
+
 ## Si no incorporamos $x_2$ en la regresión esta será capturada por el error $u$
 
 --
 
-## Y si x_2 con x_1 correlacionan... ¿qué supuesto y propiedad ya no se cumplirían? (Tarea)
+## Y si $x_2$ con $x_1$ correlacionan... ¿qué supuesto y propiedad ya no se cumplirían? (Tarea)
 
 ---
 layout: false
