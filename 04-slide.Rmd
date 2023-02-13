@@ -445,11 +445,11 @@ class: title title-8
 # Distancia a recta regresión
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:700px;"/>
 </center>
 
 
----
+---dis
 class: title title-8
 # Suma de residuos al cuadrado
 
