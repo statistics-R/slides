@@ -114,7 +114,16 @@ class: title title-2
 
 .box-inv-2.medium.sp-after-half[**educación sobre salario**]
 
-imagen
+
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
+wages_base <- ggplot(wages_fitted, aes(x = educ, y = salario)) +
+  geom_point(size = 3) +
+  coord_cartesian(xlim = c(0, 10), ylim = c(0, 3)) +
+  scale_x_continuous(breaks = 0:10) +
+  labs(x = "Años educacion", y = "Salarios") 
+wages_base
+```
+
 
 ---
 class: title title-2
@@ -161,7 +170,7 @@ class: center middle main-title section-title-8 top-logo
 
 class: center middle main-title section-title-8 top-logo
 
-# Error \u
+# Error $u$
 
 --
 
@@ -241,7 +250,7 @@ class: title title-8
 # Distancia a recta regresión
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/04/03.png" alt="drawing" style="width:700px;"/>
 </center>
 
 
@@ -285,14 +294,14 @@ class: title title-8
 
 # Estimación
 
-.box-inv-8[Datos $\rightarrow$ Estimación $\rightarrow$ Verdad ]
+.box-inv-8[Datos ->Estimación -> Verdad ]
 
 
 | Datos | $X, Y$ |
 |---|---|
-| **Calculos** | **$\bar{X} = \frac{\sum X}{n}$** |
-| **Estimador** | **$\bar{\beta_1}$** |
-| **Parametro verdadero** | **$\beta$** |
+| **Calculos** | $\bar{X} = \frac{\sum X}{n}$ |
+| **Estimador** | $\bar{\beta_1}$|
+| **Parametro verdadero** | $\beta$ |
 
 ---
 class: title title-8
@@ -301,12 +310,12 @@ class: title title-8
 
 ```{r, echo = F}
 wage1<- wooldridge::wage1
+modelo1 <- lm(wage ~ educ, data = wage1)
 ```
 
+---
 
 ```{r, echo = T}
-modelo1 <- lm(wage ~ educ, data = wage1)
-
 summary(modelo1)
 ```
 
@@ -339,26 +348,53 @@ class: title title-8
 # Supuesto 3 
 
 .box-8[**Media condicional cero**]
-.box-inv-8[Para todo valor de variable explicativa, el valor esperado del error $u$ es cero
+.box-inv-8[Para todo valor de variable explicativa, el valor esperado del error u es cero
 
 $$E(u|x) = 0$$]
 
 --
-.box-inv-8[$u$ no está correlacionada con $x$]
+
+.box-inv-8[ u no está correlacionada con x ]
 
 --
 
 .box-inv-8[Es el **supuesto más importante** del MRL]
 
 ---
-# $$E(u|x) = 0$$
+## $$E(u|x) = 0$$
+
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
+ggplot(modelo1, aes(x = educ, y = .resid)) +
+    geom_point(size = 3) +
+    geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
+  labs( y = "Residuos")
+```
 
 
 ---
 
-# $$E(u|x) \neq 0$$
+## $$E(u|x) \neq 0$$
 
 
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
+ggplot(modelo1, aes(x = educ, y = .resid*educ+10*educ)) +
+    geom_point(size = 3) +
+    geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
+    labs( y = "Residuos")
+```
+
+---
+
+## $$E(u|x) \neq 0$$
+
+
+```{r, echo = F,  fig.dim=c(7, 3), out.width="100%"}
+ggplot(modelo1, aes(x = educ, y = .resid*educ+10*educ)) +
+    geom_point(size = 3) +
+    geom_smooth(method = "lm", color = "#0074D9", se = FALSE) +
+  geom_hline(yintercept = 0, color = "red", size = 1) +
+    labs( y = "Residuos")
+```
 
 ---
 class: title title-8
@@ -401,7 +437,8 @@ class: title title-8
 # Propiedad 2
 
 .box-8[Eficiencia]
-.box-inv-8[La varianza de los estimadores $\beta$ es la menor de todas]
+
+.box-inv-8[La varianza de los estimadores $b$ es la menor de todas]
 
 --
 
