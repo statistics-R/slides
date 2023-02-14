@@ -1,0 +1,284 @@
+---
+title: "Estadística II"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "libs/macros.js"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r packages-data, include=FALSE, echo =FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci, broom)
+library(wooldridge)
+theme_set(theme_sjplot2())
+
+wages <- as_tibble(wooldridge::wage2)
+
+wages_data <- wages
+wages_model <- lm(wage ~ educ + IQ, data = wages)
+wages_fitted <- augment(wages_model)
+wages_base <- ggplot(wages_fitted, aes(x = educ, y = wage)) +
+  geom_point(size = 3) +
+  labs(x = "Años educacion", y = "Salarios") 
+
+wages_base2 <- ggplot(wages_fitted, aes(x = IQ, y = wage)) +
+  geom_point(size = 3) +
+  labs(x = "IQ", y = "Salarios") 
+```
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión múltiple: predictores cualitativos
+]
+
+.class-info[
+<br>
+**Sesión N° 7**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez, Charo Astorga y Alberto Reyes
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+--
+.box-8.medium.sp-after-half[Predictores **dicotómicos**]
+
+--
+.box-8.medium.sp-after-half[Predictores **politómicos**]
+
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# Predictores cualitativos
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/07/01.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+class: title title-8
+
+# Predictores cualitativos
+
+- También se les llamada predictores **categóricos** pues tienen categorías de respuesta
+
+-- 
+
+- Pueden tener 2 a más categorías de respuesta:
+
+  - **Dicotómico**: 2 categorías de respuesta (Si/No, Ausencia/Presencia, Apruebo/Rechazo, Mujer/Hombre)
+  - **Politómico**: más de 2 categorías de respuesta (Bajo/Medio/Alto, Izquierda/Centro/Derecha, Mujer/Hombre/No binario )
+
+--
+
+- Si no recuerdas mucho este contenido [revisa este material](https://learn-r-uah.netlify.app/resource/r-datatypes-example/)
+
+---
+class: center middle main-title section-title-8 top-logo
+
+#
+
+--
+
+
+---
+class: title title-8
+
+# Regresión simple vs múltiple
+
+$$y = \beta_0 + \beta_1 educ + u$$
+
+$$y = \beta_0 + \beta_2 exper + u$$
+
+$$y = \beta_0 + \beta_1 educ+ \beta_2 exper + u$$
+---
+```{r, echo = F}
+modelo1 <- lm(wage ~ educ, data = wages)
+modelo2 <- lm(wage ~ IQ, data = wages)
+tab_model(modelo1, modelo2, modelo3, show.ci = F, show.p = F, dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3"), string.est =  "salario")
+```
+
+---
+
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/16.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/17.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/18.png" alt="drawing" style="width:1000px;"/>
+</center>
+---
+class: title title-8
+
+# Correlación entre variables
+
+```{r, echo = F }
+wages %>%  select(wage, educ, IQ) %>% tab_corr(., triangle = "lower")
+```
+
+--
+
+- **¡Hay correlación entre educ y IQ!**
+
+---
+class: title title-8
+
+# MCO $\beta_s$ en regresión múltiple 
+
+
+## $$\hat \beta_1 =  \frac{Cov(X_1,Y)}{Var(X_1)} - \frac{\hat{\beta_2}*Cov(X_1,X_2)}{Var(X_1)}$$
+--
+
+## $$\hat \beta_2 =  \frac{Cov(X_2,Y)}{Var(X_2)} - \frac{\hat{\beta_1}*Cov(X_1,X_2)}{Var(X_2)}$$
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## Pero, ¿qué pasa si $Cov(x_1, x_2)$ es muy grande?
+
+--
+
+## Tendremos un problema de multicolinealidad
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/19.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/20.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+class: title title-8
+
+# Supuesto 4 
+
+.box-8[**Multicolinealidad imperfecta**]
+.box-inv-8[No existe una relación **lineal exacta** entre las variables independientes]
+
+--
+
+- Esto es común cuando incorporamos variables que *miden lo mismo* (en distintas unidades de medida)
+
+- Una consecuencia de la multicolinealidad será que los **estimadores** $\beta$ **serán poco precisos**
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/13.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/05/14_2.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+---
+
+class: center middle main-title section-title-8 top-logo
+
+# ¿Y si mejor no incorporamos las otras variables?
+
+---
+class: center middle main-title section-title-8 top-logo
+
+## Si no incorporamos $x_2$ en la regresión esta será capturada por el error $u$
+
+--
+
+## Y si $x_2$ con $x_1$ correlacionan... ¿qué supuesto y propiedad ya no se cumplirían? (Tarea)
+
+---
+layout: false
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Regresión **múltiple**: predictores categóricos
+]
+
+.class-info[
+<br>
+**Sesión N° 7**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez, Charo Astorga y Alberto Reyes
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
