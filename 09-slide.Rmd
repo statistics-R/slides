@@ -111,24 +111,14 @@ class: title title-inv-8
 
 .box-3.medium.sp-after-half[3.Modelo $y-log  x$]
 
---
 
+--
 .box-4.medium.sp-after-half[4.Modelo $log  y - x$]
 
----
-class: title title-inv-8
 
-# Contenidos Sesión 
+--
 
 .box-5.medium.sp-after-half[5.Modelo $log  y - log x$]
-
---
-
-.box-6.medium.sp-after-half[6.Modelo cuadrático]
-
---
-
-.box-7.medium.sp-after-half[7.Modelo con interacción]
 
 ---
 class: title title-8
