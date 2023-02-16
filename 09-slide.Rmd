@@ -82,7 +82,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 9 y 10**<br>
+**Sesión N° 9**<br>
 **Estadísitica II**
 <br>
 
@@ -150,13 +150,15 @@ class: title title-8
 
 # 1. Hipótesis de investigación
 
-- $H_1$: A mayor puntaje en la prueba de admisión, mayores son las notas de la universidad
+- $H_1$: Modelo simple
 
-- $H_2$: A mayor notas en enseñanza media, mayores son las notas en la universidad
+- $H_2$: Modelo cuali
 
-- $H_3$: Existen diferencias significativas por sexo en el promedio de notas en la universidad
+- $H_3$: Modelo lineal-log
 
-- $H_4$: Existen diferencias significativas en el promedio de notas en la universidad **entre estudiantes que trabajan y aquellos que no**. Entre más horas trabajadas, las notas promedio serán más bajas. 
+- $H_4$: Modelo log - lineal 
+
+- $H_5$: Modelo log- log
 
 
 ---
@@ -348,6 +350,18 @@ class: title title-inv-5
 # Gráfico
 
 
+---
+
+class: center middle main-title section-title-8 top-logo
+
+## Entonces ... el efecto de la variable $x_1$ depende del valor que tome $x_1$
+
+--
+
+## ¿Podría depender este efecto de otras variables?
+--
+
+## ¡Sí! Eso se conoce como **interacción** (*siguiente clase*)
 
 ---
 layout: false
@@ -359,7 +373,7 @@ class: center middle main-title section-title-8 top-logo
 
 .class-info[
 <br>
-**Sesión N° 9 y 10**<br>
+**Sesión N° 9**<br>
 **Estadísitica II**
 <br>
 
