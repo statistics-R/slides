@@ -72,7 +72,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE,
 class: center middle main-title section-title-8 top-logo
 
 .small[
-# Regresión lineal simple
+# Regresión lineal múltiple
 ]
 
 .class-info[
@@ -397,7 +397,7 @@ layout: false
 class: center middle main-title section-title-8 top-logo
 
 .small[
-# Regresión **lineal** simple
+# Regresión **lineal** múltiple
 ]
 
 .class-info[
