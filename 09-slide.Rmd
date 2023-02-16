@@ -1,0 +1,374 @@
+---
+title: "Estadística II"
+author: "Valentina Andrade"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    includes:
+      after_body: "html/insert-logo.html"
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "libs/macros.js"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r packages-data, include=FALSE, echo =FALSE}
+pacman::p_load(tidyverse, sjPlot, ggsci, broom)
+#library(wooldridge)
+theme_set(theme_sjplot2())
+
+# gpa <- as_tibble(wooldridge::gpa1)
+# 
+# gpa <- gpa %>%  mutate(sex = as_factor(if_else(male== 1, "Hombre", "Mujer")), job = factor(case_when(job19 == 1 ~ "Trabaja <= 19 hrs",
+#                                                                                       job20 == 1 ~ "Trabaja > 19 hrs",
+#                                                                                       TRUE ~  "No trabaja"), levels = c("No trabaja", "Trabaja <= 19 hrs", "Trabaja > 19 hrs")) )
+
+load("data/gpa.RData")
+
+model1 <- lm(colGPA ~ ACT, data = gpa)
+model2 <- lm(colGPA ~ ACT + hsGPA, data = gpa)
+model3 <- lm(colGPA ~ ACT + hsGPA + sex, data = gpa)
+model4 <- lm(colGPA ~ ACT + hsGPA + job, data = gpa)
+model5 <- lm(colGPA ~ ACT + hsGPA + sex + job, data = gpa)
+
+  
+gpa_fitted <- augment(model5)
+
+```
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view", "animate_css", "share_again", "scribble", "frezeeframe", "editable", "progress_bar"))
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\">Copiar código</i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\">¡Listo!</i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Transformación de variables dependientes y independintes
+]
+
+.class-info[
+<br>
+**Sesión N° 9 y 10**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez, Charo Astorga y Alberto Reyes
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+--
+.box-1.medium.sp-after-half[1.Modelo lineal simple]
+
+--
+.box-2.medium.sp-after-half[2.Modelo con variable cualitativa]
+
+--
+
+.box-3.medium.sp-after-half[3.Modelo $y-log  x$]
+
+--
+
+.box-4.medium.sp-after-half[4.Modelo $log  y - x$]
+
+---
+class: title title-inv-8
+
+# Contenidos Sesión 
+
+.box-5.medium.sp-after-half[5.Modelo $log  y - log x$]
+
+--
+
+.box-6.medium.sp-after-half[6.Modelo cuadrático]
+
+--
+
+.box-7.medium.sp-after-half[7.Modelo con interacción]
+
+---
+class: title title-8
+
+# Datos a utilizar
+
+.small[
+- `colGPA`: promedio general de calificaciones de la universidad, en escala de 0 a 4 puntos
+
+- `hsGPA`:  promedio general de calificaciones en la enseñanza media, en escala de 0 a 4 puntos
+
+- `ACT`: puntaje en el examen de admisión a la universidad, que va de 16 a 33 puntos
+
+- `sex`: sexo del estudiante, donde `sex = 1` (Hombre) y `sex = 0` (Mujer)
+
+- `job`: si el estudiante trabaja, donde `job = 0` (No trabaja), `job = 1` (Trabaja <= de 19 horas semanales), `job = 2` (Trabaja > 19 horas semanales)]
+---
+class: title title-8
+
+# 1. Hipótesis de investigación
+
+- $H_1$: A mayor puntaje en la prueba de admisión, mayores son las notas de la universidad
+
+- $H_2$: A mayor notas en enseñanza media, mayores son las notas en la universidad
+
+- $H_3$: Existen diferencias significativas por sexo en el promedio de notas en la universidad
+
+- $H_4$: Existen diferencias significativas en el promedio de notas en la universidad **entre estudiantes que trabajan y aquellos que no**. Entre más horas trabajadas, las notas promedio serán más bajas. 
+
+
+---
+class: center middle main-title section-title-1 top-logo
+
+# 1.Modelo lineal simple
+
+---
+class: title title-1
+
+# 1.Modelo lineal simple
+
+.box-inv-1[ $y = \beta_0 + \beta_1 x_1 + u$
+]
+.box-inv-1[ $\beta_0$= intercepto
+$\beta_1$=pendiente ]
+
+--
+
+
+.box-1[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $\beta_1$ unidades ( $\triangle y = \beta_1$ )
+]
+
+---
+class: title title-inv-1
+
+# Ejemplo
+
+
+---
+class: title title-inv-1
+
+# Gráfico
+
+
+---
+class: center middle main-title section-title-2 top-logo
+
+# 2. Modelo con variable cualitativa
+
+---
+class: title title-2
+
+# 2. Modelo con variable cualitativa $X_2$
+
+.box-inv-2[ $y = \beta_0 + \beta_1 x_1 + \beta_2 X_2 +  u$
+]
+
+.pull-left[ .box-inv-2[ Si $x_2 = 0$
+]
+.box-inv-2[ $y = \beta_0 + \beta_1 x_1 +  u$
+]
+.box-inv-2[ $\beta_0$= intercepto
+$\beta_1$=pendiente ]
+]
+
+.pull-right[ .box-inv-2[ Si $x_2 = 1$
+]
+.box-inv-2[ $y = \beta_0 + \beta_2 + \beta_1 x_1 +  u$
+]
+.box-inv-2[ $\beta_0 + \beta_2$= intercepto
+$\beta_1$=pendiente ]
+]
+
+---
+
+class: title title-2
+
+# 2. Modelo con variable cualitativa $X_2$
+
+
+.box-2[ La diferencia promedio entre los grupos $x_2=1$ y $x_2 = 0$ es $\beta_2$, manteniendo $X_1$ constante
+]
+
+
+.box-2[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $\beta_1$ unidades ( $\triangle y = \beta_1$ ), **tanto para $x_1$ como $x_2$
+]
+
+---
+class: title title-inv-2
+
+# Ejemplo
+
+
+---
+class: title title-inv-2
+
+# Gráfico
+
+
+---
+class: center middle main-title section-title-3 top-logo
+
+# 3. Modelo $y-log  x$
+
+---
+class: title title-3
+
+# 3. Modelo $y-log  x$
+
+.box-inv-3[ $y = \beta_0 + \beta_1 log (x_1) + u$
+]
+.box-inv-3[ $\beta_0$= intercepto
+$\beta_1$=pendiente ]
+
+--
+
+
+.box-3[ Cuando $x_1$ aumenta **1 %** ( $\triangle x_1 = 1$ % ) , $y$ cambia en $0.01 \cdot \beta_1$ unidades ( $\triangle y = 0.01 \cdot \beta_1$ )
+]
+
+---
+class: title title-inv-3
+
+# Ejemplo
+
+
+---
+class: title title-inv-3
+
+# Gráfico
+
+
+---
+class: center middle main-title section-title-4 top-logo
+
+# 4. Modelo $log y-  x$
+
+---
+class: title title-4
+
+# 4. Modelo $log y-  x$
+
+.box-inv-4[ $log(y) = \beta_0 + \beta_1 x_1 + u$
+]
+.box-inv-4[ $\beta_0$= intercepto
+$\beta_1$=pendiente ]
+
+--
+
+
+.box-4[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $100 \cdot \beta_1 $ % ( $\triangle y = 100 \cdot \beta_1$ )
+]
+
+.box-4[ Si $x_1$ es dummy ( $x_1 = 1$ ) , la diferencia promedio $y$ es $100\cdot [exp(\beta_1)-1]$
+]
+
+---
+class: title title-inv-4
+
+# Ejemplo
+
+
+---
+class: title title-inv-4
+
+# Gráfico
+
+---
+class: center middle main-title section-title-5 top-logo
+
+# 5. Modelo $log y-  log x$
+
+---
+class: title title-5
+
+# 5. Modelo $log y-  log x$
+
+.box-inv-5[ $log(y) = \beta_0 + \beta_1 log(x_1) + u$
+]
+.box-inv-5[ $\beta_0$= intercepto
+$\beta_1$=pendiente ]
+
+--
+
+
+.box-5[ Cuando $x_1$ aumenta **1 %** ( $\triangle x_1 = 1$% ) , $y$ cambia en $\beta_1$ % ( $\triangle y =  \beta_1$ % )
+]
+
+---
+class: title title-inv-5
+
+# Ejemplo
+
+
+---
+class: title title-inv-5
+
+# Gráfico
+
+
+
+---
+layout: false
+class: center middle main-title section-title-8 top-logo
+
+.small[
+# Transformación de variables dependientes y independintes
+]
+
+.class-info[
+<br>
+**Sesión N° 9 y 10**<br>
+**Estadísitica II**
+<br>
+
+.pull-right.small[
+**Profesora** Valentina Andrade de la Horra <br>
+**Apoyo docente** Nicolás Godoy <br>
+**Ayudantes** Moira Martinez, Charo Astorga y Alberto Reyes
+.tiny[Universidad Alberto Hurtado<br>
+]
+]
+
+]
