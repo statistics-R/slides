@@ -120,14 +120,17 @@ class: title title-inv-8
 
 --
 
-.box-inv-[Las razones son diversas]
+.box-inv-8[Las razones son diversas]
 
 ---
 class: title title-inv-8
 
 # Errores de medida 
 
-Imagen
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/12/01.png" alt="drawing" style="width:1000px;"/>
+</center>
+
 
 ---
 
@@ -175,7 +178,8 @@ class: title title-inv-8
 
 # Variable dependiente
 
-.box-8[¿Qué pasa si estimamos la regresión con $y$ en lugar de $y^*$]
+.box-8[¿Qué pasa si estimamos la regresión con $y$ en lugar de $y^*$
+]
 
 --
 
@@ -232,7 +236,7 @@ class: title title-inv-8
 - Si $e$ y $u$ no están correlacionados
 
 
-$$Var(y|X) = Var(u + e|X) = Var(u|x) + Var(e|x) > Var(u|x) $$
+$$Var(y|X) = Var(u + e|X) = Var(u|x) + Var(e|x) $$
 
 --
 
@@ -290,7 +294,7 @@ class: title title-inv-8
 $$\hat \beta_1 =  \frac{Cov(x,y)}{Var(x)} = \frac{Cov(x^* + e, y)}{Var(x^* + e)}$$
 
 
-$$ \hat \beta_1 = \frac{\beta_1 Var(x^*)}{Var(x^*) + Var(e)}$$
+$$\hat \beta_1 = \frac{\beta_1 Var(x^*)}{Var(x^*) + Var(e)}$$
 
 - El término que acompaña a $\beta_1$ es menor a 1, por ello se dice que **atenua** el efecto de $\beta_1$
 
