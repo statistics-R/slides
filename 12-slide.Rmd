@@ -77,7 +77,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE,
 class: center middle main-title section-title-8 top-logo
 
 .small[
-# Errores de medida
+# Errores de medición
 ]
 
 .class-info[
@@ -101,314 +101,241 @@ class: title title-inv-8
 
 # Contenidos Sesión 
 
-.box-6.medium.sp-after-half[6.Modelo cuadrático]
+.box-6.medium.sp-after-half[Error en variable dependiente]
 
 --
 
-.box-7.medium.sp-after-half[7.Modelo con interacción (cuanti-cuanti)]
+.box-7.medium.sp-after-half[Error en variable independiente]
+
+
+---
+class: title title-inv-8
+# Errores de medición
+
+.box-inv-8[Hasta ahora solo hemos considerado casos en que las variables X e Y siempre están disponibles]
 
 --
 
-.box-1.medium.sp-after-half[8.Modelo con interacción (cuanti-cuali)]
+.box-inv-8[Sin embargo, en la mayoría de los casos no tenemos una variable exacta que nos interesa]
 
 --
 
-.box-2.medium.sp-after-half[9.Modelo con interacción (cuali-cuali)]
+.box-inv-[Las razones son diversas]
 
 ---
-class: title title-8
+class: title title-inv-8
 
-# Datos a utilizar
+# Errores de medida 
 
-.small[
-- `colGPA`: promedio general de calificaciones de la universidad, en escala de 0 a 4 puntos
-
-- `hsGPA`:  promedio general de calificaciones en la enseñanza media, en escala de 0 a 4 puntos
-
-- `ACT`: puntaje en el examen de admisión a la universidad, que va de 16 a 33 puntos
-
-- `sex`: sexo del estudiante, donde `sex = 1` (Hombre) y `sex = 0` (Mujer)
-
-- `job`: si el estudiante trabaja, donde `job = 0` (No trabaja), `job = 1` (Trabaja <= de 19 horas semanales), `job = 2` (Trabaja > 19 horas semanales)]
----
-class: title title-8
-
-# 1. Hipótesis de investigación
-
-- $H_6$: Modelo cuadrático
-
-- $H_7$: Modelo con interacción entre cuantitativas
-
-- $H_8$: Modelo con interacción entre cuantitativa y cualitativa
-
-- $H_9$: Modelo con interacción entre cualitativas
+Imagen
 
 ---
-class: center middle main-title section-title-6 top-logo
 
-# 6.Modelo cuadrático
+# Ejemplos
+
+- Ingreso verdadero vs ingreso declarado
+
+- Horas trabajadas a la semana vs promedio de horas trabajadas
+
+- Percepciones de conflicto
 
 ---
-class: title title-6
+class: title title-inv-8
+# Errores de medición
 
-# 1. Hipótesis de investigación
-
-- $H_{6.1}$: A medida que aumenta la experiencia, en promedio, aumentan los salarios
+.box-inv-8[Hablaremos de errores de medición en aquellos casos en que se utiliza una *medida imprecisa* como variable (*proxy*)]
 
 --
 
-- ¡Pero ese aumento no es infinito!
-
-- $H_{6.2}$: La experiencia tiene un efecto positivo en los salarios en los primeros años, pero en cierto punto su efecto empieza a decaer. 
-
---
-
-- **¡WoW! Esta si es una hipótesis bonita**
-
----
-class: title title-6
-
-# ¿Cómo se vería gráficamente?
-
-
-
-
----
-class: title title-6
-
-# 6. Modelo cuadrático
-
-.box-inv-6[ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_1^2 + u$
-]
-.box-inv-6[ $\beta_0$= intercepto
-$\beta_1 + 2\beta_2 x_1$=pendiente ]
-
---
-
-
-.box-6[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $\beta_1 + 2\beta_2 x_1$ unidades ( $\triangle y = \beta_1 + 2\beta_2 x_1$ )
-]
-
-.box-6[ El efecto de aumento de $x_1$ ahora **depende del nivel** que tiene $x_1$
-]
-
----
-class: title title-inv-6
-
-# Ejemplo 1 $\beta_2 < 0$
-
-
----
-class: title title-inv-6
-
-# Gráfico 1 $\beta_2 < 0$
-
----
-class: title title-inv-6
-
-# Ejemplo 2 $\beta_2 > 0$
-
-
----
-class: title title-inv-6
-
-# Gráfico 2 $\beta_2 > 0$
+.box-inv-8[**¿Qué consecuencias tiene esto sobre las estimaciones de MCO**?]
 
 ---
 class: center middle main-title section-title-8 top-logo
 
-# Interacciones con otras variables independientes
+# Variable dependiente
 
 ---
+class: title title-inv-8
 
-Esquema
+# Variable dependiente
+
+- Considere el siguiente modelo
+
+$$y^* = \beta_0 + \beta_1 x + \mu$$
+
+- La variable que nos interesa es $y^*$ pero solo tenemos una medida imprecisa de y 
+
+$$y = y ^* + e$$
+$$e = y - y^*$$
+
+- $e$ es el error de medición
+
 ---
-class: center middle main-title section-title-1 top-logo
+class: title title-inv-8
 
-# 7.Modelo con interacción entre variables cuantitativas 
+# Variable dependiente
 
-
----
-class: title title-1
-
-# 1. Hipótesis de investigación
-
-- $H_{7.1}$: A medida que aumenta la experiecia, los salarios promedio aumenta 
+.box-8[¿Qué pasa si estimamos la regresión con $y$ en lugar de $y^*$]
 
 --
 
-- $H_{7.2}$: El efecto que tiene la experiencia sobre los salarios depende de la edad. Pero entre más jóven se obtenga esa experiencia el aumento salarial será mayor. 
+.box-8[Las propiedades de MCO **dependerán** de la relación entre $e$ y las variables explicativas]
+
+---
+class: title title-inv-8
+
+# Variable dependiente
+
+$$ y ^* = y - e = \beta_0 + \beta_1 X + u$$
+
+$$y = \beta_0 + \beta_1 + v$$
+
+- $v = u + e$
 
 
 ---
-class: title title-7
+class: title title-inv-8
 
-# 7. Modelo interacción (cuantitativas)
-
-.box-inv-7[ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 +\beta_3 x_1 \cdot x_2 + u$
-]
+# Insesgamiento
 
 
-.box-inv-7[ $\beta_0$ = intercepto
-$\beta_1 + \beta_3 \cdot x_2$ = efecto parcial de $x_1$
-$\beta_2 + \beta_3 \cdot x_1$ = efecto parcial de $x_2$]
+$$\hat \beta_1 = \frac{Cov(x,y)}{Var(x)} = \frac{Cov(x, y^* + e)}{var(x)}$$
 
----
-class: title title-7
+Con una gran cantidad de datos se puede mostrar que 
 
-# 7. Modelo interacción (cuantitativas)
-
-
-- Efecto parcial de $x_1$ sobre $y$, pero a la vez $x_1$ es afectado por $x_2$
-
-- Si $\beta_1$ tiene efecto positivo
-
-  - $\beta_3$ es positivo $\Rightarrow$ entre mayor $x_2$ el aumento será mayor por cada $x_2$
-  - $\beta_3$ es negativo $\Rightarrow$ entre mayor $x_2$ el aumento será menor por cada $x_2$
+$$\hat \beta_1 = \beta_1 + \frac{Cov(x, e)}{var(x)}$$
 
 ---
+class: title title-inv-8
 
-.box-7[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ )
+# Insesgamiento
 
-- $y$ cambia en $\beta_1 + \beta_3 x_2 $ unidades
-- El efecto sobre $y$ dependerá del nivel de $x_2$
-]
-
----
-class: title title-7
-# Ejemplo
-
----
-class: title title-7
-# Gráfico 
-
----
-class: center middle main-title section-title-1 top-logo
-
-# 8.Modelo con interacción entre variables cuantitativas con cualitativas
-
-
----
-class: title title-1
-
-# 1. Hipótesis de investigación
-
-- $H_{8.1}$: A medida que aumenta la experiecia, los salarios promedio aumenta 
+- En resumen, el error de medición en la variable dependiente puede causar **sesgo** en MCO, cuando el error esté relacionando con una o más variables explicativas
 
 --
 
-- $H_{8.2}$: El efecto que tiene la experiencia sobre los salarios depende del sexo. Para los hombres la experiencia es más premiada salarialmente que para las mujeres 
-
-
----
-class: title title-1
-
-# 8. Modelo interacción (cuantitativa con cualitativa)
-
-.box-inv-1[ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 +\beta_3 x_1 \cdot x_2 + u$
-]
-
-.pull-left[ .box-inv-1[ Si $x_2 = 0$
-]
-.box-inv-1[ $y = \beta_0 + \beta_1 x_1 +  u$
-]
-.box-inv-1[ $\beta_0$= intercepto
-$\beta_1$=pendiente ]
-]
-
-.pull-right[ .box-inv-1[ Si $x_2 = 1$
-]
-.box-inv-1[ $y = \beta_0 + \beta_2 + \beta_1 x_1  + \beta_3 x_1 +  u$
-]
-.box-inv-1[ $\beta_0 + \beta_2$= intercepto
-$\beta_1 + \beta_3$=pendiente ]
-]
-
----
-class: title title-1
-
-# 8. Modelo interacción (cuantixcuali)
-
-
-- A diferencia del **modelo con variables cualitativas (2)**, los grupos tienen **distinto intercepto y pendiente**
-
-- **Intercepto**: parten del niveles distintos
-
-- **Pendiente**: el efecto de $x_1$ es distinto en cada grupo
-
-
----
-
-.box-1[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ )
-
-- $y$ cambia en $\beta_1 $ unidades cuando $X_2 = 0$
-- $y$ cambia en $\beta_1 + \beta_3 $ unidades cuando $X_2 = 1$
-]
-
-.box-1[ La diferencia de las rectas entre los grupos es de $\beta_2 + \beta_3 x_1$
-]
-
----
-
-class: center middle main-title section-title-2 top-logo
-
-# 9.Modelo con interacción entre variables  cualitativas
-
-
----
-class: title title-2
-
-# 1. Hipótesis de investigación
-
-- $H_{9.1}$: En promedio, los hombres ganan un mayor salario que las mujeres 
+- **Si el error es independiente de las variables explicativas**, entonces MCO es apropiado.
 
 --
 
-- $H_{9.2}$: El efecto que tiene el sexo sobre los salarios depende del estado civil. Para las mujeres casadas los salarios son más bajos que para los homres casados. 
-
+- Por ejemplo, digitar mal
 
 ---
-class: title title-2
+class: title title-inv-8
 
-# 9. Modelo interacción (cualitativas)
+# Menos Eficiencia 
 
-.box-inv-2[ $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 +\beta_3 x_1 \cdot x_2 + u$
-]
+- Sin embargo, el error de medición se traduce en una **mayor varianza del error**, lo que resulta en **varianzas mayores de los estimadores de $\beta$**
 
 --
 
-- $x_1$ (Sexo)
-  - 1 = Hombre
-  - 0 = Mujer
-  
-- $x_2$ (Estado Civil)
-  - 1 = Casada
-  - 0 = Soltera
+- Si $e$ y $u$ no están correlacionados
+
+
+$$Var(y|X) = Var(u + e|X) = Var(u|x) + Var(e|x) > Var(u|x) $$
+
+--
+
+.box-8[Por lo tanto, los estimadores de MCO tendrán varianzas mayores]
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# Variable dependiente
+
+---
+class: title title-inv-8
+
+# Variable independiente
+
+- Considere el siguiente modelo
+
+$$y = \beta_0 + \beta_1 x^* + \mu$$
+
+- La variable que nos interesa es $y^*$ pero solo tenemos una medida imprecisa de y 
+
+$$x = x ^* + e$$
+$$e = x - x^*$$
+
+- $e$ es el error de medición
 
 
 ---
-class: title title-2
+class: title title-inv-8
 
-# 8. Modelo interacción (cuantixcuali)
+# Errores clásicos de variable
 
-- Veamos las combinaciones
+- $E(e) = 0$
+
+- $Cov(e,u) = 0$
+
+- $Cov(e,x^*) = 0$
 
 ---
-class: title title-2
+class: title title-inv-8
 
-# Ejemplo
+# Variable independiente
+
+ $$y = \beta_0 + \beta_1 (x- e) + u$$
+ 
+ $$y = \beta_0 + \beta_1 x + v$$
+ 
+ - $v = u - \beta_1 e$
+ 
+---
+class: title title-inv-8
+
+# Sesgo
+
+$$\hat \beta_1 =  \frac{Cov(x,y)}{Var(x)} = \frac{Cov(x^* + e, y)}{Var(x^* + e)}$$
+
+
+$$ \hat \beta_1 = \frac{\beta_1 Var(x^*)}{Var(x^*) + Var(e)}$$
+
+- El término que acompaña a $\beta_1$ es menor a 1, por ello se dice que **atenua** el efecto de $\beta_1$
 
 ---
-class: title title-2
+class: title title-inv-8
 
-# Graficamente
+# Sesgo de atenuación
+
+- El error de medición de una variable explicaiva nos lleva a **subestimar** el efecto de una variable
+
+- A esto se le llama **sesgo de atenuación**
+
+- La magnitud del sesgo depende de $Var(x^*)$ y $Var(e)$
+
+---
+class: center middle main-title section-title-8 top-logo
+
+# En resumen
+
+---
+class: title title-inv-8
+
+# Resumen
+
+- En la práctica, es *poco probable que podamos contar con una medicipon precisa de todas las variables del modelo*
+
+--
+
+- Bajo Errores clásicos de variable
+
+
+- Un error en $y^*$ no produce sesgo pero si menos eficiencia
+
+- Un error en $x^*$ produce sesgo de atenuación.
+
+--
+
+- **El sesgo de los coeficientes puede ir en cualquier dirección y es difícil de determinar**
 
 ---
 layout: false
 class: center middle main-title section-title-8 top-logo
 
 .small[
-# Errores de medida
+# Errores de medición
 ]
 
 .class-info[
