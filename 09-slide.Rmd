@@ -26,26 +26,33 @@ editor_options:
 
 
 ```{r packages-data, include=FALSE, echo =FALSE}
-pacman::p_load(tidyverse, sjPlot, ggsci, broom)
+pacman::p_load(tidyverse, sjPlot, ggsci, broom,AER, sandwich, forcats, foreign, dplyr)
 #library(wooldridge)
 theme_set(theme_sjplot2())
+# load libraries
+library(tidyverse)
+library(AER)
+library(sandwich)
+library(forcats)
 
-# gpa <- as_tibble(wooldridge::gpa1)
-# 
-# gpa <- gpa %>%  mutate(sex = as_factor(if_else(male== 1, "Hombre", "Mujer")), job = factor(case_when(job19 == 1 ~ "Trabaja <= 19 hrs",
-#                                                                                       job20 == 1 ~ "Trabaja > 19 hrs",
-#                                                                                       TRUE ~  "No trabaja"), levels = c("No trabaja", "Trabaja <= 19 hrs", "Trabaja > 19 hrs")) )
+# download data
+download.file("http://fmwww.bc.edu/ec-p/data/wooldridge/gpa1.dta", 
+              destfile = "gpa1.dta", mode = "wb")
+GPA1 <- haven::read_dta("gpa1.dta")
 
-load("data/gpa.RData")
+# run simple linear regression
+model1 <- lm(colGPA ~ hsGPA, data = GPA1)
 
-model1 <- lm(colGPA ~ ACT, data = gpa)
-model2 <- lm(colGPA ~ ACT + hsGPA, data = gpa)
-model3 <- lm(colGPA ~ ACT + hsGPA + sex, data = gpa)
-model4 <- lm(colGPA ~ ACT + hsGPA + job, data = gpa)
-model5 <- lm(colGPA ~ ACT + hsGPA + sex + job, data = gpa)
+# create dummy variable for gender
+#GPA1$female <- ifelse(GPA1$gender == "female", 1, 0)
 
-  
-gpa_fitted <- augment(model5)
+# run simple linear regression with gender as the predictor
+model2 <- lm(colGPA ~ as_factor(male), data = GPA1)
+
+set.seed(123)
+gasto <- exp(rnorm(100))
+voters <- 1 + 2 * log(gasto) + rnorm(100)
+
 
 ```
 ```{r xaringanExtra, echo=FALSE}
@@ -123,21 +130,6 @@ class: title title-inv-8
 ---
 class: title title-8
 
-# Datos a utilizar
-
-.small[
-- `colGPA`: promedio general de calificaciones de la universidad, en escala de 0 a 4 puntos
-
-- `hsGPA`:  promedio general de calificaciones en la enseñanza media, en escala de 0 a 4 puntos
-
-- `ACT`: puntaje en el examen de admisión a la universidad, que va de 16 a 33 puntos
-
-- `sex`: sexo del estudiante, donde `sex = 1` (Hombre) y `sex = 0` (Mujer)
-
-- `job`: si el estudiante trabaja, donde `job = 0` (No trabaja), `job = 1` (Trabaja <= de 19 horas semanales), `job = 2` (Trabaja > 19 horas semanales)]
----
-class: title title-8
-
 # 1. Hipótesis de investigación
 
 - $H_1$: Modelo simple
@@ -172,10 +164,20 @@ $\beta_1$=pendiente ]
 .box-1[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $\beta_1$ unidades ( $\triangle y = \beta_1$ )
 ]
 
----
-class: title title-inv-1
 
-# Ejemplo
+```{r, echo = F}
+set.seed(123)
+
+# Simulate data
+n <- 100
+educ <- rnorm(n, mean = 12, sd = 3)
+age <- rnorm(n, mean = 35, sd = 10)
+wage <- 1000 + 200*educ + 50*age + rnorm(n, mean = 0, sd = 100)
+
+# Create data frame
+data <- data.frame(educ = educ, age = age, wage = wage)
+
+```
 
 
 ---
@@ -183,6 +185,14 @@ class: title title-inv-1
 
 # Gráfico
 
+
+```{r, echo = F}
+ggplot(data, aes(x = educ, y = wage)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Years of education", y = "Wage")
+
+```
 
 ---
 class: center middle main-title section-title-2 top-logo
@@ -227,16 +237,31 @@ class: title title-2
 .box-2[ Cuando $x_1$ aumenta **1 unidad** ( $\triangle x_1 = 1$ ) , $y$ cambia en $\beta_1$ unidades ( $\triangle y = \beta_1$ ), **tanto para $x_1$ como $x_2$
 ]
 
----
-class: title title-inv-2
 
-# Ejemplo
+```{r, echo = F}
+set.seed(123)
+gender <- factor(rep(c("Male", "Female"), each = 50))
+educ <- rnorm(100, mean = 12, sd = 2)
+wage <- 20 + 5*as.numeric(gender) + 2*educ + rnorm(100, mean = 0, sd = 5)
+data <- data.frame(gender, educ, wage)
+```
+
 
 
 ---
 class: title title-inv-2
 
 # Gráfico
+
+```{r, echo = F}
+ggplot(data, aes(x = educ, y = wage, color = gender)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Years of Education") +
+  ylab("Wage") +
+  ggtitle("Wage by Education Level and Gender") +
+  scale_color_manual(values = c("blue", "red"))
+```
 
 
 ---
@@ -260,16 +285,34 @@ $\beta_1$=pendiente ]
 .box-3[ Cuando $x_1$ aumenta **1 %** ( $\triangle x_1 = 1$ % ) , $y$ cambia en $0.01 \cdot \beta_1$ unidades ( $\triangle y = 0.01 \cdot \beta_1$ )
 ]
 
+
 ---
 class: title title-inv-3
 
-# Ejemplo
+# Gráfico sin log
 
+```{r, echo = F}
+ggplot(data.frame(x = gasto, y = voters), aes(x, y)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  xlab("Gasto") + 
+  ylab("Votantes")
+```
 
 ---
 class: title title-inv-3
 
 # Gráfico
+
+```{r, echo = F}
+ggplot(data.frame(x = gasto, y = voters), aes(x, y)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", formula = y ~ log(x)) +
+  xlab("Gasto") + 
+  ylab("Votantes")
+
+```
+
 
 
 ---
@@ -296,16 +339,33 @@ $\beta_1$=pendiente ]
 .box-4[ Si $x_1$ es dummy ( $x_1 = 1$ ) , la diferencia promedio $y$ es $100\cdot [exp(\beta_1)-1]$
 ]
 
----
-class: title title-inv-4
+```{r, echo = F}
+# Simulate data
+set.seed(123)
+exp <- runif(100, 0, 20)
+wage <- exp^2 + rnorm(100, 0, 1)
+data <- data.frame(exp, wage)
 
-# Ejemplo
+
+```
 
 
 ---
 class: title title-inv-4
 
 # Gráfico
+
+```{r, echo = F}
+ggplot(data, aes(x = exp, y = wage)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "red") +
+  geom_smooth(method = "lm", formula = log(y) ~ x, se = FALSE, color = "blue") +
+  labs(title = "Wage vs Experience",
+       x = "Experience",
+     y = "Wage")
+
+```
+
 
 ---
 class: center middle main-title section-title-5 top-logo
@@ -327,17 +387,6 @@ $\beta_1$=pendiente ]
 
 .box-5[ Cuando $x_1$ aumenta **1 %** ( $\triangle x_1 = 1$% ) , $y$ cambia en $\beta_1$ % ( $\triangle y =  \beta_1$ % )
 ]
-
----
-class: title title-inv-5
-
-# Ejemplo
-
-
----
-class: title title-inv-5
-
-# Gráfico
 
 
 ---
