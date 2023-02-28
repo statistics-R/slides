@@ -207,9 +207,11 @@ class: title title-8
 
 ---
 class: title title-8
+
 # Distriución de los parámetros
 
-- ¿Cuál es la distribución de los $\beta$?
+- ¿Cuál es la distribución de los $\beta$ ?
+
 
 -- 
 
@@ -311,11 +313,14 @@ class: title title-8
 
 .box-inv-1[1.Formular hipótesis]
 
-.box-inv-2[2.Calcular $\hat t _{n-k-1}$ muestral]
+.box-inv-2[2.Calcular $\hat t _{n-k-1}$ muestral
+]
 
-.box-inv-3[3.Buscar en la tabla $t _{n-k-1}$ teórico]
+.box-inv-3[3.Buscar en la tabla $t _{n-k-1}$ teórico
+]
 
-.box-inv-4[4.Comparar $t _{n-k-1} ~ y ~ \hat t _{n-k-1}$ y analizar si se rechaza $H_0$]
+.box-inv-4[4.Comparar $t _{n-k-1} ~ y ~ \hat t _{n-k-1}$ y analizar si se rechaza $H_0$
+]
 
 ---
 class: title title-1
@@ -491,7 +496,9 @@ class: title title-2
 
 --
 
-.box-inv-2[$se(\hat \beta_1 - \hat \beta_2) = \sqrt{var(\hat \beta_1 - \hat \beta_2)} = \sqrt{var(\hat \beta_1)+var(\hat \beta_2) - 2cov(\hat \beta_1, \hat \beta_2)} $]
+.box-inv-2[
+$se(\hat \beta_1 - \hat \beta_2) = \sqrt{var(\hat \beta_1 - \hat \beta_2)} = \sqrt{var(\hat \beta_1)+var(\hat \beta_2) - 2cov(\hat \beta_1, \hat \beta_2)}$
+]
 
 ---
 class: title title-3
