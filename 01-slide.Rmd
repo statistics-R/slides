@@ -319,15 +319,16 @@ class: center middle main-title section-title-8 top-logo
 ---
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/1.png" alt="drawing" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/1.png" alt="drawing" style="width:1000px;"/>
 </center>
 
 ---
 
 class: title title-8
 
-El equipo
+# Equipo
 
+Falta imagen
 
 ---
 class: title title-8
@@ -335,7 +336,7 @@ class: title title-8
 # Evaluaciones
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/4.png" alt="drawing" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/4.png" alt="drawing" style="width:1000px;"/>
 </center>
 
 ---
@@ -344,7 +345,41 @@ class: title title-8
 # Consultas
 
 <center>
-<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/4.png" alt="drawing" style="width:800px;"/>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/5.png" alt="drawing" style="width:1000px;"/>
+</center>
+
+
+---
+class: title title-8
+
+# Recursos principales
+
+- Sitio web curso: [https://statistic-r-uah.netlify.app/](https://statistic-r-uah.netlify.app/)
+
+
+- [https://learn-r-uah.netlify.app/](https://learn-r-uah.netlify.app/)
+
+
+class: title title-8
+
+# Softwares principales
+
+
+.box-8[R]
+
+.box-7[GitHub]
+
+
+---
+
+
+Meme final
+
+
+---
+
+<center>
+<img src="https://raw.githubusercontent.com/statistics-R/slides/main/img/01/1.png" alt="drawing" style="width:1000px;"/>
 </center>
 
 
