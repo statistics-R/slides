@@ -230,10 +230,7 @@ class: title title-8
 
 2. **Ley de grandes números**
 
-
-
----
-Gif y ejercicio (falta)
+(Práctico)
 
 ---
 class: title title-8
